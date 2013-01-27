@@ -5,7 +5,7 @@ message RequestError {
 }
 
 message LoginSuccess {
-	optional int32 userid = 1;
+	optional int64 userid = 1;
 }
 
 message CurHP {

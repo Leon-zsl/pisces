@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='response.proto',
   package='',
-  serialized_pb='\n\x0eresponse.proto\">\n\x0cRequestError\x12\r\n\x05\x65rrop\x18\x01 \x01(\x05\x12\r\n\x05\x65rrno\x18\x02 \x01(\x05\x12\x10\n\x08\x65rrormsg\x18\x03 \x01(\t\"\x1e\n\x0cLoginSuccess\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"\x13\n\x05\x43urHP\x12\n\n\x02hp\x18\x01 \x01(\x02\"\x13\n\x05\x43urMP\x12\n\n\x02mp\x18\x01 \x01(\x02')
+  serialized_pb='\n\x0eresponse.proto\">\n\x0cRequestError\x12\r\n\x05\x65rrop\x18\x01 \x01(\x05\x12\r\n\x05\x65rrno\x18\x02 \x01(\x05\x12\x10\n\x08\x65rrormsg\x18\x03 \x01(\t\"\x1e\n\x0cLoginSuccess\x12\x0e\n\x06userid\x18\x01 \x01(\x03\"\x13\n\x05\x43urHP\x12\n\n\x02hp\x18\x01 \x01(\x02\"\x13\n\x05\x43urMP\x12\n\n\x02mp\x18\x01 \x01(\x02')
 
 
 
@@ -67,7 +67,7 @@ _LOGINSUCCESS = descriptor.Descriptor(
   fields=[
     descriptor.FieldDescriptor(
       name='userid', full_name='LoginSuccess.userid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

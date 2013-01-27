@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='request.proto',
   package='',
-  serialized_pb='\n\rrequest.proto\"\"\n\x05Login\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03pwd\x18\x03 \x01(\t\"\x18\n\x06Logout\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"\x13\n\x05SetHP\x12\n\n\x02hp\x18\x01 \x01(\x02\"\x13\n\x05SetMP\x12\n\n\x02mp\x18\x01 \x01(\x02')
+  serialized_pb='\n\rrequest.proto\"\"\n\x05Login\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03pwd\x18\x03 \x01(\t\"\x18\n\x06Logout\x12\x0e\n\x06userid\x18\x01 \x01(\x03\"\x13\n\x05SetHP\x12\n\n\x02hp\x18\x01 \x01(\x02\"\x13\n\x05SetMP\x12\n\n\x02mp\x18\x01 \x01(\x02')
 
 
 
@@ -60,7 +60,7 @@ _LOGOUT = descriptor.Descriptor(
   fields=[
     descriptor.FieldDescriptor(
       name='userid', full_name='Logout.userid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
