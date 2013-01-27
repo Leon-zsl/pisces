@@ -1,0 +1,17 @@
+message RequestError {
+	optional int32 errop = 1;
+	optional int32 errno = 2;
+	optional string errormsg = 3;
+}
+
+message LoginSuccess {
+	optional int32 userid = 1;
+}
+
+message CurHP {
+	optional float hp = 1;
+}
+
+message CurMP {
+	optional float mp = 1;
+}
