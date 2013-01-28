@@ -20,7 +20,7 @@ from log import LoggerMgr
 from router import Router
 from db import DBMgr
 
-define("listen_port", default=8888)
+define("listen_port", default=8001)
 define("db_host", default="127.0.0.1:3306")
 
 class App(object):
