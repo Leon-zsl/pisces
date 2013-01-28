@@ -57,7 +57,7 @@ class App(object):
         self.logger.root.critical("exception caught: " + msg)
         #self.close()
         if hasattr(self.db, "session"):
-            self.db.session.rollback()
+            self.db.rollback()
         self.db.close_session()
         
     def start_tornado(self):

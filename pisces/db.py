@@ -35,3 +35,21 @@ class DBMgr(object):
     def close_session(self):
         if getattr(self, "session"):
             self.session.close()
+
+    def query(self, clas):
+        return self.session.query(clas)
+
+    def add(self, obj):
+        self.session.add(obj)
+
+    def delete(self, obj):
+        self.session.delete(obj)
+
+    def flush(self):
+        self.session.flush()
+
+    def commit(self):
+        self.session.commit()
+
+    def rollback(self):
+        self.session.rollback()

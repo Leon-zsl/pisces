@@ -16,6 +16,9 @@ import protocol.opcode_response as opcode_response
 import pb2.request_pb2 as request_pb2
 import pb2.response_pb2 as response_pb2
 
+def db():
+    return app.App.instance.db
+
 def login(op, msg):
     login = request_pb2.Login()
     try:
@@ -27,13 +30,13 @@ def login(op, msg):
         err.errerrmsg = ""
         return opcode_response.REQUESTERROR, err.SerializeToString()
 
-    query = app.App.instance.db.session.query(Account)
+    query = db().query(Account)
     account = query.get(login.name)
     if not account:
         userid = query.count() + 1
         account = Account(login.name, login.pwd, userid)
-        app.App.instance.db.session.add(account)
-        app.App.instance.db.session.commit()
+        db().add(account)
+        db().commit()
     
     ret = response_pb2.LoginSuccess()
     ret.userid = account.userid
