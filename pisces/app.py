@@ -80,8 +80,8 @@ class MainHandler(tornado.web.RequestHandler):
         info += self.request.remote_ip
         App.instance.logger.root.info(info)
         
-        response = App.instance.router.dispatch(self)
-        self.write("get: " + response)
+        #response = App.instance.router.dispatch(self)
+        self.write("pisces work now: get request")
         
     # @tornado.web.asynchronous
     # @tornado.gen.engine

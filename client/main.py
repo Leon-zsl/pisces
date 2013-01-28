@@ -24,6 +24,7 @@ def main():
         headers = {"Content-type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
         conn.request("POST", "/pisces", params, headers)
+        #conn.request("GET", "/pisces")
         
         resp = conn.getresponse()
         val = resp.read()
