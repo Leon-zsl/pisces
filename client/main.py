@@ -11,7 +11,7 @@ from response_pb2 import *
 
 def main():
     while True:
-        conn = httplib.HTTPConnection('localhost')
+        conn = httplib.HTTPConnection('127.0.0.1:8080')
         obj = Login()
         obj.name = 'leon'
         obj.pwd = 'leon'

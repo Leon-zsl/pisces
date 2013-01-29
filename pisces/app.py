@@ -61,9 +61,11 @@ class App(object):
         self.db.close_session()
         
     def start_tornado(self):
+        #tornado.options.parse_config_file("config/sys.conf")
+        tornado.options.parse_command_line()
+
         self.logger.root.info("init tornado conf "
                              + "port: " + str(options.listen_port))
-        tornado.options.parse_config_file("config/sys.conf")
         
         web_app = tornado.web.Application([
             (r"/pisces", MainHandler),
