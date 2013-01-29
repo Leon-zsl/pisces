@@ -54,7 +54,10 @@ class App(object):
             
     def handle_except(self, ex):
         msg = traceback.format_exc()
-        self.logger.root.critical("exception caught: " + msg)
+        if hasattr(self, 'logger'):
+            self.logger.root.critical("exception caught: " + msg)
+        else:
+            raise Exception, ex
         #self.close()
         if hasattr(self.db, "session"):
             self.db.rollback()

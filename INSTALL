@@ -1,0 +1,9 @@
+1. /etc/init.d/php5-pfm start #for phpmyadmin
+2. supervisord -c /etc/supervisor/supervisord.conf
+3. supervisorctrl start all
+4. nginx start
+
+config path:
+1. /etc/nginx/nginx.conf
+2. /etc/supervisor/supervisord.conf
+

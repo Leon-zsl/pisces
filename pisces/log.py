@@ -6,7 +6,7 @@ import logging.config
 
 class LoggerMgr(object):
     def __init__(self):
-        logging.config.fileConfig("config/log.conf")    
+        logging.config.fileConfig("config/log.conf")
         self.root = logging.getLogger("root")
         self.support  = logging.getLogger("support")
         self.debug = logging.getLogger("debug")
