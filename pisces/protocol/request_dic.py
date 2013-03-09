@@ -2,13 +2,13 @@
 # -*- coding:utf-8 -*-
 
 import handlers
-import handlers.login
+import handlers.account
 import handlers.character
 from opcode_request import *
 
 dic = {
-    LOGIN : handlers.login.login,
-    LOGOUT : handlers.login.logout,
+    LOGIN : handlers.account.login,
+    LOGOUT : handlers.account.logout,
 
     SETHP : handlers.character.set_hp,
     SETMP : handlers.character.set_mp,
