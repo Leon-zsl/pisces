@@ -20,6 +20,8 @@ from log import LoggerMgr
 from router import Router
 from db import DBMgr
 
+from data import ConfFact
+
 define("listen_port", default=8001)
 define("db_host", default="127.0.0.1:3306")
 
@@ -48,6 +50,7 @@ class App(object):
 
     def run(self):
         try:
+            self.load_data()
             self.start_tornado()
         except Exception, e:
             self.handle_except(e)
@@ -62,6 +65,11 @@ class App(object):
         if hasattr(self.db, "session"):
             self.db.rollback()
         self.db.close_session()
+
+    def load_data(self):
+        self.logger.root.info('load data begin...')
+        ConfFact.build()
+        self.logger.root.info('load data end')
         
     def start_tornado(self):
         #tornado.options.parse_config_file("config/sys.conf")
