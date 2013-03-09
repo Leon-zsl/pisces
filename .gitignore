@@ -1,3 +1,6 @@
 *.pyc
 *.log
 *~
+*.bytes
+*.csv
+pisces/data/*.py
