@@ -52,8 +52,9 @@ ChestConfig::~ChestConfig()
     
 void ChestConfig::build()
 {
-    std::string path = "./data/";
-    path += "ChestConfig.bytes";
+    //std::string path = "./data/";
+    //path += "ChestConfig.bytes";
+    std::string path = "ChestConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

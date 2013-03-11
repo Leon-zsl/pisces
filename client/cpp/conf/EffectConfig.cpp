@@ -83,8 +83,9 @@ EffectConfig::~EffectConfig()
     
 void EffectConfig::build()
 {
-    std::string path = "./data/";
-    path += "EffectConfig.bytes";
+    //std::string path = "./data/";
+    //path += "EffectConfig.bytes";
+    std::string path = "EffectConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

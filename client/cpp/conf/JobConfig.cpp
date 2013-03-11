@@ -78,8 +78,9 @@ JobConfig::~JobConfig()
     
 void JobConfig::build()
 {
-    std::string path = "./data/";
-    path += "JobConfig.bytes";
+    //std::string path = "./data/";
+    //path += "JobConfig.bytes";
+    std::string path = "JobConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

@@ -32,8 +32,9 @@ GuildConfig::~GuildConfig()
     
 void GuildConfig::build()
 {
-    std::string path = "./data/";
-    path += "GuildConfig.bytes";
+    //std::string path = "./data/";
+    //path += "GuildConfig.bytes";
+    std::string path = "GuildConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

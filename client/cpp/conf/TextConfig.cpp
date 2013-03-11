@@ -32,8 +32,9 @@ TextConfig::~TextConfig()
     
 void TextConfig::build()
 {
-    std::string path = "./data/";
-    path += "TextConfig.bytes";
+    //std::string path = "./data/";
+    //path += "TextConfig.bytes";
+    std::string path = "TextConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

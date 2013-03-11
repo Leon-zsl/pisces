@@ -56,8 +56,9 @@ JewelConfig::~JewelConfig()
     
 void JewelConfig::build()
 {
-    std::string path = "./data/";
-    path += "JewelConfig.bytes";
+    //std::string path = "./data/";
+    //path += "JewelConfig.bytes";
+    std::string path = "JewelConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

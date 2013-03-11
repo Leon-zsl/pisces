@@ -40,8 +40,8 @@ def build():
     exhook = sys.excepthook
     sys.excepthook = except_handler._excepthook
     
-    build_conf_s()
-    #build_conf_c()
+    #build_conf_s()
+    build_conf_c()
     
     sys.excepthook = exhook
 

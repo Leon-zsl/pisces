@@ -94,8 +94,9 @@ SceneConfig::~SceneConfig()
     
 void SceneConfig::build()
 {
-    std::string path = "./data/";
-    path += "SceneConfig.bytes";
+    //std::string path = "./data/";
+    //path += "SceneConfig.bytes";
+    std::string path = "SceneConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

@@ -227,8 +227,9 @@ SkillConfig::~SkillConfig()
     
 void SkillConfig::build()
 {
-    std::string path = "./data/";
-    path += "SkillConfig.bytes";
+    //std::string path = "./data/";
+    //path += "SkillConfig.bytes";
+    std::string path = "SkillConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

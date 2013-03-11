@@ -111,8 +111,9 @@ CollectionConfig::~CollectionConfig()
     
 void CollectionConfig::build()
 {
-    std::string path = "./data/";
-    path += "CollectionConfig.bytes";
+    //std::string path = "./data/";
+    //path += "CollectionConfig.bytes";
+    std::string path = "CollectionConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

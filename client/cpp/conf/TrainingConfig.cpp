@@ -57,8 +57,9 @@ TrainingConfig::~TrainingConfig()
     
 void TrainingConfig::build()
 {
-    std::string path = "./data/";
-    path += "TrainingConfig.bytes";
+    //std::string path = "./data/";
+    //path += "TrainingConfig.bytes";
+    std::string path = "TrainingConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

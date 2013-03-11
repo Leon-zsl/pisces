@@ -60,8 +60,9 @@ CargoConfig::~CargoConfig()
     
 void CargoConfig::build()
 {
-    std::string path = "./data/";
-    path += "CargoConfig.bytes";
+    //std::string path = "./data/";
+    //path += "CargoConfig.bytes";
+    std::string path = "CargoConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

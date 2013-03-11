@@ -75,3 +75,43 @@ void ConfFact::build()
     BoxConfig::build();
     GuildConfig::build();
 }
+
+void ConfFact::destroy()
+{
+    FigureConfig::destroy();
+    GuildRankRightsConfig::destroy();
+    TrainingConfig::destroy();
+    EquipConfig::destroy();
+    DeputyConfig::destroy();
+    MinorMissionConfig::destroy();
+    CollectionConfig::destroy();
+    HairConfig::destroy();
+    SceneConfig::destroy();
+    JobConfig::destroy();
+    PropertyConfig::destroy();
+    EffectConfig::destroy();
+    SkillConfig::destroy();
+    TextConfig::destroy();
+    MonsterConfig::destroy();
+    TalentConfig::destroy();
+    SocialStatusConfig::destroy();
+    LevelConfig::destroy();
+    BuffConfig::destroy();
+    GuildRankConfig::destroy();
+    NpcConfig::destroy();
+    FactionConfig::destroy();
+    FaceConfig::destroy();
+    ItemConfig::destroy();
+    BagConfig::destroy();
+    DeputySkillConfig::destroy();
+    LandGroupConfig::destroy();
+    PropertyCoeConfig::destroy();
+    ChestConfig::destroy();
+    CargoConfig::destroy();
+    LandConfig::destroy();
+    JewelConfig::destroy();
+    AvatarConfig::destroy();
+    DisintegrateConfig::destroy();
+    BoxConfig::destroy();
+    GuildConfig::destroy();
+}

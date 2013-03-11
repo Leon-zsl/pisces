@@ -133,8 +133,9 @@ DeputySkillConfig::~DeputySkillConfig()
     
 void DeputySkillConfig::build()
 {
-    std::string path = "./data/";
-    path += "DeputySkillConfig.bytes";
+    //std::string path = "./data/";
+    //path += "DeputySkillConfig.bytes";
+    std::string path = "DeputySkillConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

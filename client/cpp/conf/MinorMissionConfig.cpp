@@ -131,8 +131,9 @@ MinorMissionConfig::~MinorMissionConfig()
     
 void MinorMissionConfig::build()
 {
-    std::string path = "./data/";
-    path += "MinorMissionConfig.bytes";
+    //std::string path = "./data/";
+    //path += "MinorMissionConfig.bytes";
+    std::string path = "MinorMissionConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

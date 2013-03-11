@@ -130,8 +130,9 @@ LevelConfig::~LevelConfig()
     
 void LevelConfig::build()
 {
-    std::string path = "./data/";
-    path += "LevelConfig.bytes";
+    //std::string path = "./data/";
+    //path += "LevelConfig.bytes";
+    std::string path = "LevelConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

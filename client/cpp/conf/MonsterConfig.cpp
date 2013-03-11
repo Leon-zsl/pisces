@@ -118,8 +118,9 @@ MonsterConfig::~MonsterConfig()
     
 void MonsterConfig::build()
 {
-    std::string path = "./data/";
-    path += "MonsterConfig.bytes";
+    //std::string path = "./data/";
+    //path += "MonsterConfig.bytes";
+    std::string path = "MonsterConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

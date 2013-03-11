@@ -42,8 +42,9 @@ GuildRankRightsConfig::~GuildRankRightsConfig()
     
 void GuildRankRightsConfig::build()
 {
-    std::string path = "./data/";
-    path += "GuildRankRightsConfig.bytes";
+    //std::string path = "./data/";
+    //path += "GuildRankRightsConfig.bytes";
+    std::string path = "GuildRankRightsConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

@@ -53,8 +53,9 @@ FactionConfig::~FactionConfig()
     
 void FactionConfig::build()
 {
-    std::string path = "./data/";
-    path += "FactionConfig.bytes";
+    //std::string path = "./data/";
+    //path += "FactionConfig.bytes";
+    std::string path = "FactionConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

@@ -74,8 +74,9 @@ ItemConfig::~ItemConfig()
     
 void ItemConfig::build()
 {
-    std::string path = "./data/";
-    path += "ItemConfig.bytes";
+    //std::string path = "./data/";
+    //path += "ItemConfig.bytes";
+    std::string path = "ItemConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

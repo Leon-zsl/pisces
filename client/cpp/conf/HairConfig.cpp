@@ -35,8 +35,9 @@ HairConfig::~HairConfig()
     
 void HairConfig::build()
 {
-    std::string path = "./data/";
-    path += "HairConfig.bytes";
+    //std::string path = "./data/";
+    //path += "HairConfig.bytes";
+    std::string path = "HairConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

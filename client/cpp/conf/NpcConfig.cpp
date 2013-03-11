@@ -93,8 +93,9 @@ NpcConfig::~NpcConfig()
     
 void NpcConfig::build()
 {
-    std::string path = "./data/";
-    path += "NpcConfig.bytes";
+    //std::string path = "./data/";
+    //path += "NpcConfig.bytes";
+    std::string path = "NpcConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

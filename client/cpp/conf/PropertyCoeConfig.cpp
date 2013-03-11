@@ -35,8 +35,9 @@ PropertyCoeConfig::~PropertyCoeConfig()
     
 void PropertyCoeConfig::build()
 {
-    std::string path = "./data/";
-    path += "PropertyCoeConfig.bytes";
+    //std::string path = "./data/";
+    //path += "PropertyCoeConfig.bytes";
+    std::string path = "PropertyCoeConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

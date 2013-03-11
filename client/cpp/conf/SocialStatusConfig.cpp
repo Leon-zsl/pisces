@@ -35,8 +35,9 @@ SocialStatusConfig::~SocialStatusConfig()
     
 void SocialStatusConfig::build()
 {
-    std::string path = "./data/";
-    path += "SocialStatusConfig.bytes";
+    //std::string path = "./data/";
+    //path += "SocialStatusConfig.bytes";
+    std::string path = "SocialStatusConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

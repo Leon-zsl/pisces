@@ -88,8 +88,9 @@ EquipConfig::~EquipConfig()
     
 void EquipConfig::build()
 {
-    std::string path = "./data/";
-    path += "EquipConfig.bytes";
+    //std::string path = "./data/";
+    //path += "EquipConfig.bytes";
+    std::string path = "EquipConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

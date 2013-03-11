@@ -79,8 +79,9 @@ TalentConfig::~TalentConfig()
     
 void TalentConfig::build()
 {
-    std::string path = "./data/";
-    path += "TalentConfig.bytes";
+    //std::string path = "./data/";
+    //path += "TalentConfig.bytes";
+    std::string path = "TalentConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

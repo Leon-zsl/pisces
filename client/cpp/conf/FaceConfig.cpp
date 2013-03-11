@@ -32,8 +32,9 @@ FaceConfig::~FaceConfig()
     
 void FaceConfig::build()
 {
-    std::string path = "./data/";
-    path += "FaceConfig.bytes";
+    //std::string path = "./data/";
+    //path += "FaceConfig.bytes";
+    std::string path = "FaceConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

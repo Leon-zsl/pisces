@@ -80,8 +80,9 @@ AvatarConfig::~AvatarConfig()
     
 void AvatarConfig::build()
 {
-    std::string path = "./data/";
-    path += "AvatarConfig.bytes";
+    //std::string path = "./data/";
+    //path += "AvatarConfig.bytes";
+    std::string path = "AvatarConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

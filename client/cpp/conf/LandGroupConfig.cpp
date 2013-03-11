@@ -93,8 +93,9 @@ LandGroupConfig::~LandGroupConfig()
     
 void LandGroupConfig::build()
 {
-    std::string path = "./data/";
-    path += "LandGroupConfig.bytes";
+    //std::string path = "./data/";
+    //path += "LandGroupConfig.bytes";
+    std::string path = "LandGroupConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

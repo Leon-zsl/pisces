@@ -63,8 +63,9 @@ BoxConfig::~BoxConfig()
     
 void BoxConfig::build()
 {
-    std::string path = "./data/";
-    path += "BoxConfig.bytes";
+    //std::string path = "./data/";
+    //path += "BoxConfig.bytes";
+    std::string path = "BoxConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

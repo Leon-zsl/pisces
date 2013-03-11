@@ -83,8 +83,9 @@ DeputyConfig::~DeputyConfig()
     
 void DeputyConfig::build()
 {
-    std::string path = "./data/";
-    path += "DeputyConfig.bytes";
+    //std::string path = "./data/";
+    //path += "DeputyConfig.bytes";
+    std::string path = "DeputyConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

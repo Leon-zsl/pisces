@@ -110,8 +110,9 @@ LandConfig::~LandConfig()
     
 void LandConfig::build()
 {
-    std::string path = "./data/";
-    path += "LandConfig.bytes";
+    //std::string path = "./data/";
+    //path += "LandConfig.bytes";
+    std::string path = "LandConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

@@ -35,8 +35,9 @@ BagConfig::~BagConfig()
     
 void BagConfig::build()
 {
-    std::string path = "./data/";
-    path += "BagConfig.bytes";
+    //std::string path = "./data/";
+    //path += "BagConfig.bytes";
+    std::string path = "BagConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

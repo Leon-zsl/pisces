@@ -46,8 +46,9 @@ DisintegrateConfig::~DisintegrateConfig()
     
 void DisintegrateConfig::build()
 {
-    std::string path = "./data/";
-    path += "DisintegrateConfig.bytes";
+    //std::string path = "./data/";
+    //path += "DisintegrateConfig.bytes";
+    std::string path = "DisintegrateConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

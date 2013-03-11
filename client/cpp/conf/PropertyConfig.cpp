@@ -104,8 +104,9 @@ PropertyConfig::~PropertyConfig()
     
 void PropertyConfig::build()
 {
-    std::string path = "./data/";
-    path += "PropertyConfig.bytes";
+    //std::string path = "./data/";
+    //path += "PropertyConfig.bytes";
+    std::string path = "PropertyConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

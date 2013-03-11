@@ -55,8 +55,9 @@ FigureConfig::~FigureConfig()
     
 void FigureConfig::build()
 {
-    std::string path = "./data/";
-    path += "FigureConfig.bytes";
+    //std::string path = "./data/";
+    //path += "FigureConfig.bytes";
+    std::string path = "FigureConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();

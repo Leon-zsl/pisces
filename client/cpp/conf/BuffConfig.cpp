@@ -161,8 +161,9 @@ BuffConfig::~BuffConfig()
     
 void BuffConfig::build()
 {
-    std::string path = "./data/";
-    path += "BuffConfig.bytes";
+    //std::string path = "./data/";
+    //path += "BuffConfig.bytes";
+    std::string path = "BuffConfig.bytes";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();
