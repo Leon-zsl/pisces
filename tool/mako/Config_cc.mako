@@ -114,8 +114,9 @@ ${class_name}::~${class_name}()
     
 void ${class_name}::build()
 {
-    std::string path = "./data/";
-    path += "${bin_file_name}";
+    //std::string path = "./data/";
+    //path += "${bin_file_name}";
+    std::string path = "${bin_file_name}";
     StreamReader* rs = new StreamReader(path);
     /*int filelen = */rs->read_int();
     string flag = rs->read_string();
