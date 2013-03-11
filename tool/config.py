@@ -18,3 +18,16 @@ CONF_CSV_PATH = os.path.join(ROOT_PATH, 'csv')
 CONF_FACT_PY = "ConfFact.py"
 CONF_MAKO_PY = "Config_py.mako"
 CONF_FACT_MAKO_PY = "ConfFact_py.mako"
+
+CLIENT_PATH = os.path.join(ROOT_PATH, 'client/cpp')
+CONF_CODE_PATH_C = os.path.join(CLIENT_PATH, 'conf')
+CONF_BIN_PATH_C = os.path.join(CLIENT_PATH, 'data')
+CONF_CSV_PATH_C = os.path.join(CLIENT_PATH, 'csv')
+CONF_FACT_C = "ConfFact.cpp"
+CONF_FACT_H = "ConfFact.h"
+CONF_MAKO_C = 'Config_cc.mako'
+CONF_MAKO_H = 'Config_h.mako'
+CONF_FACT_MAKO_C = 'ConfFact_cc.mako'
+CONF_FACT_MAKO_H = 'ConfFact_h.mako'
+
+

@@ -254,10 +254,9 @@ def exp_mgr_code_file(file_name, template, cls_name_list):
     file.flush()
     file.close()
 
-def pack_config_dir(src_dir, code_dir, bin_dir, csv_dir,
-                    fact_file, mako_dir, mako_conf, mako_fact):
+def pack_config_dir_py(src_dir, code_dir, bin_dir, csv_dir,
+                       fact_file, mako_dir, mako_conf, mako_fact):
     cls_name_list = []
-    print src_dir
     for file in os.listdir(src_dir):
         if os.path.isfile(os.path.join(src_dir, file)) \
                 and os.path.splitext(file)[1] == '.xls':
@@ -269,10 +268,12 @@ def pack_config_dir(src_dir, code_dir, bin_dir, csv_dir,
             csv_file = file_name + '.csv'
             cfg_data = parse_xls(os.path.join(src_dir, file))
 
-            exp_bin_file(os.path.join(bin_dir, bin_file), cfg_data, class_name)
+            exp_bin_file(os.path.join(bin_dir, bin_file), 
+                         cfg_data, 
+                         class_name)
             exp_code_file(os.path.join(code_dir, code_file),
-                        os.path.join(mako_dir, mako_conf), 
-                        cfg_data, class_name, bin_file)
+                          os.path.join(mako_dir, mako_conf), 
+                          cfg_data, class_name, bin_file)
             exp_csv_file(os.path.join(csv_dir, csv_file), cfg_data)
 
             cls_name_list.append(class_name)
@@ -280,3 +281,40 @@ def pack_config_dir(src_dir, code_dir, bin_dir, csv_dir,
     exp_mgr_code_file(os.path.join(code_dir, fact_file),
                     os.path.join(mako_dir, mako_fact), 
                     cls_name_list)
+
+def pack_config_dir_cc(src_dir, code_dir, bin_dir, csv_dir, mako_dir,
+                       fact_file_c, fact_file_h, 
+                       mako_conf_c, mako_conf_h,
+                       mako_fact_c, mako_fact_h):    
+    cls_name_list = []
+    for file in os.listdir(src_dir):
+        if os.path.isfile(os.path.join(src_dir, file)) \
+                and os.path.splitext(file)[1] == '.xls':
+            print "pack file: " + file
+            file_name = os.path.splitext(file)[0]
+            class_name = file_name
+            file_c = file_name + '.cpp'
+            file_h = file_name + '.h'
+            bin_file = file_name + '.bytes'
+            csv_file = file_name + '.csv'
+            cfg_data = parse_xls(os.path.join(src_dir, file))
+
+            exp_bin_file(os.path.join(bin_dir, bin_file), 
+                         cfg_data, 
+                         class_name)
+            exp_csv_file(os.path.join(csv_dir, csv_file), cfg_data)
+            exp_code_file(os.path.join(code_dir, file_c),
+                          os.path.join(mako_dir, mako_conf_c), 
+                          cfg_data, class_name, bin_file)
+            exp_code_file(os.path.join(code_dir, file_h),
+                          os.path.join(mako_dir, mako_conf_h), 
+                          cfg_data, class_name, bin_file)
+
+            cls_name_list.append(class_name)
+
+    exp_mgr_code_file(os.path.join(code_dir, fact_file_h),
+                      os.path.join(mako_dir, mako_fact_h), 
+                      cls_name_list)
+    exp_mgr_code_file(os.path.join(code_dir, fact_file_c),
+                      os.path.join(mako_dir, mako_fact_c), 
+                      cls_name_list)
