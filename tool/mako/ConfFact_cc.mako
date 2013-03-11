@@ -9,3 +9,10 @@ void ConfFact::build()
     ${cls}::build();
     % endfor
 }
+
+void ConfFact::destroy()
+{
+    % for cls in class_list:
+    ${cls}::destroy();
+    % endfor
+}
