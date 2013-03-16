@@ -39,7 +39,7 @@ def main():
             if not kv:
                 continue
             print kv[0], " : ", base64.decodestring(kv[1])
-            if int(kv[0]) == LOGINSUCCESS:
+            if int(kv[0]) == LOGINSUCC:
                 succ = LoginSuccess()
                 succ.ParseFromString(base64.decodestring(kv[1]))
                 print succ.userid

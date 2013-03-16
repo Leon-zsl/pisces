@@ -40,8 +40,8 @@ def login(op, msg):
         db().commit()
     
     ret = response_pb2.LoginSuccess()
-    ret.userid = account.userid
-    return opcode_response.LOGINSUCCESS, ret.SerializeToString()
+    ret.userid = account.uid
+    return opcode_response.LOGINSUCC, ret.SerializeToString()
 
 def logout(op, msg, usrid):
     pass

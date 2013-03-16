@@ -3,6 +3,3 @@
 
 LOGIN = 10
 LOGOUT = 11
-
-SETHP = 20
-SETMP = 21
