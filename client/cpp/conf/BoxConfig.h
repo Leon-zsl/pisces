@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,66 +22,99 @@ public:
 public:
     BoxConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- resUrl_, 
+
+ resUrl_,
+
     bool
- isInteractive_, 
+
+ isInteractive_,
+
     int
- refreshSecond_, 
+
+ refreshSecond_,
+
     int
- health_, 
+
+ health_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     float
- height_, 
+
+ height_,
+
     int
- damageSkillID_, 
+
+ damageSkillID_,
+
     std::string
 
 
 
-* dropObjectsData_);
+
+ * dropObjectsData_
+);
     ~BoxConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     resUrl;
+
+ resUrl;
     
     bool
-     isInteractive;
+
+ isInteractive;
     
     int
-     refreshSecond;
+
+ refreshSecond;
     
     int
-     health;
+
+ health;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     float
-     height;
+
+ height;
     
     int
-     damageSkillID;
+
+ damageSkillID;
     
     std::string
 
 
 
-*     dropObjectsData;
+
+ * dropObjectsData;
 };

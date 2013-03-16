@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,56 +22,83 @@ public:
 public:
     TrainingConfig(
     int
- id_, 
+
+ id_,
+
     int
- preID_, 
-    std::string
- bgResName_, 
-    float
- bgOffsetX_, 
-    float
- bgOffsetY_, 
+
+ preID_,
+
     std::string
 
+ bgResName_,
+
+    float
+
+ bgOffsetX_,
+
+    float
+
+ bgOffsetY_,
+
+    std::string
 
 
-* texResName_,
+
+
+ * texResName_,
+
     float
- texOffsetX_, 
+
+ texOffsetX_,
+
     float
- texOffsetY_, 
+
+ texOffsetY_,
+
     int
- exp_);
+
+ exp_
+);
     ~TrainingConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     preID;
-    
-    std::string
-     bgResName;
-    
-    float
-     bgOffsetX;
-    
-    float
-     bgOffsetY;
+
+ preID;
     
     std::string
 
-
-
-*     texResName;
+ bgResName;
     
     float
-     texOffsetX;
+
+ bgOffsetX;
     
     float
-     texOffsetY;
+
+ bgOffsetY;
+    
+    std::string
+
+
+
+
+ * texResName;
+    
+    float
+
+ texOffsetX;
+    
+    float
+
+ texOffsetY;
     
     int
-     exp;
+
+ exp;
 };

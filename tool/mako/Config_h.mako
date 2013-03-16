@@ -27,6 +27,10 @@ ${tp}
 %endif
 </%def>
 
+<%def name="proc(pre, type, med, name, post)">
+${pre}${type.strip()}${med}${name.strip()}${post}
+</%def>
+
 #include <map>
 #include <vector>
 #include <string>
@@ -47,20 +51,16 @@ public:
 % for i in range(len(client_list) - 1):
 % if client_list[i].count('c') or client_list[i].count('s'):
 % if arr_list[i]:
-${type_of_arr(std_type(type_list[i]))}* \
-${name_list[i]}_,\
+${proc('', type_of_arr(std_type(type_list[i]).strip()).strip(), ' * ', name_list[i], '_,') | trim}\
 % else:
-${std_type(type_list[i])} \
-${name_list[i]}_, \
+${proc('', std_type(type_list[i]).strip(), ' ', name_list[i], '_,').strip() | trim}\
 % endif
 % endif
 % endfor
 % if arr_list[len(client_list) - 1]:
-${type_of_arr(std_type(type_list[len(client_list) - 1]))}* \
-${name_list[len(client_list) - 1]}_\
+${proc('', type_of_arr(std_type(type_list[len(client_list) - 1]).strip()).strip(), ' * ', name_list[len(client_list) - 1], '_').strip() | trim}\
 % else:
-${std_type(type_list[len(client_list) - 1])} \
-${name_list[len(client_list) - 1]}_\
+${proc('', std_type(type_list[len(client_list) - 1]).strip(), ' ', name_list[len(client_list) - 1], '_').strip() | trim}\
 % endif
 );
     ~${class_name}();
@@ -68,11 +68,9 @@ ${name_list[len(client_list) - 1]}_\
 % for i in range(len(client_list)):
 % if client_list[i].count('c') or client_list[i].count('s'):
 % if arr_list[i]:
-    ${type_of_arr(std_type(type_list[i]))}* \
-    ${name_list[i]};
+    ${proc('', type_of_arr(std_type(type_list[i]).strip()).strip(), ' * ', name_list[i], ';').strip() | trim}\
 % else:
-    ${std_type(type_list[i])} \
-    ${name_list[i]};
+    ${proc('', std_type(type_list[i]).strip(), ' ', name_list[i], ';').strip() | trim}\
 % endif
 % endif
 % endfor

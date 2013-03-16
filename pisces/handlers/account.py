@@ -4,9 +4,7 @@
 import app
 import db
 import log
-import model
 
-from models.user import User
 from models.account import Account
 
 import protocol.error_code as error_code
@@ -18,6 +16,9 @@ import pb2.response_pb2 as response_pb2
 
 def db():
     return app.App.instance.db
+
+def register(op, msg):
+    pass
 
 def login(op, msg):
     login = request_pb2.Login()
@@ -34,7 +35,7 @@ def login(op, msg):
     account = query.get(login.name)
     if not account:
         userid = query.count() + 1
-        account = Account(login.name, login.pwd, userid)
+        account = Account(userid, login.name, login.pwd)
         db().add(account)
         db().commit()
     
@@ -42,5 +43,5 @@ def login(op, msg):
     ret.userid = account.userid
     return opcode_response.LOGINSUCCESS, ret.SerializeToString()
 
-def logout(op, msg, userid):
+def logout(op, msg, usrid):
     pass

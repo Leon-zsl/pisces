@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,96 +22,129 @@ public:
 public:
     DeputyConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- texUrl_, 
+
+ texUrl_,
+
     int
 
 
 
-* deputyPointsLimits_,
+
+ * deputyPointsLimits_,
+
     int
 
 
 
-* jobLevels_,
+
+ * jobLevels_,
+
     std::string
 
 
 
-* levelName_,
+
+ * levelName_,
+
     int
 
 
 
-* moneys_,
+
+ * moneys_,
+
     int
- subDeputyCount_, 
+
+ subDeputyCount_,
+
     std::string
 
 
 
-* subDeputyNames_,
+
+ * subDeputyNames_,
+
     int
 
 
 
-* initDeputySkillIDs_,
+
+ * initDeputySkillIDs_,
+
     std::string
- description_);
+
+ description_
+);
     ~DeputyConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     texUrl;
+
+ texUrl;
     
     int
 
 
 
-*     deputyPointsLimits;
+
+ * deputyPointsLimits;
     
     int
 
 
 
-*     jobLevels;
+
+ * jobLevels;
     
     std::string
 
 
 
-*     levelName;
+
+ * levelName;
     
     int
 
 
 
-*     moneys;
+
+ * moneys;
     
     int
-     subDeputyCount;
+
+ subDeputyCount;
     
     std::string
 
 
 
-*     subDeputyNames;
+
+ * subDeputyNames;
     
     int
 
 
 
-*     initDeputySkillIDs;
+
+ * initDeputySkillIDs;
     
     std::string
-     description;
+
+ description;
 };

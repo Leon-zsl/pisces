@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,37 +22,49 @@ public:
 public:
     DisintegrateConfig(
     int
- id_, 
+
+ id_,
+
     int
 
 
 
-* itemIDs_,
+
+ * itemIDs_,
+
     std::string
 
 
 
-* itemCounts_,
+
+ * itemCounts_,
+
     int
- addItemIDs_);
+
+ addItemIDs_
+);
     ~DisintegrateConfig();
 
     
     int
-     id;
+
+ id;
     
     int
 
 
 
-*     itemIDs;
+
+ * itemIDs;
     
     std::string
 
 
 
-*     itemCounts;
+
+ * itemCounts;
     
     int
-     addItemIDs;
+
+ addItemIDs;
 };

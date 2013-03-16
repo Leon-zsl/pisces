@@ -1,19 +1,17 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from sqlalchemy import Column, Integer, BigInteger, String, ForeignKey
-from model import Base
+import model
+from sqlalchemy import *
 
-from models.user import User
-
-class Account(Base):
+class Account(model.Base):
     __tablename__ = "account"
 
-    name = Column(String(64), primary_key = True)
-    pwd = Column(String(64))
-    userid = Column(BigInteger)
+    uid = Column(BigInteger, primary_key = True)
+    name = Column(String(64))
+    pwd = Column(String(16))
 
-    def __init__(self, name, pwd, userid):
+    def __init__(self, uid, name, pwd):
+        self.uid = uid
         self.name = name
         self.pwd = pwd
-        self.userid = userid

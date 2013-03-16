@@ -11,11 +11,10 @@ import os.path
 import time
 import google.protobuf as protobuf
 
-import model
 import app
 import log
-import handlers
-#from handlers import *
+
+from handlers import *
 import protocol.request_dic as request_dic
 
 def default_user_handler(userid, op, msg):

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,172 +22,229 @@ public:
 public:
     MinorMissionConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- missionName_, 
+
+ missionName_,
+
     int
 
 
 
-* prestigeRequired_,
+
+ * prestigeRequired_,
+
     int
 
 
 
-* nameText_,
+
+ * nameText_,
+
     int
 
 
 
-* missionIntroText_,
+
+ * missionIntroText_,
+
     int
 
 
 
-* missionWayText_,
+
+ * missionWayText_,
+
     int
 
 
 
-* missionCompleteText_,
-    int
- missionCompleteCondText_, 
-    int
 
+ * missionCompleteText_,
 
-
-* missionNPCText_,
     int
 
+ missionCompleteCondText_,
 
-
-* missionMonsterText_,
     int
 
 
 
-* vipParam_,
+
+ * missionNPCText_,
+
+    int
+
+
+
+
+ * missionMonsterText_,
+
+    int
+
+
+
+
+ * vipParam_,
+
     float
- expBonusCoe_, 
+
+ expBonusCoe_,
+
     float
- moneyBonus_, 
-    int
- prestigeBonus_, 
-    int
- timeLimit_, 
+
+ moneyBonus_,
+
     int
 
+ prestigeBonus_,
 
-
-* boxEx_,
     int
 
+ timeLimit_,
 
-
-* destroyBoxes_,
     int
 
 
 
-* mineID_,
+
+ * boxEx_,
+
     int
 
 
 
-* missionNPC_);
+
+ * destroyBoxes_,
+
+    int
+
+
+
+
+ * mineID_,
+
+    int
+
+
+
+
+ * missionNPC_
+);
     ~MinorMissionConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     missionName;
+
+ missionName;
     
     int
 
 
 
-*     prestigeRequired;
+
+ * prestigeRequired;
     
     int
 
 
 
-*     nameText;
+
+ * nameText;
     
     int
 
 
 
-*     missionIntroText;
+
+ * missionIntroText;
     
     int
 
 
 
-*     missionWayText;
+
+ * missionWayText;
     
     int
 
 
 
-*     missionCompleteText;
+
+ * missionCompleteText;
     
     int
-     missionCompleteCondText;
-    
-    int
 
-
-
-*     missionNPCText;
+ missionCompleteCondText;
     
     int
 
 
 
-*     missionMonsterText;
+
+ * missionNPCText;
     
     int
 
 
 
-*     vipParam;
+
+ * missionMonsterText;
+    
+    int
+
+
+
+
+ * vipParam;
     
     float
-     expBonusCoe;
+
+ expBonusCoe;
     
     float
-     moneyBonus;
-    
-    int
-     prestigeBonus;
-    
-    int
-     timeLimit;
+
+ moneyBonus;
     
     int
 
+ prestigeBonus;
+    
+    int
 
-
-*     boxEx;
+ timeLimit;
     
     int
 
 
 
-*     destroyBoxes;
+
+ * boxEx;
     
     int
 
 
 
-*     mineID;
+
+ * destroyBoxes;
     
     int
 
 
 
-*     missionNPC;
+
+ * mineID;
+    
+    int
+
+
+
+
+ * missionNPC;
 };

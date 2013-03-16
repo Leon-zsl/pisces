@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,114 +22,165 @@ public:
 public:
     NpcConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- modelUrl_, 
+
+ modelUrl_,
+
     std::string
- animIdle_, 
+
+ animIdle_,
+
     std::string
- animTalk_, 
+
+ animTalk_,
+
     std::string
- animEffect_, 
+
+ animEffect_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     float
- height_, 
+
+ height_,
+
     int
 
 
 
-* textIDArr_,
+
+ * textIDArr_,
+
     int
- factionID_, 
+
+ factionID_,
+
     int
- cargoID_, 
+
+ cargoID_,
+
     int
 
 
 
-* features_,
+
+ * features_,
+
     std::string
 
 
 
-* featureNames_,
+
+ * featureNames_,
+
     int
 
 
 
-* missionIDArr_,
+
+ * missionIDArr_,
+
     int
- transferJobID_, 
+
+ transferJobID_,
+
     int
- deputyID_);
+
+ deputyID_
+);
     ~NpcConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     modelUrl;
+
+ modelUrl;
     
     std::string
-     animIdle;
+
+ animIdle;
     
     std::string
-     animTalk;
+
+ animTalk;
     
     std::string
-     animEffect;
+
+ animEffect;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     float
-     height;
+
+ height;
     
     int
 
 
 
-*     textIDArr;
+
+ * textIDArr;
     
     int
-     factionID;
+
+ factionID;
     
     int
-     cargoID;
+
+ cargoID;
     
     int
 
 
 
-*     features;
+
+ * features;
     
     std::string
 
 
 
-*     featureNames;
+
+ * featureNames;
     
     int
 
 
 
-*     missionIDArr;
+
+ * missionIDArr;
     
     int
-     transferJobID;
+
+ transferJobID;
     
     int
-     deputyID;
+
+ deputyID;
 };

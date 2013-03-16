@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,114 +22,165 @@ public:
 public:
     LandGroupConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- landGroupName_, 
+
+ landGroupName_,
+
     std::string
- normalIcon_, 
+
+ normalIcon_,
+
     std::string
- hoverIcon_, 
+
+ hoverIcon_,
+
     std::string
- activeIcon_, 
+
+ activeIcon_,
+
     float
- posX_, 
+
+ posX_,
+
     float
- posY_, 
+
+ posY_,
+
     float
- ctrPosX_, 
+
+ ctrPosX_,
+
     float
- ctrPosY_, 
+
+ ctrPosY_,
+
     float
- ctrWidth_, 
+
+ ctrWidth_,
+
     float
- ctrHeight_, 
+
+ ctrHeight_,
+
     int
- landType_, 
+
+ landType_,
+
     bool
- landPluFlag_, 
+
+ landPluFlag_,
+
     int
 
 
 
-* landIDArr_,
+
+ * landIDArr_,
+
     int
 
 
 
-* landPortalArr_,
+
+ * landPortalArr_,
+
     std::string
 
 
 
-* iconArr_,
+
+ * iconArr_,
+
     std::string
 
 
 
-* infoIconArr_);
+
+ * infoIconArr_
+);
     ~LandGroupConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     landGroupName;
+
+ landGroupName;
     
     std::string
-     normalIcon;
+
+ normalIcon;
     
     std::string
-     hoverIcon;
+
+ hoverIcon;
     
     std::string
-     activeIcon;
+
+ activeIcon;
     
     float
-     posX;
+
+ posX;
     
     float
-     posY;
+
+ posY;
     
     float
-     ctrPosX;
+
+ ctrPosX;
     
     float
-     ctrPosY;
+
+ ctrPosY;
     
     float
-     ctrWidth;
+
+ ctrWidth;
     
     float
-     ctrHeight;
+
+ ctrHeight;
     
     int
-     landType;
+
+ landType;
     
     bool
-     landPluFlag;
+
+ landPluFlag;
     
     int
 
 
 
-*     landIDArr;
+
+ * landIDArr;
     
     int
 
 
 
-*     landPortalArr;
+
+ * landPortalArr;
     
     std::string
 
 
 
-*     iconArr;
+
+ * iconArr;
     
     std::string
 
 
 
-*     infoIconArr;
+
+ * infoIconArr;
 };

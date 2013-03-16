@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,20 +22,29 @@ public:
 public:
     SocialStatusConfig(
     int
- id_, 
+
+ id_,
+
     int
- statusId_, 
+
+ statusId_,
+
     std::string
- desc_);
+
+ desc_
+);
     ~SocialStatusConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     statusId;
+
+ statusId;
     
     std::string
-     desc;
+
+ desc;
 };

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,135 +22,213 @@ public:
 public:
     PropertyConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- desc_, 
+
+ desc_,
+
     int
- baseHP_, 
+
+ baseHP_,
+
     int
- baseMP_, 
+
+ baseMP_,
+
     int
- baseEP_, 
+
+ baseEP_,
+
     int
- baseAP_, 
+
+ baseAP_,
+
     float
- aReMP_, 
+
+ aReMP_,
+
     float
- bReMP_, 
+
+ bReMP_,
+
     float
- aSTR_, 
+
+ aSTR_,
+
     float
- bSTR_, 
+
+ bSTR_,
+
     float
- cSTR_, 
+
+ cSTR_,
+
     float
- aAGI_, 
+
+ aAGI_,
+
     float
- bAGI_, 
+
+ bAGI_,
+
     float
- cAGI_, 
+
+ cAGI_,
+
     float
- aINT_, 
+
+ aINT_,
+
     float
- bINT_, 
+
+ bINT_,
+
     float
- cINT_, 
+
+ cINT_,
+
     float
- aCON_, 
+
+ aCON_,
+
     float
- bCON_, 
+
+ bCON_,
+
     float
- cCON_, 
+
+ cCON_,
+
     float
- aMND_, 
+
+ aMND_,
+
     float
- bMND_, 
+
+ bMND_,
+
     float
- cMND_, 
+
+ cMND_,
+
     float
- aCRE_, 
+
+ aCRE_,
+
     float
- bCRE_, 
+
+ bCRE_,
+
     float
- cCRE_);
+
+ cCRE_
+);
     ~PropertyConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     desc;
+
+ desc;
     
     int
-     baseHP;
+
+ baseHP;
     
     int
-     baseMP;
+
+ baseMP;
     
     int
-     baseEP;
+
+ baseEP;
     
     int
-     baseAP;
+
+ baseAP;
     
     float
-     aReMP;
+
+ aReMP;
     
     float
-     bReMP;
+
+ bReMP;
     
     float
-     aSTR;
+
+ aSTR;
     
     float
-     bSTR;
+
+ bSTR;
     
     float
-     cSTR;
+
+ cSTR;
     
     float
-     aAGI;
+
+ aAGI;
     
     float
-     bAGI;
+
+ bAGI;
     
     float
-     cAGI;
+
+ cAGI;
     
     float
-     aINT;
+
+ aINT;
     
     float
-     bINT;
+
+ bINT;
     
     float
-     cINT;
+
+ cINT;
     
     float
-     aCON;
+
+ aCON;
     
     float
-     bCON;
+
+ bCON;
     
     float
-     cCON;
+
+ cCON;
     
     float
-     aMND;
+
+ aMND;
     
     float
-     bMND;
+
+ bMND;
     
     float
-     cMND;
+
+ cMND;
     
     float
-     aCRE;
+
+ aCRE;
     
     float
-     bCRE;
+
+ bCRE;
     
     float
-     cCRE;
+
+ cCRE;
 };

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,105 +22,147 @@ public:
 public:
     EquipConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
-    int
- part_, 
-    int
- weaponProp_, 
-    int
- weaponType_, 
-    int
- clothType_, 
+
+ name_,
+
     int
 
+ part_,
 
-
-* jobLimit_,
-    int
- maxEndure_, 
     int
 
+ weaponProp_,
 
+    int
 
-* propIDArr_,
+ weaponType_,
+
+    int
+
+ clothType_,
+
     int
 
 
 
-* propValueArr_,
+
+ * jobLimit_,
+
+    int
+
+ maxEndure_,
+
+    int
+
+
+
+
+ * propIDArr_,
+
+    int
+
+
+
+
+ * propValueArr_,
+
     float
- fixParam_, 
+
+ fixParam_,
+
     int
 
 
 
-* avatarIDArr_,
+
+ * avatarIDArr_,
+
     std::string
 
 
 
-* avatarNameArr_,
+
+ * avatarNameArr_,
+
     int
- holeCount_);
+
+ holeCount_
+);
     ~EquipConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
-    
-    int
-     part;
-    
-    int
-     weaponProp;
-    
-    int
-     weaponType;
-    
-    int
-     clothType;
+
+ name;
     
     int
 
-
-
-*     jobLimit;
+ part;
     
     int
-     maxEndure;
+
+ weaponProp;
+    
+    int
+
+ weaponType;
+    
+    int
+
+ clothType;
     
     int
 
 
 
-*     propIDArr;
+
+ * jobLimit;
+    
+    int
+
+ maxEndure;
     
     int
 
 
 
-*     propValueArr;
+
+ * propIDArr;
+    
+    int
+
+
+
+
+ * propValueArr;
     
     float
-     fixParam;
+
+ fixParam;
     
     int
 
 
 
-*     avatarIDArr;
+
+ * avatarIDArr;
     
     std::string
 
 
 
-*     avatarNameArr;
+
+ * avatarNameArr;
     
     int
-     holeCount;
+
+ holeCount;
 };

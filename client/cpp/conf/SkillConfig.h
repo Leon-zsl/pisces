@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,334 +22,499 @@ public:
 public:
     SkillConfig(
     int
- id_, 
+
+ id_,
+
     int
- exSkillID_, 
+
+ exSkillID_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- iconUrl_, 
+
+ iconUrl_,
+
     std::string
- animUrl_, 
+
+ animUrl_,
+
     std::string
- preAnimUrl_, 
+
+ preAnimUrl_,
+
     std::string
- preAnimEffectUrl_, 
+
+ preAnimEffectUrl_,
+
     std::string
- bulletEffect_, 
+
+ bulletEffect_,
+
     std::string
- trapTriggerEffect_, 
+
+ trapTriggerEffect_,
+
     std::string
- behitEffect_, 
+
+ behitEffect_,
+
     std::string
- description_, 
+
+ description_,
+
     int
- propType_, 
+
+ propType_,
+
     int
- skillFlag_, 
+
+ skillFlag_,
+
     int
- effectType_, 
+
+ effectType_,
+
     bool
- useGlobalCD_, 
-    int
- targetFlag_, 
-    int
- consumeType_, 
-    float
- consumeA_, 
-    float
- consumeB_, 
-    float
- consumeC_, 
-    float
- consumeD_, 
-    int
- coolDown_, 
-    int
- castType_, 
-    long long
- singDuration_, 
-    long long
- duration_, 
-    int
- effectCount_, 
-    float
- rangeMin_, 
-    float
- rangeMax_, 
-    float
- effectWidth_, 
-    int
- buffRequireID_, 
-    int
- buffCost_, 
+
+ useGlobalCD_,
+
     int
 
+ targetFlag_,
 
+    int
 
-* buffSelfID_,
+ consumeType_,
+
     float
 
+ consumeA_,
 
+    float
 
-* buffSelfRate_,
+ consumeB_,
+
+    float
+
+ consumeC_,
+
+    float
+
+ consumeD_,
+
     int
 
+ coolDown_,
 
+    int
 
-* buffSelfCount_,
+ castType_,
+
     long long
 
+ singDuration_,
 
+    long long
 
-* buffSelfIntervel_,
+ duration_,
+
+    int
+
+ effectCount_,
+
+    float
+
+ rangeMin_,
+
+    float
+
+ rangeMax_,
+
+    float
+
+ effectWidth_,
+
+    int
+
+ buffRequireID_,
+
+    int
+
+ buffCost_,
+
     int
 
 
 
-* buffTargetID_,
+
+ * buffSelfID_,
+
     float
 
 
 
-* buffTargetRate_,
+
+ * buffSelfRate_,
+
     int
 
 
 
-* buffTargetCount_,
+
+ * buffSelfCount_,
+
     long long
 
 
 
-* buffTargetInterval_,
+
+ * buffSelfIntervel_,
+
     int
 
 
 
-* buffRemoveTypeArr_,
+
+ * buffTargetID_,
+
     float
- chargeSpeed_, 
-    float
- chargeOffset_, 
+
+
+
+
+ * buffTargetRate_,
+
     int
- damageType_, 
-    float
- damageA_, 
-    float
- damageB_, 
-    float
- damageC_, 
-    float
- damageD_, 
-    float
- damageE_, 
-    float
- damageF_, 
-    float
- vampireRate_, 
+
+
+
+
+ * buffTargetCount_,
+
+    long long
+
+
+
+
+ * buffTargetInterval_,
+
     int
- upgradeType_, 
+
+
+
+
+ * buffRemoveTypeArr_,
+
+    float
+
+ chargeSpeed_,
+
+    float
+
+ chargeOffset_,
+
     int
- upgradeCost_, 
+
+ damageType_,
+
+    float
+
+ damageA_,
+
+    float
+
+ damageB_,
+
+    float
+
+ damageC_,
+
+    float
+
+ damageD_,
+
+    float
+
+ damageE_,
+
+    float
+
+ damageF_,
+
+    float
+
+ vampireRate_,
+
     int
- requireLevel_, 
+
+ upgradeType_,
+
     int
- requireSkillID_, 
+
+ upgradeCost_,
+
     int
- talentID_);
+
+ requireLevel_,
+
+    int
+
+ requireSkillID_,
+
+    int
+
+ talentID_
+);
     ~SkillConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     exSkillID;
+
+ exSkillID;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     iconUrl;
+
+ iconUrl;
     
     std::string
-     animUrl;
+
+ animUrl;
     
     std::string
-     preAnimUrl;
+
+ preAnimUrl;
     
     std::string
-     preAnimEffectUrl;
+
+ preAnimEffectUrl;
     
     std::string
-     bulletEffect;
+
+ bulletEffect;
     
     std::string
-     trapTriggerEffect;
+
+ trapTriggerEffect;
     
     std::string
-     behitEffect;
+
+ behitEffect;
     
     std::string
-     description;
+
+ description;
     
     int
-     propType;
+
+ propType;
     
     int
-     skillFlag;
+
+ skillFlag;
     
     int
-     effectType;
+
+ effectType;
     
     bool
-     useGlobalCD;
-    
-    int
-     targetFlag;
-    
-    int
-     consumeType;
-    
-    float
-     consumeA;
-    
-    float
-     consumeB;
-    
-    float
-     consumeC;
-    
-    float
-     consumeD;
-    
-    int
-     coolDown;
-    
-    int
-     castType;
-    
-    long long
-     singDuration;
-    
-    long long
-     duration;
-    
-    int
-     effectCount;
-    
-    float
-     rangeMin;
-    
-    float
-     rangeMax;
-    
-    float
-     effectWidth;
-    
-    int
-     buffRequireID;
-    
-    int
-     buffCost;
+
+ useGlobalCD;
     
     int
 
+ targetFlag;
+    
+    int
 
-
-*     buffSelfID;
+ consumeType;
     
     float
 
+ consumeA;
+    
+    float
 
+ consumeB;
+    
+    float
 
-*     buffSelfRate;
+ consumeC;
+    
+    float
+
+ consumeD;
     
     int
 
+ coolDown;
+    
+    int
 
-
-*     buffSelfCount;
+ castType;
     
     long long
 
+ singDuration;
+    
+    long long
 
+ duration;
+    
+    int
 
-*     buffSelfIntervel;
+ effectCount;
+    
+    float
+
+ rangeMin;
+    
+    float
+
+ rangeMax;
+    
+    float
+
+ effectWidth;
+    
+    int
+
+ buffRequireID;
+    
+    int
+
+ buffCost;
     
     int
 
 
 
-*     buffTargetID;
+
+ * buffSelfID;
     
     float
 
 
 
-*     buffTargetRate;
+
+ * buffSelfRate;
     
     int
 
 
 
-*     buffTargetCount;
+
+ * buffSelfCount;
     
     long long
 
 
 
-*     buffTargetInterval;
+
+ * buffSelfIntervel;
     
     int
 
 
 
-*     buffRemoveTypeArr;
+
+ * buffTargetID;
     
     float
-     chargeSpeed;
-    
-    float
-     chargeOffset;
+
+
+
+
+ * buffTargetRate;
     
     int
-     damageType;
+
+
+
+
+ * buffTargetCount;
     
-    float
-     damageA;
-    
-    float
-     damageB;
-    
-    float
-     damageC;
-    
-    float
-     damageD;
-    
-    float
-     damageE;
-    
-    float
-     damageF;
-    
-    float
-     vampireRate;
+    long long
+
+
+
+
+ * buffTargetInterval;
     
     int
-     upgradeType;
+
+
+
+
+ * buffRemoveTypeArr;
+    
+    float
+
+ chargeSpeed;
+    
+    float
+
+ chargeOffset;
     
     int
-     upgradeCost;
+
+ damageType;
+    
+    float
+
+ damageA;
+    
+    float
+
+ damageB;
+    
+    float
+
+ damageC;
+    
+    float
+
+ damageD;
+    
+    float
+
+ damageE;
+    
+    float
+
+ damageF;
+    
+    float
+
+ vampireRate;
     
     int
-     requireLevel;
+
+ upgradeType;
     
     int
-     requireSkillID;
+
+ upgradeCost;
     
     int
-     talentID;
+
+ requireLevel;
+    
+    int
+
+ requireSkillID;
+    
+    int
+
+ talentID;
 };

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,224 +22,323 @@ public:
 public:
     BuffConfig(
     int
- id_, 
-    std::string
- name_, 
-    std::string
- iconUrl_, 
+
+ id_,
+
     std::string
 
+ name_,
 
+    std::string
 
-* replacedAnimUrl_,
+ iconUrl_,
+
     std::string
 
 
 
-* animationUrl_,
+
+ * replacedAnimUrl_,
+
     std::string
- headEffectUrl_, 
+
+
+
+
+ * animationUrl_,
+
     std::string
- effectUrl_, 
+
+ headEffectUrl_,
+
     std::string
- description_, 
+
+ effectUrl_,
+
+    std::string
+
+ description_,
+
     int
- buffType_, 
+
+ buffType_,
+
     int
- stackLimit_, 
-    int
 
+ stackLimit_,
 
-
-* buffPropType_,
-    float
-
-
-
-* buffPropValueA_,
-    float
-
-
-
-* buffPropValueB_,
-    float
-
-
-
-* buffPropValueC_,
-    int
- dotPropType_, 
-    int
- dotType_, 
-    float
- dotDamageA_, 
-    float
- dotDamageB_, 
-    float
- dotDamageC_, 
-    float
- dotDamageD_, 
-    float
- dotDamageE_, 
-    float
- dotDamageF_, 
-    int
- dotDuration_, 
     int
 
 
 
-* immuneBuffTypeArr_,
-    int
 
+ * buffPropType_,
 
-
-* immuneSkillTypeArr_,
     float
- damageReduceMaxA_, 
+
+
+
+
+ * buffPropValueA_,
+
     float
- damageReduceMaxB_, 
+
+
+
+
+ * buffPropValueB_,
+
     float
- damageReduceMaxC_, 
+
+
+
+
+ * buffPropValueC_,
+
+    int
+
+ dotPropType_,
+
+    int
+
+ dotType_,
+
     float
- damageReduceMaxD_, 
+
+ dotDamageA_,
+
+    float
+
+ dotDamageB_,
+
+    float
+
+ dotDamageC_,
+
+    float
+
+ dotDamageD_,
+
+    float
+
+ dotDamageE_,
+
+    float
+
+ dotDamageF_,
+
     int
- buffReturn_, 
-    int
- buffEx_, 
-    int
- actorState_, 
+
+ dotDuration_,
+
     int
 
 
 
-* destoryCondition_);
+
+ * immuneBuffTypeArr_,
+
+    int
+
+
+
+
+ * immuneSkillTypeArr_,
+
+    float
+
+ damageReduceMaxA_,
+
+    float
+
+ damageReduceMaxB_,
+
+    float
+
+ damageReduceMaxC_,
+
+    float
+
+ damageReduceMaxD_,
+
+    int
+
+ buffReturn_,
+
+    int
+
+ buffEx_,
+
+    int
+
+ actorState_,
+
+    int
+
+
+
+
+ * destoryCondition_
+);
     ~BuffConfig();
 
     
     int
-     id;
-    
-    std::string
-     name;
-    
-    std::string
-     iconUrl;
+
+ id;
     
     std::string
 
+ name;
+    
+    std::string
 
-
-*     replacedAnimUrl;
+ iconUrl;
     
     std::string
 
 
 
-*     animationUrl;
+
+ * replacedAnimUrl;
     
     std::string
-     headEffectUrl;
+
+
+
+
+ * animationUrl;
     
     std::string
-     effectUrl;
+
+ headEffectUrl;
     
     std::string
-     description;
+
+ effectUrl;
+    
+    std::string
+
+ description;
     
     int
-     buffType;
-    
-    int
-     stackLimit;
+
+ buffType;
     
     int
 
-
-
-*     buffPropType;
-    
-    float
-
-
-
-*     buffPropValueA;
-    
-    float
-
-
-
-*     buffPropValueB;
-    
-    float
-
-
-
-*     buffPropValueC;
-    
-    int
-     dotPropType;
-    
-    int
-     dotType;
-    
-    float
-     dotDamageA;
-    
-    float
-     dotDamageB;
-    
-    float
-     dotDamageC;
-    
-    float
-     dotDamageD;
-    
-    float
-     dotDamageE;
-    
-    float
-     dotDamageF;
-    
-    int
-     dotDuration;
+ stackLimit;
     
     int
 
 
 
-*     immuneBuffTypeArr;
-    
-    int
 
-
-
-*     immuneSkillTypeArr;
+ * buffPropType;
     
     float
-     damageReduceMaxA;
+
+
+
+
+ * buffPropValueA;
     
     float
-     damageReduceMaxB;
+
+
+
+
+ * buffPropValueB;
     
     float
-     damageReduceMaxC;
+
+
+
+
+ * buffPropValueC;
+    
+    int
+
+ dotPropType;
+    
+    int
+
+ dotType;
     
     float
-     damageReduceMaxD;
+
+ dotDamageA;
+    
+    float
+
+ dotDamageB;
+    
+    float
+
+ dotDamageC;
+    
+    float
+
+ dotDamageD;
+    
+    float
+
+ dotDamageE;
+    
+    float
+
+ dotDamageF;
     
     int
-     buffReturn;
-    
-    int
-     buffEx;
-    
-    int
-     actorState;
+
+ dotDuration;
     
     int
 
 
 
-*     destoryCondition;
+
+ * immuneBuffTypeArr;
+    
+    int
+
+
+
+
+ * immuneSkillTypeArr;
+    
+    float
+
+ damageReduceMaxA;
+    
+    float
+
+ damageReduceMaxB;
+    
+    float
+
+ damageReduceMaxC;
+    
+    float
+
+ damageReduceMaxD;
+    
+    int
+
+ buffReturn;
+    
+    int
+
+ buffEx;
+    
+    int
+
+ actorState;
+    
+    int
+
+
+
+
+ * destoryCondition;
 };

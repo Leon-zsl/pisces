@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,20 +22,29 @@ public:
 public:
     HairConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- hairMaleURL_, 
+
+ hairMaleURL_,
+
     std::string
- hairFemaleURL_);
+
+ hairFemaleURL_
+);
     ~HairConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     hairMaleURL;
+
+ hairMaleURL;
     
     std::string
-     hairFemaleURL;
+
+ hairFemaleURL;
 };

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,139 +22,187 @@ public:
 public:
     LandConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- landName_, 
+
+ landName_,
+
     int
- landType_, 
+
+ landType_,
+
     int
- playerLimit_, 
+
+ playerLimit_,
+
     int
 
 
 
-* sceneIDArr_,
+
+ * sceneIDArr_,
+
     std::string
- landNameRes_, 
+
+ landNameRes_,
+
     int
 
 
 
-* monsterIDArr_,
+
+ * monsterIDArr_,
+
     int
 
 
 
-* bossIDArr_,
+
+ * bossIDArr_,
+
     int
 
 
 
-* mineIDArr_,
+
+ * mineIDArr_,
+
     int
 
 
 
-* mineRateArr_,
-    int
- mineCount_, 
+
+ * mineRateArr_,
+
     int
 
+ mineCount_,
 
-
-* boxIDArr_,
-    int
- boxCount_, 
     int
 
 
 
-* mapIDArr_,
+
+ * boxIDArr_,
+
+    int
+
+ boxCount_,
+
     int
 
 
 
-* connLandIDArr_,
+
+ * mapIDArr_,
+
     int
 
 
 
-* connLandTimeArr_);
+
+ * connLandIDArr_,
+
+    int
+
+
+
+
+ * connLandTimeArr_
+);
     ~LandConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     landName;
+
+ landName;
     
     int
-     landType;
+
+ landType;
     
     int
-     playerLimit;
+
+ playerLimit;
     
     int
 
 
 
-*     sceneIDArr;
+
+ * sceneIDArr;
     
     std::string
-     landNameRes;
+
+ landNameRes;
     
     int
 
 
 
-*     monsterIDArr;
+
+ * monsterIDArr;
     
     int
 
 
 
-*     bossIDArr;
+
+ * bossIDArr;
     
     int
 
 
 
-*     mineIDArr;
+
+ * mineIDArr;
     
     int
 
 
 
-*     mineRateArr;
-    
-    int
-     mineCount;
+
+ * mineRateArr;
     
     int
 
-
-
-*     boxIDArr;
-    
-    int
-     boxCount;
+ mineCount;
     
     int
 
 
 
-*     mapIDArr;
+
+ * boxIDArr;
+    
+    int
+
+ boxCount;
     
     int
 
 
 
-*     connLandIDArr;
+
+ * mapIDArr;
     
     int
 
 
 
-*     connLandTimeArr;
+
+ * connLandIDArr;
+    
+    int
+
+
+
+
+ * connLandTimeArr;
 };

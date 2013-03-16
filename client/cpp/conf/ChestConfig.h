@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,47 +22,65 @@ public:
 public:
     ChestConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     bool
- isFixedBonus_, 
+
+ isFixedBonus_,
+
     int
 
 
 
-* itemIDArr_,
+
+ * itemIDArr_,
+
     int
 
 
 
-* itemRateArr_,
+
+ * itemRateArr_,
+
     int
- keyItemID_);
+
+ keyItemID_
+);
     ~ChestConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     bool
-     isFixedBonus;
+
+ isFixedBonus;
     
     int
 
 
 
-*     itemIDArr;
+
+ * itemIDArr;
     
     int
 
 
 
-*     itemRateArr;
+
+ * itemRateArr;
     
     int
-     keyItemID;
+
+ keyItemID;
 };

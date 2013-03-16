@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,142 +22,199 @@ public:
 public:
     CollectionConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     int
- type_, 
+
+ type_,
+
     std::string
- description_, 
-    std::string
 
+ description_,
 
-
-* resUrl_,
-    int
- refreshSecond_, 
-    int
-
-
-
-* prodItemIDs_,
-    int
-
-
-
-* rdItemIDs_,
     std::string
 
 
 
-* rdItemCounts_,
+
+ * resUrl_,
+
+    int
+
+ refreshSecond_,
+
     int
 
 
 
-* prodItemCountLimit_,
-    int
- requiredSkillID_, 
-    int
- skillLevel_, 
-    int
- costItemID_, 
-    int
- costItemCount_, 
+
+ * prodItemIDs_,
+
     int
 
 
 
-* periods_,
+
+ * rdItemIDs_,
+
     std::string
 
 
 
-* products_,
+
+ * rdItemCounts_,
+
     int
- text_);
+
+
+
+
+ * prodItemCountLimit_,
+
+    int
+
+ requiredSkillID_,
+
+    int
+
+ skillLevel_,
+
+    int
+
+ costItemID_,
+
+    int
+
+ costItemCount_,
+
+    int
+
+
+
+
+ * periods_,
+
+    std::string
+
+
+
+
+ * products_,
+
+    int
+
+ text_
+);
     ~CollectionConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     int
-     type;
+
+ type;
     
     std::string
-     description;
-    
-    std::string
 
-
-
-*     resUrl;
-    
-    int
-     refreshSecond;
-    
-    int
-
-
-
-*     prodItemIDs;
-    
-    int
-
-
-
-*     rdItemIDs;
+ description;
     
     std::string
 
 
 
-*     rdItemCounts;
+
+ * resUrl;
+    
+    int
+
+ refreshSecond;
     
     int
 
 
 
-*     prodItemCountLimit;
-    
-    int
-     requiredSkillID;
-    
-    int
-     skillLevel;
-    
-    int
-     costItemID;
-    
-    int
-     costItemCount;
+
+ * prodItemIDs;
     
     int
 
 
 
-*     periods;
+
+ * rdItemIDs;
     
     std::string
 
 
 
-*     products;
+
+ * rdItemCounts;
     
     int
-     text;
+
+
+
+
+ * prodItemCountLimit;
+    
+    int
+
+ requiredSkillID;
+    
+    int
+
+ skillLevel;
+    
+    int
+
+ costItemID;
+    
+    int
+
+ costItemCount;
+    
+    int
+
+
+
+
+ * periods;
+    
+    std::string
+
+
+
+
+ * products;
+    
+    int
+
+ text;
 };

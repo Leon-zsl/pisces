@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,20 +22,29 @@ public:
 public:
     PropertyCoeConfig(
     int
- id_, 
+
+ id_,
+
     float
- value_, 
+
+ value_,
+
     std::string
- desc_);
+
+ desc_
+);
     ~PropertyCoeConfig();
 
     
     int
-     id;
+
+ id;
     
     float
-     value;
+
+ value;
     
     std::string
-     desc;
+
+ desc;
 };

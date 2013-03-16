@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,15 +22,21 @@ public:
 public:
     FaceConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- faceURL_);
+
+ faceURL_
+);
     ~FaceConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     faceURL;
+
+ faceURL;
 };

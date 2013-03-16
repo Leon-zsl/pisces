@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,90 +22,123 @@ public:
 public:
     TalentConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
-    int
- attPropType_, 
-    int
- jobID_, 
-    int
- consumeType_, 
-    int
- attackSkillID_, 
+
+ name_,
+
     int
 
+ attPropType_,
 
-
-* initSkillIDArr_,
     int
 
+ jobID_,
 
-
-* skillIDArr_,
     int
 
+ consumeType_,
 
+    int
 
-* weaponType1Arr_,
+ attackSkillID_,
+
     int
 
 
 
-* weaponType2Arr_,
+
+ * initSkillIDArr_,
+
     int
 
 
 
-* weaponType3Arr_);
+
+ * skillIDArr_,
+
+    int
+
+
+
+
+ * weaponType1Arr_,
+
+    int
+
+
+
+
+ * weaponType2Arr_,
+
+    int
+
+
+
+
+ * weaponType3Arr_
+);
     ~TalentConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
-    
-    int
-     attPropType;
-    
-    int
-     jobID;
-    
-    int
-     consumeType;
-    
-    int
-     attackSkillID;
+
+ name;
     
     int
 
-
-
-*     initSkillIDArr;
+ attPropType;
     
     int
 
+ jobID;
+    
+    int
 
+ consumeType;
+    
+    int
 
-*     skillIDArr;
+ attackSkillID;
     
     int
 
 
 
-*     weaponType1Arr;
+
+ * initSkillIDArr;
     
     int
 
 
 
-*     weaponType2Arr;
+
+ * skillIDArr;
     
     int
 
 
 
-*     weaponType3Arr;
+
+ * weaponType1Arr;
+    
+    int
+
+
+
+
+ * weaponType2Arr;
+    
+    int
+
+
+
+
+ * weaponType3Arr;
 };

@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 import model
+from models import *
 
 class DBMgr(object):
     def __init__(self):
@@ -21,7 +22,7 @@ class DBMgr(object):
 
         self.engine = create_engine(url, echo = True)
         self.session_cls = sessionmaker(bind = self.engine)
-        model.build_tables(self.engine)
+        self.build_tables(self.engine)
     
     def __del__(self):
         self.close()
@@ -53,3 +54,7 @@ class DBMgr(object):
 
     def rollback(self):
         self.session.rollback()
+
+    def build_tables(self, engine):
+        model.Base.metadata.create_all(engine)
+

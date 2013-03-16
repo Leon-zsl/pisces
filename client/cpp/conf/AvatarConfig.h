@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,95 +22,149 @@ public:
 public:
     AvatarConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- hair_, 
+
+ hair_,
+
     std::string
- face_, 
+
+ face_,
+
     std::string
- trunk_, 
+
+ trunk_,
+
     std::string
- waist_, 
+
+ waist_,
+
     std::string
- l_arm_, 
+
+ l_arm_,
+
     std::string
- r_arm_, 
+
+ r_arm_,
+
     std::string
- l_palm_, 
+
+ l_palm_,
+
     std::string
- r_palm_, 
+
+ r_palm_,
+
     std::string
- l_leg_, 
+
+ l_leg_,
+
     std::string
- r_leg_, 
+
+ r_leg_,
+
     std::string
- l_feed_, 
+
+ l_feed_,
+
     std::string
- r_feed_, 
+
+ r_feed_,
+
     std::string
- l_shoes_, 
+
+ l_shoes_,
+
     std::string
- r_shoes_, 
+
+ r_shoes_,
+
     std::string
- effect_, 
+
+ effect_,
+
     std::string
- other1_, 
+
+ other1_,
+
     std::string
- other2_);
+
+ other2_
+);
     ~AvatarConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     hair;
+
+ hair;
     
     std::string
-     face;
+
+ face;
     
     std::string
-     trunk;
+
+ trunk;
     
     std::string
-     waist;
+
+ waist;
     
     std::string
-     l_arm;
+
+ l_arm;
     
     std::string
-     r_arm;
+
+ r_arm;
     
     std::string
-     l_palm;
+
+ l_palm;
     
     std::string
-     r_palm;
+
+ r_palm;
     
     std::string
-     l_leg;
+
+ l_leg;
     
     std::string
-     r_leg;
+
+ r_leg;
     
     std::string
-     l_feed;
+
+ l_feed;
     
     std::string
-     r_feed;
+
+ r_feed;
     
     std::string
-     l_shoes;
+
+ l_shoes;
     
     std::string
-     r_shoes;
+
+ r_shoes;
     
     std::string
-     effect;
+
+ effect;
     
     std::string
-     other1;
+
+ other1;
     
     std::string
-     other2;
+
+ other2;
 };

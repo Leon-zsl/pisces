@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,153 +22,213 @@ public:
 public:
     MonsterConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     int
- type_, 
+
+ type_,
+
     int
- propID_, 
+
+ propID_,
+
     int
- figureID_, 
+
+ figureID_,
+
     float
- numInt_, 
-    int
- refreshSecond_, 
-    int
 
+ numInt_,
 
-
-* skillIDArr_,
     int
 
+ refreshSecond_,
+
+    int
 
 
-* itemIDArr_,
+
+
+ * skillIDArr_,
+
+    int
+
+
+
+
+ * itemIDArr_,
+
     double
 
 
 
-* itemRateArr_,
+
+ * itemRateArr_,
+
     int
 
 
 
-* missionItem_,
+
+ * missionItem_,
+
     float
- sight_, 
+
+ sight_,
+
     float
- attackRange_, 
+
+ attackRange_,
+
     int
- attackSkillID_, 
+
+ attackSkillID_,
+
     std::string
 
 
 
-* healthAIArr_,
+
+ * healthAIArr_,
+
     std::string
 
 
 
-* manaAIArr_,
+
+ * manaAIArr_,
+
     std::string
 
 
 
-* furyAIArr_,
+
+ * furyAIArr_,
+
     std::string
 
 
 
-* energyAIArr_,
+
+ * energyAIArr_,
+
     bool
- isPeeled_, 
+
+ isPeeled_,
+
     bool
- cannotMove_);
+
+ cannotMove_
+);
     ~MonsterConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     int
-     type;
+
+ type;
     
     int
-     propID;
+
+ propID;
     
     int
-     figureID;
+
+ figureID;
     
     float
-     numInt;
+
+ numInt;
     
     int
-     refreshSecond;
-    
-    int
 
-
-
-*     skillIDArr;
+ refreshSecond;
     
     int
 
 
 
-*     itemIDArr;
+
+ * skillIDArr;
+    
+    int
+
+
+
+
+ * itemIDArr;
     
     double
 
 
 
-*     itemRateArr;
+
+ * itemRateArr;
     
     int
 
 
 
-*     missionItem;
+
+ * missionItem;
     
     float
-     sight;
+
+ sight;
     
     float
-     attackRange;
+
+ attackRange;
     
     int
-     attackSkillID;
+
+ attackSkillID;
     
     std::string
 
 
 
-*     healthAIArr;
+
+ * healthAIArr;
     
     std::string
 
 
 
-*     manaAIArr;
+
+ * manaAIArr;
     
     std::string
 
 
 
-*     furyAIArr;
+
+ * furyAIArr;
     
     std::string
 
 
 
-*     energyAIArr;
+
+ * energyAIArr;
     
     bool
-     isPeeled;
+
+ isPeeled;
     
     bool
-     cannotMove;
+
+ cannotMove;
 };

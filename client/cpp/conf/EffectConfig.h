@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,100 +22,157 @@ public:
 public:
     EffectConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- effectUrl_, 
+
+ effectUrl_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     float
- height_, 
+
+ height_,
+
     std::string
- direction_, 
+
+ direction_,
+
     int
- target_, 
+
+ target_,
+
     int
- horStrength_, 
+
+ horStrength_,
+
     int
- verStrength_, 
+
+ verStrength_,
+
     int
- element_, 
+
+ element_,
+
     int
- elementValue_, 
+
+ elementValue_,
+
     int
- selfBuffID_, 
+
+ selfBuffID_,
+
     int
- targetBuffID_, 
+
+ targetBuffID_,
+
     bool
- isFocus_, 
+
+ isFocus_,
+
     bool
- invincible_, 
+
+ invincible_,
+
     bool
- isBindSkill_, 
+
+ isBindSkill_,
+
     long long
- effectDuration_, 
+
+ effectDuration_,
+
     bool
- isCrossbody_);
+
+ isCrossbody_
+);
     ~EffectConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     effectUrl;
+
+ effectUrl;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     float
-     height;
+
+ height;
     
     std::string
-     direction;
+
+ direction;
     
     int
-     target;
+
+ target;
     
     int
-     horStrength;
+
+ horStrength;
     
     int
-     verStrength;
+
+ verStrength;
     
     int
-     element;
+
+ element;
     
     int
-     elementValue;
+
+ elementValue;
     
     int
-     selfBuffID;
+
+ selfBuffID;
     
     int
-     targetBuffID;
+
+ targetBuffID;
     
     bool
-     isFocus;
+
+ isFocus;
     
     bool
-     invincible;
+
+ invincible;
     
     bool
-     isBindSkill;
+
+ isBindSkill;
     
     long long
-     effectDuration;
+
+ effectDuration;
     
     bool
-     isCrossbody;
+
+ isCrossbody;
 };

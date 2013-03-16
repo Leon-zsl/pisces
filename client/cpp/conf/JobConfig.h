@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,89 +22,125 @@ public:
 public:
     JobConfig(
     int
- id_, 
-    std::string
- name_, 
-    int
- propID_, 
-    int
- maleFigureID_, 
-    int
- femaleFigureID_, 
-    int
- figureType_, 
-    int
- maxLevel_, 
-    int
 
+ id_,
 
-
-* talentIDArr_,
-    int
- infoTxtID_, 
-    int
-
-
-
-* initEquipIDArr_,
-    int
-
-
-
-* initBagItemIDs_,
     std::string
 
+ name_,
+
+    int
+
+ propID_,
+
+    int
+
+ maleFigureID_,
+
+    int
+
+ femaleFigureID_,
+
+    int
+
+ figureType_,
+
+    int
+
+ maxLevel_,
+
+    int
 
 
-* initItemIDsInBag_);
+
+
+ * talentIDArr_,
+
+    int
+
+ infoTxtID_,
+
+    int
+
+
+
+
+ * initEquipIDArr_,
+
+    int
+
+
+
+
+ * initBagItemIDs_,
+
+    std::string
+
+
+
+
+ * initItemIDsInBag_
+);
     ~JobConfig();
 
     
     int
-     id;
-    
-    std::string
-     name;
-    
-    int
-     propID;
-    
-    int
-     maleFigureID;
-    
-    int
-     femaleFigureID;
-    
-    int
-     figureType;
-    
-    int
-     maxLevel;
-    
-    int
 
-
-
-*     talentIDArr;
-    
-    int
-     infoTxtID;
-    
-    int
-
-
-
-*     initEquipIDArr;
-    
-    int
-
-
-
-*     initBagItemIDs;
+ id;
     
     std::string
 
+ name;
+    
+    int
+
+ propID;
+    
+    int
+
+ maleFigureID;
+    
+    int
+
+ femaleFigureID;
+    
+    int
+
+ figureType;
+    
+    int
+
+ maxLevel;
+    
+    int
 
 
-*     initItemIDsInBag;
+
+
+ * talentIDArr;
+    
+    int
+
+ infoTxtID;
+    
+    int
+
+
+
+
+ * initEquipIDArr;
+    
+    int
+
+
+
+
+ * initBagItemIDs;
+    
+    std::string
+
+
+
+
+ * initItemIDsInBag;
 };

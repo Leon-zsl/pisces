@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,59 +22,77 @@ public:
 public:
     CargoConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     int
 
 
 
-* itemIDArr_,
+
+ * itemIDArr_,
+
     int
 
 
 
-* itemLimitArr_,
+
+ * itemLimitArr_,
+
     std::string
 
 
 
-* prestigeLevelArr_,
+
+ * prestigeLevelArr_,
+
     std::string
 
 
 
-* priceArr_);
+
+ * priceArr_
+);
     ~CargoConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     int
 
 
 
-*     itemIDArr;
+
+ * itemIDArr;
     
     int
 
 
 
-*     itemLimitArr;
+
+ * itemLimitArr;
     
     std::string
 
 
 
-*     prestigeLevelArr;
+
+ * prestigeLevelArr;
     
     std::string
 
 
 
-*     priceArr;
+
+ * priceArr;
 };

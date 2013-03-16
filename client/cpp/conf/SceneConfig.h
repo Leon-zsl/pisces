@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,115 +22,163 @@ public:
 public:
     SceneConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- sceneName_, 
+
+ sceneName_,
+
     int
- sceneType_, 
+
+ sceneType_,
+
     std::string
- resName_, 
+
+ resName_,
+
     int
- landID_, 
+
+ landID_,
+
     int
- level_, 
+
+ level_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     std::string
 
 
 
-* fixedBlockArr_,
-    std::string
- bornPos_, 
-    std::string
 
+ * fixedBlockArr_,
 
-
-* portalArr_,
     std::string
 
+ bornPos_,
 
-
-* npcArr_,
     std::string
 
 
 
-* boxMinePosArr_,
+
+ * portalArr_,
+
     std::string
 
 
 
-* monsterPosArr_,
+
+ * npcArr_,
+
     std::string
- bossPos_, 
+
+
+
+
+ * boxMinePosArr_,
+
     std::string
- exBoxPos_);
+
+
+
+
+ * monsterPosArr_,
+
+    std::string
+
+ bossPos_,
+
+    std::string
+
+ exBoxPos_
+);
     ~SceneConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     sceneName;
+
+ sceneName;
     
     int
-     sceneType;
+
+ sceneType;
     
     std::string
-     resName;
+
+ resName;
     
     int
-     landID;
+
+ landID;
     
     int
-     level;
+
+ level;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     std::string
 
 
 
-*     fixedBlockArr;
+
+ * fixedBlockArr;
     
     std::string
-     bornPos;
-    
-    std::string
 
-
-
-*     portalArr;
+ bornPos;
     
     std::string
 
 
 
-*     npcArr;
+
+ * portalArr;
     
     std::string
 
 
 
-*     boxMinePosArr;
+
+ * npcArr;
     
     std::string
 
 
 
-*     monsterPosArr;
+
+ * boxMinePosArr;
     
     std::string
-     bossPos;
+
+
+
+
+ * monsterPosArr;
     
     std::string
-     exBoxPos;
+
+ bossPos;
+    
+    std::string
+
+ exBoxPos;
 };

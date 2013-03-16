@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,15 +22,21 @@ public:
 public:
     TextConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- text_);
+
+ text_
+);
     ~TextConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     text;
+
+ text;
 };

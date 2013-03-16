@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,48 +22,63 @@ public:
 public:
     FactionConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     int
 
 
 
-* prestigeLevelArr_,
+
+ * prestigeLevelArr_,
+
     int
 
 
 
-* prestigeArr_,
+
+ * prestigeArr_,
+
     std::string
 
 
 
-* prestigeNameArr_);
+
+ * prestigeNameArr_
+);
     ~FactionConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     int
 
 
 
-*     prestigeLevelArr;
+
+ * prestigeLevelArr;
     
     int
 
 
 
-*     prestigeArr;
+
+ * prestigeArr;
     
     std::string
 
 
 
-*     prestigeNameArr;
+
+ * prestigeNameArr;
 };

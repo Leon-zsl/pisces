@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,85 +22,133 @@ public:
 public:
     ItemConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- description_, 
+
+ description_,
+
     std::string
- iconUrl_, 
+
+ iconUrl_,
+
     std::string
- resName_, 
+
+ resName_,
+
     int
- type_, 
+
+ type_,
+
     int
- npcPrice_, 
+
+ npcPrice_,
+
     int
- grade_, 
+
+ grade_,
+
     int
- level_, 
+
+ level_,
+
     int
- levelRequired_, 
+
+ levelRequired_,
+
     int
- binding_, 
+
+ binding_,
+
     int
- maxCount_, 
+
+ maxCount_,
+
     int
- linkID_, 
+
+ linkID_,
+
     int
- skillID_, 
+
+ skillID_,
+
     bool
- useDestruction_, 
+
+ useDestruction_,
+
     bool
- offlineDestruction_);
+
+ offlineDestruction_
+);
     ~ItemConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     description;
+
+ description;
     
     std::string
-     iconUrl;
+
+ iconUrl;
     
     std::string
-     resName;
+
+ resName;
     
     int
-     type;
+
+ type;
     
     int
-     npcPrice;
+
+ npcPrice;
     
     int
-     grade;
+
+ grade;
     
     int
-     level;
+
+ level;
     
     int
-     levelRequired;
+
+ levelRequired;
     
     int
-     binding;
+
+ binding;
     
     int
-     maxCount;
+
+ maxCount;
     
     int
-     linkID;
+
+ linkID;
     
     int
-     skillID;
+
+ skillID;
     
     bool
-     useDestruction;
+
+ useDestruction;
     
     bool
-     offlineDestruction;
+
+ offlineDestruction;
 };

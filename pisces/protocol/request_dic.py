@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import handlers
-import handlers.account
-import handlers.character
+from handlers import account
+
 from opcode_request import *
 
 dic = {
-    LOGIN : handlers.account.login,
-    LOGOUT : handlers.account.logout,
-
-    SETHP : handlers.character.set_hp,
-    SETMP : handlers.character.set_mp,
+    LOGIN    : account.login,
+    LOGOUT   : account.logout,
+    REGISTER : account.register,
 }

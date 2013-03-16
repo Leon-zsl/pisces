@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,178 +22,253 @@ public:
 public:
     DeputySkillConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     std::string
- texUrl_, 
-    int
- deputyID_, 
-    int
 
+ texUrl_,
 
-
-* itemIDs_,
     int
 
+ deputyID_,
+
+    int
 
 
-* itemCounts_,
+
+
+ * itemIDs_,
+
+    int
+
+
+
+
+ * itemCounts_,
+
     bool
- isSltItemRqr_, 
+
+ isSltItemRqr_,
+
     int
 
 
 
-* addiItemIDs_,
+
+ * addiItemIDs_,
+
     int
 
 
 
-* addItemCounts_,
+
+ * addItemCounts_,
+
     std::string
 
 
 
-* randomItems_,
+
+ * randomItems_,
+
     int
- targetItemID_, 
+
+ targetItemID_,
+
     int
- targetItemCount_, 
+
+ targetItemCount_,
+
     int
- requiredItemID_, 
+
+ requiredItemID_,
+
     int
- deputyLevel_, 
+
+ deputyLevel_,
+
     std::string
- description_, 
+
+ description_,
+
     int
- orangeLevel_, 
+
+ orangeLevel_,
+
     int
- yellowLevel_, 
+
+ yellowLevel_,
+
     int
- greenLevel_, 
+
+ greenLevel_,
+
     int
- money_, 
+
+ money_,
+
     int
- subDeputyID_, 
+
+ subDeputyID_,
+
     int
 
 
 
-* stgPart_,
-    int
- costTime_, 
-    int
 
+ * stgPart_,
 
-
-* stgPropIDs_,
     int
 
+ costTime_,
 
-
-* stgPropValues_,
     int
- stgSkillID_);
+
+
+
+
+ * stgPropIDs_,
+
+    int
+
+
+
+
+ * stgPropValues_,
+
+    int
+
+ stgSkillID_
+);
     ~DeputySkillConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     std::string
-     texUrl;
+
+ texUrl;
     
     int
-     deputyID;
-    
-    int
 
-
-
-*     itemIDs;
+ deputyID;
     
     int
 
 
 
-*     itemCounts;
+
+ * itemIDs;
+    
+    int
+
+
+
+
+ * itemCounts;
     
     bool
-     isSltItemRqr;
+
+ isSltItemRqr;
     
     int
 
 
 
-*     addiItemIDs;
+
+ * addiItemIDs;
     
     int
 
 
 
-*     addItemCounts;
+
+ * addItemCounts;
     
     std::string
 
 
 
-*     randomItems;
+
+ * randomItems;
     
     int
-     targetItemID;
+
+ targetItemID;
     
     int
-     targetItemCount;
+
+ targetItemCount;
     
     int
-     requiredItemID;
+
+ requiredItemID;
     
     int
-     deputyLevel;
+
+ deputyLevel;
     
     std::string
-     description;
+
+ description;
     
     int
-     orangeLevel;
+
+ orangeLevel;
     
     int
-     yellowLevel;
+
+ yellowLevel;
     
     int
-     greenLevel;
+
+ greenLevel;
     
     int
-     money;
+
+ money;
     
     int
-     subDeputyID;
+
+ subDeputyID;
     
     int
 
 
 
-*     stgPart;
+
+ * stgPart;
     
     int
-     costTime;
-    
-    int
 
-
-
-*     stgPropIDs;
+ costTime;
     
     int
 
 
 
-*     stgPropValues;
+
+ * stgPropIDs;
     
     int
-     stgSkillID;
+
+
+
+
+ * stgPropValues;
+    
+    int
+
+ stgSkillID;
 };

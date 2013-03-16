@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,31 +22,43 @@ public:
 public:
     GuildRankRightsConfig(
     int
- id_, 
+
+ id_,
+
     int
- right_, 
+
+ right_,
+
     std::string
- desc_, 
+
+ desc_,
+
     std::string
 
 
 
-* npcArr_);
+
+ * npcArr_
+);
     ~GuildRankRightsConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     right;
+
+ right;
     
     std::string
-     desc;
+
+ desc;
     
     std::string
 
 
 
-*     npcArr;
+
+ * npcArr;
 };

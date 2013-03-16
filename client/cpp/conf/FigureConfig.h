@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,52 +22,73 @@ public:
 public:
     FigureConfig(
     int
- id_, 
+
+ id_,
+
     float
- length_, 
+
+ length_,
+
     float
- width_, 
+
+ width_,
+
     float
- height_, 
+
+ height_,
+
     std::string
- modelUrl_, 
+
+ modelUrl_,
+
     int
 
 
 
-* avatarIDArr_,
+
+ * avatarIDArr_,
+
     std::string
 
 
 
-* avatarNameArr_);
+
+ * avatarNameArr_
+);
     ~FigureConfig();
 
     
     int
-     id;
+
+ id;
     
     float
-     length;
+
+ length;
     
     float
-     width;
+
+ width;
     
     float
-     height;
+
+ height;
     
     std::string
-     modelUrl;
+
+ modelUrl;
     
     int
 
 
 
-*     avatarIDArr;
+
+ * avatarIDArr;
     
     std::string
 
 
 
-*     avatarNameArr;
+
+ * avatarNameArr;
 };

@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,53 +22,71 @@ public:
 public:
     JewelConfig(
     int
- id_, 
+
+ id_,
+
     std::string
- name_, 
+
+ name_,
+
     int
 
 
 
-* equipParts_,
+
+ * equipParts_,
+
     int
 
 
 
-* stgPropIDs_,
+
+ * stgPropIDs_,
+
     int
 
 
 
-* strgPropValues_,
+
+ * strgPropValues_,
+
     int
- equipLevelEffect_);
+
+ equipLevelEffect_
+);
     ~JewelConfig();
 
     
     int
-     id;
+
+ id;
     
     std::string
-     name;
+
+ name;
     
     int
 
 
 
-*     equipParts;
+
+ * equipParts;
     
     int
 
 
 
-*     stgPropIDs;
+
+ * stgPropIDs;
     
     int
 
 
 
-*     strgPropValues;
+
+ * strgPropValues;
     
     int
-     equipLevelEffect;
+
+ equipLevelEffect;
 };

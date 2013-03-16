@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,20 +22,29 @@ public:
 public:
     BagConfig(
     int
- id_, 
+
+ id_,
+
     int
- bagType_, 
+
+ bagType_,
+
     int
- slotCount_);
+
+ slotCount_
+);
     ~BagConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     bagType;
+
+ bagType;
     
     int
-     slotCount;
+
+ slotCount;
 };

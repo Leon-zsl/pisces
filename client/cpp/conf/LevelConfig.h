@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,171 +22,231 @@ public:
 public:
     LevelConfig(
     int
- id_, 
-    int
- expRequired_, 
-    int
- baseExp_, 
-    int
- missionBaseExp_, 
+
+ id_,
+
     int
 
+ expRequired_,
 
-
-* minorMissionType_,
     int
 
+ baseExp_,
 
+    int
 
-* randGroupLand_,
+ missionBaseExp_,
+
     int
 
 
 
-* randGroupNPCArr_,
+
+ * minorMissionType_,
+
     int
 
 
 
-* randGroupForbiddenTypeArr_,
+
+ * randGroupLand_,
+
     int
 
 
 
-* minorMissionLand_,
-    int
- minorMissionMoney_, 
-    int
 
+ * randGroupNPCArr_,
 
-
-* minorMissionItemBonus_,
     int
 
 
 
-* minorMissionItemBonusCount_,
+
+ * randGroupForbiddenTypeArr_,
+
     int
 
 
 
-* monsterItemIDArr_,
+
+ * minorMissionLand_,
+
+    int
+
+ minorMissionMoney_,
+
+    int
+
+
+
+
+ * minorMissionItemBonus_,
+
+    int
+
+
+
+
+ * minorMissionItemBonusCount_,
+
+    int
+
+
+
+
+ * monsterItemIDArr_,
+
     double
 
 
 
-* monsterItemRateArr_,
+
+ * monsterItemRateArr_,
+
     int
 
 
 
-* bossItemIDArr_,
+
+ * bossItemIDArr_,
+
     double
 
 
 
-* bossItemRateArr_,
+
+ * bossItemRateArr_,
+
     int
- monsterCorpseID_, 
+
+ monsterCorpseID_,
+
     int
- monsterMoney_, 
+
+ monsterMoney_,
+
     float
- monsterMoneyRate_, 
+
+ monsterMoneyRate_,
+
     int
- dailyMissionMoney_);
+
+ dailyMissionMoney_
+);
     ~LevelConfig();
 
     
     int
-     id;
-    
-    int
-     expRequired;
-    
-    int
-     baseExp;
-    
-    int
-     missionBaseExp;
+
+ id;
     
     int
 
-
-
-*     minorMissionType;
+ expRequired;
     
     int
 
+ baseExp;
+    
+    int
 
-
-*     randGroupLand;
+ missionBaseExp;
     
     int
 
 
 
-*     randGroupNPCArr;
+
+ * minorMissionType;
     
     int
 
 
 
-*     randGroupForbiddenTypeArr;
+
+ * randGroupLand;
     
     int
 
 
 
-*     minorMissionLand;
-    
-    int
-     minorMissionMoney;
-    
-    int
 
-
-
-*     minorMissionItemBonus;
+ * randGroupNPCArr;
     
     int
 
 
 
-*     minorMissionItemBonusCount;
+
+ * randGroupForbiddenTypeArr;
     
     int
 
 
 
-*     monsterItemIDArr;
+
+ * minorMissionLand;
+    
+    int
+
+ minorMissionMoney;
+    
+    int
+
+
+
+
+ * minorMissionItemBonus;
+    
+    int
+
+
+
+
+ * minorMissionItemBonusCount;
+    
+    int
+
+
+
+
+ * monsterItemIDArr;
     
     double
 
 
 
-*     monsterItemRateArr;
+
+ * monsterItemRateArr;
     
     int
 
 
 
-*     bossItemIDArr;
+
+ * bossItemIDArr;
     
     double
 
 
 
-*     bossItemRateArr;
+
+ * bossItemRateArr;
     
     int
-     monsterCorpseID;
+
+ monsterCorpseID;
     
     int
-     monsterMoney;
+
+ monsterMoney;
     
     float
-     monsterMoneyRate;
+
+ monsterMoneyRate;
     
     int
-     dailyMissionMoney;
+
+ dailyMissionMoney;
 };

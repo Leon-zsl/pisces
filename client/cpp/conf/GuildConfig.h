@@ -2,6 +2,8 @@
 
 
 
+
+
 #include <map>
 #include <vector>
 #include <string>
@@ -20,15 +22,21 @@ public:
 public:
     GuildConfig(
     int
- id_, 
+
+ id_,
+
     int
- memberCapicity_);
+
+ memberCapicity_
+);
     ~GuildConfig();
 
     
     int
-     id;
+
+ id;
     
     int
-     memberCapicity;
+
+ memberCapicity;
 };
