@@ -4,7 +4,7 @@
 import model
 from sqlalchemy import *
 
-class BaseInfo(model.Base):
+class Profile(model.Base):
     __tablename__ = "base_info"
 
     usrid = Column(Integer, primary_key = True)

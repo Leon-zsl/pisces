@@ -5,7 +5,7 @@ import app
 import db
 import log
 
-from models.baseinfo import BaseInfo
+from models.profile import Profile
 
 def get_info(op, usrid, msg):
     pass
