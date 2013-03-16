@@ -1,0 +1,12 @@
+package proto.response.character;
+
+message GetCharacterInfoResponse {
+    optional int32 status = 1;
+
+    optional int32 confid = 2;
+    optional int32 level = 3;
+    optional int32 hp = 4;
+    optional int32 mp = 5;
+    optional int32 attack = 6;
+    optional int32 defense = 7;
+}

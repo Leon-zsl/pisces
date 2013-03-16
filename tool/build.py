@@ -7,6 +7,8 @@ import sys
 import except_handler
 import path_util
 import pck_config
+import pck_proto
+
 from config import *
 
 def build_conf_s():
@@ -36,11 +38,16 @@ def build_conf_c():
                                   CONF_FACT_MAKO_H)
     print "build conf client end"
 
+def build_proto():
+    pck_proto.pck_proto()
+
 def build():
     exhook = sys.excepthook
     sys.excepthook = except_handler._excepthook
+
+    build_proto()
     
-    #build_conf_s()
+    build_conf_s()
     build_conf_c()
     
     sys.excepthook = exhook

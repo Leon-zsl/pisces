@@ -1,0 +1,5 @@
+package proto.request.profile;
+
+message GetProfileInfo {
+    //no elem
+}

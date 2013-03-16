@@ -5,19 +5,30 @@ import model
 from sqlalchemy import *
 
 class Profile(model.Base):
-    __tablename__ = "base_info"
+    __tablename__ = "profile"
 
-    usrid = Column(Integer, primary_key = True)
-    name = Column(String(64))
-    lev = Column(SmallInteger)
-    exp = Column(Integer)
-    gold = Column(Integer)
-    diamond = Column(Integer)
+    usrid = Column(Integer, 
+                   primary_key=True, 
+                   nullable=False)
+    
+    name = Column(String(64), 
+                  nullable=False)
+    
+    lev = Column(SmallInteger, 
+                 nullable=False)
+    
+    exp = Column(Integer, 
+                 nullable=False)
+    
+    gold = Column(Integer, 
+                  nullable=False)
+    
+    gem = Column(Integer, 
+                 nullable=False)
 
-    def __init__(self, usrid, name, exp, gold, diamond)
-        self.usrid = usrid
+    def __init__(self, usrid, name, exp, gold, gem):
         self.usrid = usrid
         self.name = name
         self.exp = exp
         self.gold = gold
-        self.diamond = diamond
+        self.gem = gem

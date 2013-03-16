@@ -9,6 +9,3 @@ from models.profile import Profile
 
 def get_info(op, usrid, msg):
     pass
-
-def set_name(op, usrid, msg):
-    pass

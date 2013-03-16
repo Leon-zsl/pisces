@@ -1,0 +1,5 @@
+package proto.request.character;
+
+message GetCharacterInfo {
+    optional int32 id = 1;
+}

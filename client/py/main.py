@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+import random
 import httplib, urllib
 import base64
 import google.protobuf as protobuf
@@ -14,7 +15,7 @@ def main():
         conn = httplib.HTTPConnection('127.0.0.1:8080')
         #conn = httplib.HTTPConnection('127.0.0.1:8001')
         obj = Login()
-        obj.name = 'leon'
+        obj.name = 'leon' + str(random.randint(1, 0x7fffffff))
         obj.pwd = 'leon'
         val = obj.SerializeToString()
         s = base64.encodestring(val)

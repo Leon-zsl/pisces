@@ -16,14 +16,16 @@ import tornado.options
 from tornado.options import options, define
 
 #self modules
+from config import *
+
 from log import LoggerMgr
 from router import Router
 from db import DBMgr
 
 from data import ConfFact
 
-define("listen_port", default=8001)
-define("db_host", default="127.0.0.1:3306")
+define("listen_port", default=default_listen_port)
+define("db_host", default=default_db_host)
 
 class App(object):
     instance = None

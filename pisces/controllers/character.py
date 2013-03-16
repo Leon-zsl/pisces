@@ -5,6 +5,7 @@ import app
 import db
 import log
 
-from models.card import Card
+from models.character import Character
 
-pass
+def get_info(op, usrid, msg):
+    pass

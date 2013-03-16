@@ -7,11 +7,18 @@ from sqlalchemy import *
 class Account(model.Base):
     __tablename__ = "account"
 
-    uid = Column(BigInteger, primary_key = True)
-    name = Column(String(64))
-    pwd = Column(String(16))
+    usrid = Column(Integer,
+                   primary_key=True,
+                   nullable=False)
+    
+    name = Column(String(64),
+                  nullable=False,
+                  unique=True)
+    
+    pwd = Column(String(16),
+                 nullable=False)
 
-    def __init__(self, uid, name, pwd):
-        self.uid = uid
+    def __init__(self, usrid, name, pwd):
+        self.usrid = usrid
         self.name = name
         self.pwd = pwd

@@ -1,0 +1,11 @@
+package proto.request.account;
+
+message Register {
+    optional string name = 1;
+    optional string pwd = 2;
+}
+
+message Login {
+	optional string name = 1;
+	optional string pwd = 2;
+}

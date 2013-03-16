@@ -18,11 +18,12 @@ class DBMgr(object):
           + ":" + parser.get(conf_name, "password")    \
           + "@" + parser.get(conf_name, "host")        \
           + ":" + parser.get(conf_name, "port")        \
-          + "/" + parser.get(conf_name, "database")
+          + "/" + parser.get(conf_name, "database")    \
+          + "?charset=utf8"
 
-        self.engine = create_engine(url, echo = True)
+        self.engine = create_engine(url, encoding='utf8', echo=True)
         self.session_cls = sessionmaker(bind = self.engine)
-        self.build_tables(self.engine)
+        model.Base.metadata.create_all(self.engine)
     
     def __del__(self):
         self.close()
@@ -54,7 +55,3 @@ class DBMgr(object):
 
     def rollback(self):
         self.session.rollback()
-
-    def build_tables(self, engine):
-        model.Base.metadata.create_all(engine)
-
