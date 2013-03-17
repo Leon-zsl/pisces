@@ -7,5 +7,5 @@ import log
 
 from models.character import Character
 
-def get_info(op, usrid, msg):
+def get_info(op, msg, usrid):
     pass

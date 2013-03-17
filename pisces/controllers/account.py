@@ -27,13 +27,13 @@ def db():
     return app.App.instance.db
 
 def register(op, msg):
-    reg = request_account.register()
+    reg = request_account.Register()
     try:
         reg.ParseFromString(msg)
     except:
         raise IlleagalMsgExcept(op, '')
 
-    ret = request_account.RegisterResponse()
+    ret = response_account.RegisterResponse()
     if not reg.name:
         ret.status = error_code.EMPTY_NAME
         return ret
@@ -55,7 +55,7 @@ def register(op, msg):
         ret.status = error_code.NO_ERROR
     else:
         ret.status = error_code.ACCOUNT_EXIST
-    return ret
+    return opcode_response.REGISTER_RESPONSE, ret.SerializeToString()
 
 def login(op, msg):
     login = request_account.Login()

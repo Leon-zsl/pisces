@@ -26,9 +26,10 @@ class Profile(model.Base):
     gem = Column(Integer, 
                  nullable=False)
 
-    def __init__(self, usrid, name, exp, gold, gem):
+    def __init__(self, usrid, name, lev, exp, gold, gem):
         self.usrid = usrid
         self.name = name
+        self.lev = lev
         self.exp = exp
         self.gold = gold
         self.gem = gem

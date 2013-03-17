@@ -7,6 +7,7 @@ NO_ERROR = 0
 INVALID_REQUEST = 1
 ILLEAGAL_MSG = 2
 MISS_TOKEN = 3
+ILLEAGAL_USRID = 4
 
 #logic error, account
 #register
