@@ -15,7 +15,7 @@ class Account(model.Base):
                   nullable=False,
                   unique=True)
     
-    pwd = Column(String(16),
+    pwd = Column(String(32),
                  nullable=False)
 
     def __init__(self, usrid, name, pwd):

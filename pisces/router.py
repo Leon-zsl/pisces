@@ -14,6 +14,8 @@ import google.protobuf as protobuf
 import app
 import log
 
+import util.token as token
+
 from controllers import *
 import protocol.request_dic as request_dic
 
@@ -30,6 +32,9 @@ def default_handler(op, msg):
 def log_root():
     return app.App.instance.logger.root
 
+def db():
+    return app.App.instance.db
+
 class Router(object):
     def __init__(self):
         self.handler_dic = self.parse_handler_map()
@@ -41,22 +46,22 @@ class Router(object):
         pass
 
     def dispatch(self, request_handler):
-        app.App.instance.db.open_session()
+        db().open_session()
 
         usrid = self.parse_token(request_handler.request)
         msg_list = self.parse_msg(request_handler.request)
         val_list = self.handle_msg(usrid, msg_list)
         response = self.parse_response(val_list)
 
-        app.App.instance.db.close_session()
+        db().close_session()
         return response
         
     def parse_token(self, request):
         if not request.arguments.has_key("token"):
             return 0
 
-        token = request.arguments.get("token")[0]
-        usrid = int(base64.decodestring(token))
+        tk = request.arguments.get("token")[0]
+        usrid = token.token_to_uid(tk)
         return usrid
     
     def parse_msg(self, request):
@@ -130,9 +135,11 @@ class Router(object):
             else:
                 raise IlleagalArgExcept(op, '')
         except IlleagalArgExcept, ex:
+            db().rollback()
             log_root.error('illeage handler arg format: ' + ex.op)
             return opc, msgc
         except MissTokenExcept, ex:
+            db().rollback()
             log_root.error('miss token msg format: ' + ex.op)
             err = response_common.RequestError()
             err.errno = error_code.MISS_TOKEN
@@ -140,6 +147,7 @@ class Router(object):
             err.errmsg = ex.msg
             return opcode_response.REQUEST_ERROR,err.SerializeToString()
         except IlleagalMsgExcept, ex:
+            db.rollback()
             log_root.error('illeagal msg format: ' + ex.op)
             err = response_common.RequestError()
             err.errno = error_code.ILLEAGAL_MSG

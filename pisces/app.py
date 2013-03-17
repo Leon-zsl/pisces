@@ -24,8 +24,8 @@ from db import DBMgr
 
 from data import ConfFact
 
-define("listen_port", default=default_listen_port)
-define("db_host", default=default_db_host)
+define("listen_port", default=DEFAULT_LISTEN_PORT)
+define("db_host", default=DEFAULT_DB_HOST)
 
 class App(object):
     instance = None

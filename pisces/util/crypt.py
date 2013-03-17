@@ -6,3 +6,9 @@ def cipher(key, data):
 
 def decipher(key, data):
     pass
+
+def des_encode(key, data):
+    pass
+
+def des_decode(key, data):
+    pass
