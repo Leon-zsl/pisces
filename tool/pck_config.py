@@ -317,6 +317,7 @@ def pack_config_dir_data(src_dir, bin_dir, csv_dir):
                 and os.path.splitext(file)[1] == '.xls':
             print "pack data file: " + file
             file_name = os.path.splitext(file)[0]
+            class_name = file_name
             bin_file = file_name + '.bytes'
             csv_file = file_name + '.csv'
             cfg_data = parse_xls(os.path.join(src_dir, file))
