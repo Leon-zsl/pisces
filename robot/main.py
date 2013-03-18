@@ -6,13 +6,13 @@ import httplib, urllib
 import base64
 import google.protobuf as protobuf
 
-from opcode_request import *
-from opcode_response import *
+from protocol.opcode_request import *
+from protocol.opcode_response import *
 
-from common_pb2 import *
-from account_pb2 import *
-from character_pb2 import *
-from profile_pb2 import *
+from proto.common_pb2 import *
+from proto.account_pb2 import *
+from proto.character_pb2 import *
+from proto.profile_pb2 import *
 
 def main():
     while True:

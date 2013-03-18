@@ -3,4 +3,8 @@
 *~
 *.bytes
 *.csv
+exp/
 pisces/data/*.py
+pisces/proto/*.py
+robot/data/*.py
+robot/proto/*.py

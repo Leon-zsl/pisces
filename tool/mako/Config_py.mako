@@ -65,7 +65,7 @@ list = []
 
 def build():
     try:
-        data_path = "../exp/data"
+        data_path = "../exp/conf/data"
         path = os.path.join(data_path, "${bin_file_name}")
         reader = StreamReader(path)
         

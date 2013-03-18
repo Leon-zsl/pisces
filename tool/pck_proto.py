@@ -8,8 +8,7 @@ import sys
 from config import *
 
 def pck_proto():
-    print 'pck proto begin...'
-    if not os.path.exists(EXP_PROTO_PATH):
+    if not os.path.exists(EXP_PROTO_PATH_PY):
         os.makedirs(EXP_PROTO_PATH)
     if not os.path.exists(EXP_PROTO_PATH_C):
         os.makedirs(EXP_PROTO_PATH_C)
@@ -18,8 +17,7 @@ def pck_proto():
     cmd = 'protoc'                                 \
       + ' --proto_path=' + PROTO_PATH              \
       + ' --cpp_out=' + EXP_PROTO_PATH_C           \
-      + ' --python_out=' + EXP_PROTO_PATH
+      + ' --python_out=' + EXP_PROTO_PATH_PY
     for file in files:
         cmd += ' ' + os.path.join(PROTO_PATH, file)
     os.system(cmd)
-    print 'pck proto succ'

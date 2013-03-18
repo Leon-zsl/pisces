@@ -7,7 +7,7 @@ def logger():
 
 byte_order = '<'
 
-class StreamReader:
+class StreamReader(object):
     def __init__(self, file_path):
         self.f = open(file_path, "rb")
 
