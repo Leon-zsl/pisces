@@ -8,7 +8,7 @@ import db
 import log
 
 import util.token as token
-import util.crypt as crypt
+#import util.crypt as crypt
 
 from models.account import Account
 
@@ -38,13 +38,14 @@ def register(op, msg):
         ret.status = error_code.NAME_TO_LONG
         return ret
     
-    pwd = crypt.des_decode(DES_KEY, reg.pwd)
+    #pwd = crypt.des_decode(DES_KEY, reg.pwd)
+    pwd = reg.pwd
     if len(pwd) > 32:
         ret.status = error_code.PWD_TO_LONG
         return ret
 
     query = db().query(Account)
-    account = query.get(reg.name)
+    account = query.filter_by(name = reg.name).first()
 
     if not account:
         act = Account(query.count() + 1, reg.name, pwd)
@@ -62,9 +63,10 @@ def login(op, msg):
         raise IlleagalMsgExcept(op, '')
 
     query = db().query(Account)
-    account = query.get(login.name)
-    pwd = crypt.des_decode(DES_KEY, login.pwd)
-    
+    account = query.filter_by(name = login.name).first()
+    #pwd = crypt.des_decode(DES_KEY, login.pwd)
+    pwd = login.pwd
+
     ret = proto_account.LoginResponse()
     if not account:
         ret.status = error_code.ACCOUNT_NOT_EXIST

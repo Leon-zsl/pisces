@@ -5,17 +5,21 @@ import random
 import httplib, urllib
 import base64
 import google.protobuf as protobuf
+
 from opcode_request import *
 from opcode_response import *
-from request_pb2 import *
-from response_pb2 import *
+
+from common_pb2 import *
+from account_pb2 import *
+from character_pb2 import *
+from profile_pb2 import *
 
 def main():
     while True:
         conn = httplib.HTTPConnection('127.0.0.1:8080')
         #conn = httplib.HTTPConnection('127.0.0.1:8001')
-        obj = Login()
-        obj.name = 'leon' + str(random.randint(1, 0x7fffffff))
+        obj = Register()
+        obj.name = 'leon' # + str(random.randint(1, 0x7fffffff))
         obj.pwd = 'leon'
         val = obj.SerializeToString()
         s = base64.encodestring(val)
@@ -40,10 +44,10 @@ def main():
             if not kv:
                 continue
             print kv[0], " : ", base64.decodestring(kv[1])
-            if int(kv[0]) == LOGINSUCC:
-                succ = LoginSuccess()
-                succ.ParseFromString(base64.decodestring(kv[1]))
-                print succ.userid
+            if int(kv[0]) == LOGIN_RESPONSE:
+                lgresp = LoginResponse()
+                lgresp.ParseFromString(base64.decodestring(kv[1]))
+                print lgresp.token
             else:
                 print 'unknown op: ' + kv[0]
 

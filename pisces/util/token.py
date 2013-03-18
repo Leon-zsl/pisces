@@ -2,10 +2,21 @@
 # -*- coding:utf-8 -*-
 
 import base64
+import mcrypt
+
+from config import *
 
 def token_to_uid(token):
-    return int(base64.decodestring(token))
+    data = base64.decodestring(token)
+    mc = mcrypt.MCRYPT(MCRYPT_ALGORITHM, MCRYPT_MODE)
+    mc.init(MCRYPT_KEY)
+    val = mc.encrypt(data)
+    return int(val)
 
 def uid_to_token(uid):
-    return base64.encodestring(str(uid))
+    data = str(uid)
+    mc = mcrypt.MCRYPT(MCRYPT_ALGORITHM, MCRYPT_MODE)
+    mc.init(MCRYPT_KEY)
+    val = mc.decrypt(data)
+    return base64.encodestring(val)
 
