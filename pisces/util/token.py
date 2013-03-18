@@ -15,6 +15,8 @@ def token_to_uid(token):
 
 def uid_to_token(uid):
     data = str(uid)
+    if len(data) < 20:
+        data = '0' * (20 - len(data)) + data
     mc = mcrypt.MCRYPT(MCRYPT_ALGORITHM, MCRYPT_MODE)
     mc.init(MCRYPT_KEY)
     val = mc.decrypt(data)
