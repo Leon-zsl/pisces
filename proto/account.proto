@@ -1,0 +1,20 @@
+package proto.account;
+
+message Register {
+    optional string name = 1;
+    optional string pwd = 2;
+}
+
+message RegisterResponse {
+    optional int32 status = 1;
+}
+
+message Login {
+	optional string name = 1;
+	optional string pwd = 2;
+}
+
+message LoginResponse {
+    optional int32 status = 1;
+    optional string token = 2;
+}

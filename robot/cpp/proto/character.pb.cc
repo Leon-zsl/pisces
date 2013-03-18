@@ -14,11 +14,13 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
 namespace character {
 
 namespace {
 
+const ::google::protobuf::Descriptor* GetCharacterInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetCharacterInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GetCharacterInfoResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GetCharacterInfoResponse_reflection_ = NULL;
@@ -32,7 +34,22 @@ void protobuf_AssignDesc_character_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "character.proto");
   GOOGLE_CHECK(file != NULL);
-  GetCharacterInfoResponse_descriptor_ = file->message_type(0);
+  GetCharacterInfo_descriptor_ = file->message_type(0);
+  static const int GetCharacterInfo_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetCharacterInfo, id_),
+  };
+  GetCharacterInfo_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GetCharacterInfo_descriptor_,
+      GetCharacterInfo::default_instance_,
+      GetCharacterInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetCharacterInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetCharacterInfo, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GetCharacterInfo));
+  GetCharacterInfoResponse_descriptor_ = file->message_type(1);
   static const int GetCharacterInfoResponse_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetCharacterInfoResponse, status_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetCharacterInfoResponse, confid_),
@@ -66,12 +83,16 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GetCharacterInfo_descriptor_, &GetCharacterInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     GetCharacterInfoResponse_descriptor_, &GetCharacterInfoResponse::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_character_2eproto() {
+  delete GetCharacterInfo::default_instance_;
+  delete GetCharacterInfo_reflection_;
   delete GetCharacterInfoResponse::default_instance_;
   delete GetCharacterInfoResponse_reflection_;
 }
@@ -83,14 +104,16 @@ void protobuf_AddDesc_character_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\017character.proto\022\030proto.response.charac"
-    "ter\"\202\001\n\030GetCharacterInfoResponse\022\016\n\006stat"
-    "us\030\001 \001(\005\022\016\n\006confid\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022"
-    "\n\n\002hp\030\004 \001(\005\022\n\n\002mp\030\005 \001(\005\022\016\n\006attack\030\006 \001(\005\022"
-    "\017\n\007defense\030\007 \001(\005", 176);
+    "\n\017character.proto\022\017proto.character\"\036\n\020Ge"
+    "tCharacterInfo\022\n\n\002id\030\001 \001(\005\"\202\001\n\030GetCharac"
+    "terInfoResponse\022\016\n\006status\030\001 \001(\005\022\016\n\006confi"
+    "d\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022\n\n\002hp\030\004 \001(\005\022\n\n\002mp"
+    "\030\005 \001(\005\022\016\n\006attack\030\006 \001(\005\022\017\n\007defense\030\007 \001(\005", 199);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "character.proto", &protobuf_RegisterTypes);
+  GetCharacterInfo::default_instance_ = new GetCharacterInfo();
   GetCharacterInfoResponse::default_instance_ = new GetCharacterInfoResponse();
+  GetCharacterInfo::default_instance_->InitAsDefaultInstance();
   GetCharacterInfoResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_character_2eproto);
 }
@@ -101,6 +124,213 @@ struct StaticDescriptorInitializer_character_2eproto {
     protobuf_AddDesc_character_2eproto();
   }
 } static_descriptor_initializer_character_2eproto_;
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetCharacterInfo::kIdFieldNumber;
+#endif  // !_MSC_VER
+
+GetCharacterInfo::GetCharacterInfo()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void GetCharacterInfo::InitAsDefaultInstance() {
+}
+
+GetCharacterInfo::GetCharacterInfo(const GetCharacterInfo& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void GetCharacterInfo::SharedCtor() {
+  _cached_size_ = 0;
+  id_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GetCharacterInfo::~GetCharacterInfo() {
+  SharedDtor();
+}
+
+void GetCharacterInfo::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetCharacterInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetCharacterInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetCharacterInfo_descriptor_;
+}
+
+const GetCharacterInfo& GetCharacterInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_character_2eproto();  return *default_instance_;
+}
+
+GetCharacterInfo* GetCharacterInfo::default_instance_ = NULL;
+
+GetCharacterInfo* GetCharacterInfo::New() const {
+  return new GetCharacterInfo;
+}
+
+void GetCharacterInfo::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    id_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GetCharacterInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 id = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &id_)));
+          set_has_id();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void GetCharacterInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* GetCharacterInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 id = 1;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int GetCharacterInfo::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 id = 1;
+    if (has_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->id());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetCharacterInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GetCharacterInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GetCharacterInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetCharacterInfo::MergeFrom(const GetCharacterInfo& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GetCharacterInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetCharacterInfo::CopyFrom(const GetCharacterInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetCharacterInfo::IsInitialized() const {
+  
+  return true;
+}
+
+void GetCharacterInfo::Swap(GetCharacterInfo* other) {
+  if (other != this) {
+    std::swap(id_, other->id_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GetCharacterInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetCharacterInfo_descriptor_;
+  metadata.reflection = GetCharacterInfo_reflection_;
+  return metadata;
+}
 
 
 // ===================================================================
@@ -553,7 +783,6 @@ void GetCharacterInfoResponse::Swap(GetCharacterInfoResponse* other) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace character
-}  // namespace response
 }  // namespace proto
 
 // @@protoc_insertion_point(global_scope)

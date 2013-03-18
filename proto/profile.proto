@@ -1,4 +1,8 @@
-package proto.response.profile;
+package proto.profile;
+
+message GetProfileInfo {
+    //no elem
+}
 
 message GetProfileInfoResponse {
     optional int32 status = 1;

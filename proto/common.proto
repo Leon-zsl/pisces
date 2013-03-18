@@ -1,4 +1,4 @@
-package proto.response.common;
+package proto;
 
 message RequestError {
     optional int32 errop = 1;

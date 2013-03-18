@@ -11,10 +11,7 @@ import protocol.error_code as error_code
 import protocol.opcode_request as opcode_request
 import protocol.opcode_response as opcode_response
 
-import proto.request.profile_pb2 as request_profile
-
-import proto.response.common_pb2 as response_common
-import proto.response.profile_pb2 as response_profile
+import proto.profile_pb2 as proto_profile
 
 from excepts.illeagal_usrid import IlleagalUsridExcept
 
@@ -25,7 +22,7 @@ def log_root():
     return app.App.instance.logger.root
 
 def get_info(op, msg, usrid):
-    req = request_profile.GetProfileInfo()
+    req = proto_profile.GetProfileInfo()
     try:
         req.ParseFromString(msg)
     except:
@@ -34,7 +31,7 @@ def get_info(op, msg, usrid):
     query = db().query(Profile)
     profile = query.get(usrid)
 
-    ret = response_profile.GetProfileInfoResponse()
+    ret = proto_profile.GetProfileInfoResponse()
     if not profile:
         ret.status = error_code.ILLEAGAL_USRID
     else:

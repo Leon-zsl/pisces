@@ -14,11 +14,13 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
 namespace profile {
 
 namespace {
 
+const ::google::protobuf::Descriptor* GetProfileInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetProfileInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GetProfileInfoResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GetProfileInfoResponse_reflection_ = NULL;
@@ -32,10 +34,25 @@ void protobuf_AssignDesc_profile_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "profile.proto");
   GOOGLE_CHECK(file != NULL);
-  GetProfileInfoResponse_descriptor_ = file->message_type(0);
-  static const int GetProfileInfoResponse_offsets_[5] = {
+  GetProfileInfo_descriptor_ = file->message_type(0);
+  static const int GetProfileInfo_offsets_[1] = {
+  };
+  GetProfileInfo_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GetProfileInfo_descriptor_,
+      GetProfileInfo::default_instance_,
+      GetProfileInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfo, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GetProfileInfo));
+  GetProfileInfoResponse_descriptor_ = file->message_type(1);
+  static const int GetProfileInfoResponse_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, status_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, lev_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, gold_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetProfileInfoResponse, gem_),
@@ -64,12 +81,16 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GetProfileInfo_descriptor_, &GetProfileInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     GetProfileInfoResponse_descriptor_, &GetProfileInfoResponse::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_profile_2eproto() {
+  delete GetProfileInfo::default_instance_;
+  delete GetProfileInfo_reflection_;
   delete GetProfileInfoResponse::default_instance_;
   delete GetProfileInfoResponse_reflection_;
 }
@@ -81,13 +102,15 @@ void protobuf_AddDesc_profile_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rprofile.proto\022\026proto.response.profile\""
-    "^\n\026GetProfileInfoResponse\022\016\n\006status\030\001 \001("
-    "\005\022\014\n\004name\030\002 \001(\t\022\013\n\003exp\030\003 \001(\005\022\014\n\004gold\030\004 \001"
-    "(\005\022\013\n\003gem\030\005 \001(\005", 135);
+    "\n\rprofile.proto\022\rproto.profile\"\020\n\016GetPro"
+    "fileInfo\"k\n\026GetProfileInfoResponse\022\016\n\006st"
+    "atus\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003lev\030\003 \001(\005\022\013\n"
+    "\003exp\030\004 \001(\005\022\014\n\004gold\030\005 \001(\005\022\013\n\003gem\030\006 \001(\005", 157);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "profile.proto", &protobuf_RegisterTypes);
+  GetProfileInfo::default_instance_ = new GetProfileInfo();
   GetProfileInfoResponse::default_instance_ = new GetProfileInfoResponse();
+  GetProfileInfo::default_instance_->InitAsDefaultInstance();
   GetProfileInfoResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_profile_2eproto);
 }
@@ -103,8 +126,164 @@ struct StaticDescriptorInitializer_profile_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+GetProfileInfo::GetProfileInfo()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void GetProfileInfo::InitAsDefaultInstance() {
+}
+
+GetProfileInfo::GetProfileInfo(const GetProfileInfo& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void GetProfileInfo::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GetProfileInfo::~GetProfileInfo() {
+  SharedDtor();
+}
+
+void GetProfileInfo::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetProfileInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetProfileInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetProfileInfo_descriptor_;
+}
+
+const GetProfileInfo& GetProfileInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_profile_2eproto();  return *default_instance_;
+}
+
+GetProfileInfo* GetProfileInfo::default_instance_ = NULL;
+
+GetProfileInfo* GetProfileInfo::New() const {
+  return new GetProfileInfo;
+}
+
+void GetProfileInfo::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GetProfileInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      return true;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+  return true;
+#undef DO_
+}
+
+void GetProfileInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* GetProfileInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int GetProfileInfo::ByteSize() const {
+  int total_size = 0;
+  
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetProfileInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GetProfileInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GetProfileInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetProfileInfo::MergeFrom(const GetProfileInfo& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GetProfileInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetProfileInfo::CopyFrom(const GetProfileInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetProfileInfo::IsInitialized() const {
+  
+  return true;
+}
+
+void GetProfileInfo::Swap(GetProfileInfo* other) {
+  if (other != this) {
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GetProfileInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetProfileInfo_descriptor_;
+  metadata.reflection = GetProfileInfo_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int GetProfileInfoResponse::kStatusFieldNumber;
 const int GetProfileInfoResponse::kNameFieldNumber;
+const int GetProfileInfoResponse::kLevFieldNumber;
 const int GetProfileInfoResponse::kExpFieldNumber;
 const int GetProfileInfoResponse::kGoldFieldNumber;
 const int GetProfileInfoResponse::kGemFieldNumber;
@@ -128,6 +307,7 @@ void GetProfileInfoResponse::SharedCtor() {
   _cached_size_ = 0;
   status_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  lev_ = 0;
   exp_ = 0;
   gold_ = 0;
   gem_ = 0;
@@ -174,6 +354,7 @@ void GetProfileInfoResponse::Clear() {
         name_->clear();
       }
     }
+    lev_ = 0;
     exp_ = 0;
     gold_ = 0;
     gem_ = 0;
@@ -216,12 +397,28 @@ bool GetProfileInfoResponse::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_exp;
+        if (input->ExpectTag(24)) goto parse_lev;
         break;
       }
       
-      // optional int32 exp = 3;
+      // optional int32 lev = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_lev:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lev_)));
+          set_has_lev();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_exp;
+        break;
+      }
+      
+      // optional int32 exp = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_exp:
@@ -232,12 +429,12 @@ bool GetProfileInfoResponse::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_gold;
+        if (input->ExpectTag(40)) goto parse_gold;
         break;
       }
       
-      // optional int32 gold = 4;
-      case 4: {
+      // optional int32 gold = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_gold:
@@ -248,12 +445,12 @@ bool GetProfileInfoResponse::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_gem;
+        if (input->ExpectTag(48)) goto parse_gem;
         break;
       }
       
-      // optional int32 gem = 5;
-      case 5: {
+      // optional int32 gem = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_gem:
@@ -300,19 +497,24 @@ void GetProfileInfoResponse::SerializeWithCachedSizes(
       2, this->name(), output);
   }
   
-  // optional int32 exp = 3;
+  // optional int32 lev = 3;
+  if (has_lev()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lev(), output);
+  }
+  
+  // optional int32 exp = 4;
   if (has_exp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->exp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->exp(), output);
   }
   
-  // optional int32 gold = 4;
+  // optional int32 gold = 5;
   if (has_gold()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->gold(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->gold(), output);
   }
   
-  // optional int32 gem = 5;
+  // optional int32 gem = 6;
   if (has_gem()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->gem(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->gem(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -338,19 +540,24 @@ void GetProfileInfoResponse::SerializeWithCachedSizes(
         2, this->name(), target);
   }
   
-  // optional int32 exp = 3;
+  // optional int32 lev = 3;
+  if (has_lev()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lev(), target);
+  }
+  
+  // optional int32 exp = 4;
   if (has_exp()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->exp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->exp(), target);
   }
   
-  // optional int32 gold = 4;
+  // optional int32 gold = 5;
   if (has_gold()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->gold(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->gold(), target);
   }
   
-  // optional int32 gem = 5;
+  // optional int32 gem = 6;
   if (has_gem()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->gem(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->gem(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -378,21 +585,28 @@ int GetProfileInfoResponse::ByteSize() const {
           this->name());
     }
     
-    // optional int32 exp = 3;
+    // optional int32 lev = 3;
+    if (has_lev()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lev());
+    }
+    
+    // optional int32 exp = 4;
     if (has_exp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->exp());
     }
     
-    // optional int32 gold = 4;
+    // optional int32 gold = 5;
     if (has_gold()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->gold());
     }
     
-    // optional int32 gem = 5;
+    // optional int32 gem = 6;
     if (has_gem()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -432,6 +646,9 @@ void GetProfileInfoResponse::MergeFrom(const GetProfileInfoResponse& from) {
     if (from.has_name()) {
       set_name(from.name());
     }
+    if (from.has_lev()) {
+      set_lev(from.lev());
+    }
     if (from.has_exp()) {
       set_exp(from.exp());
     }
@@ -466,6 +683,7 @@ void GetProfileInfoResponse::Swap(GetProfileInfoResponse* other) {
   if (other != this) {
     std::swap(status_, other->status_);
     std::swap(name_, other->name_);
+    std::swap(lev_, other->lev_);
     std::swap(exp_, other->exp_);
     std::swap(gold_, other->gold_);
     std::swap(gem_, other->gem_);
@@ -487,7 +705,6 @@ void GetProfileInfoResponse::Swap(GetProfileInfoResponse* other) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace profile
-}  // namespace response
 }  // namespace proto
 
 // @@protoc_insertion_point(global_scope)

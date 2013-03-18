@@ -26,7 +26,6 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
 namespace profile {
 
 // Internal implementation detail -- do not call these.
@@ -34,9 +33,82 @@ void  protobuf_AddDesc_profile_2eproto();
 void protobuf_AssignDesc_profile_2eproto();
 void protobuf_ShutdownFile_profile_2eproto();
 
+class GetProfileInfo;
 class GetProfileInfoResponse;
 
 // ===================================================================
+
+class GetProfileInfo : public ::google::protobuf::Message {
+ public:
+  GetProfileInfo();
+  virtual ~GetProfileInfo();
+  
+  GetProfileInfo(const GetProfileInfo& from);
+  
+  inline GetProfileInfo& operator=(const GetProfileInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetProfileInfo& default_instance();
+  
+  void Swap(GetProfileInfo* other);
+  
+  // implements Message ----------------------------------------------
+  
+  GetProfileInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetProfileInfo& from);
+  void MergeFrom(const GetProfileInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // @@protoc_insertion_point(class_scope:proto.profile.GetProfileInfo)
+ private:
+  
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  
+  friend void  protobuf_AddDesc_profile_2eproto();
+  friend void protobuf_AssignDesc_profile_2eproto();
+  friend void protobuf_ShutdownFile_profile_2eproto();
+  
+  void InitAsDefaultInstance();
+  static GetProfileInfo* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class GetProfileInfoResponse : public ::google::protobuf::Message {
  public:
@@ -110,33 +182,42 @@ class GetProfileInfoResponse : public ::google::protobuf::Message {
   inline ::std::string* mutable_name();
   inline ::std::string* release_name();
   
-  // optional int32 exp = 3;
+  // optional int32 lev = 3;
+  inline bool has_lev() const;
+  inline void clear_lev();
+  static const int kLevFieldNumber = 3;
+  inline ::google::protobuf::int32 lev() const;
+  inline void set_lev(::google::protobuf::int32 value);
+  
+  // optional int32 exp = 4;
   inline bool has_exp() const;
   inline void clear_exp();
-  static const int kExpFieldNumber = 3;
+  static const int kExpFieldNumber = 4;
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
   
-  // optional int32 gold = 4;
+  // optional int32 gold = 5;
   inline bool has_gold() const;
   inline void clear_gold();
-  static const int kGoldFieldNumber = 4;
+  static const int kGoldFieldNumber = 5;
   inline ::google::protobuf::int32 gold() const;
   inline void set_gold(::google::protobuf::int32 value);
   
-  // optional int32 gem = 5;
+  // optional int32 gem = 6;
   inline bool has_gem() const;
   inline void clear_gem();
-  static const int kGemFieldNumber = 5;
+  static const int kGemFieldNumber = 6;
   inline ::google::protobuf::int32 gem() const;
   inline void set_gem(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:proto.response.profile.GetProfileInfoResponse)
+  // @@protoc_insertion_point(class_scope:proto.profile.GetProfileInfoResponse)
  private:
   inline void set_has_status();
   inline void clear_has_status();
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_lev();
+  inline void clear_has_lev();
   inline void set_has_exp();
   inline void clear_has_exp();
   inline void set_has_gold();
@@ -148,12 +229,13 @@ class GetProfileInfoResponse : public ::google::protobuf::Message {
   
   ::std::string* name_;
   ::google::protobuf::int32 status_;
+  ::google::protobuf::int32 lev_;
   ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 gold_;
   ::google::protobuf::int32 gem_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   friend void  protobuf_AddDesc_profile_2eproto();
   friend void protobuf_AssignDesc_profile_2eproto();
@@ -166,6 +248,10 @@ class GetProfileInfoResponse : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// GetProfileInfo
+
+// -------------------------------------------------------------------
 
 // GetProfileInfoResponse
 
@@ -249,15 +335,37 @@ inline ::std::string* GetProfileInfoResponse::release_name() {
   }
 }
 
-// optional int32 exp = 3;
-inline bool GetProfileInfoResponse::has_exp() const {
+// optional int32 lev = 3;
+inline bool GetProfileInfoResponse::has_lev() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GetProfileInfoResponse::set_has_exp() {
+inline void GetProfileInfoResponse::set_has_lev() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GetProfileInfoResponse::clear_has_exp() {
+inline void GetProfileInfoResponse::clear_has_lev() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void GetProfileInfoResponse::clear_lev() {
+  lev_ = 0;
+  clear_has_lev();
+}
+inline ::google::protobuf::int32 GetProfileInfoResponse::lev() const {
+  return lev_;
+}
+inline void GetProfileInfoResponse::set_lev(::google::protobuf::int32 value) {
+  set_has_lev();
+  lev_ = value;
+}
+
+// optional int32 exp = 4;
+inline bool GetProfileInfoResponse::has_exp() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void GetProfileInfoResponse::set_has_exp() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void GetProfileInfoResponse::clear_has_exp() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void GetProfileInfoResponse::clear_exp() {
   exp_ = 0;
@@ -271,15 +379,15 @@ inline void GetProfileInfoResponse::set_exp(::google::protobuf::int32 value) {
   exp_ = value;
 }
 
-// optional int32 gold = 4;
+// optional int32 gold = 5;
 inline bool GetProfileInfoResponse::has_gold() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void GetProfileInfoResponse::set_has_gold() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void GetProfileInfoResponse::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void GetProfileInfoResponse::clear_gold() {
   gold_ = 0;
@@ -293,15 +401,15 @@ inline void GetProfileInfoResponse::set_gold(::google::protobuf::int32 value) {
   gold_ = value;
 }
 
-// optional int32 gem = 5;
+// optional int32 gem = 6;
 inline bool GetProfileInfoResponse::has_gem() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void GetProfileInfoResponse::set_has_gem() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void GetProfileInfoResponse::clear_has_gem() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void GetProfileInfoResponse::clear_gem() {
   gem_ = 0;
@@ -319,7 +427,6 @@ inline void GetProfileInfoResponse::set_gem(::google::protobuf::int32 value) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace profile
-}  // namespace response
 }  // namespace proto
 
 #ifndef SWIG

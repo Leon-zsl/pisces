@@ -26,8 +26,6 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
-namespace common {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_common_2eproto();
@@ -117,7 +115,7 @@ class RequestError : public ::google::protobuf::Message {
   inline ::std::string* mutable_errmsg();
   inline ::std::string* release_errmsg();
   
-  // @@protoc_insertion_point(class_scope:proto.response.common.RequestError)
+  // @@protoc_insertion_point(class_scope:proto.RequestError)
  private:
   inline void set_has_errop();
   inline void clear_has_errop();
@@ -254,8 +252,6 @@ inline ::std::string* RequestError::release_errmsg() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace common
-}  // namespace response
 }  // namespace proto
 
 #ifndef SWIG

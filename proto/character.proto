@@ -1,4 +1,8 @@
-package proto.response.character;
+package proto.character;
+
+message GetCharacterInfo {
+    optional int32 id = 1;
+}
 
 message GetCharacterInfoResponse {
     optional int32 status = 1;

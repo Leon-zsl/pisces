@@ -14,8 +14,6 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
-namespace common {
 
 namespace {
 
@@ -79,9 +77,9 @@ void protobuf_AddDesc_common_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014common.proto\022\025proto.response.common\"<\n"
-    "\014RequestError\022\r\n\005errop\030\001 \001(\005\022\r\n\005error\030\002 "
-    "\001(\005\022\016\n\006errmsg\030\003 \001(\t", 99);
+    "\n\014common.proto\022\005proto\"<\n\014RequestError\022\r\n"
+    "\005errop\030\001 \001(\005\022\r\n\005error\030\002 \001(\005\022\016\n\006errmsg\030\003 "
+    "\001(\t", 83);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   RequestError::default_instance_ = new RequestError();
@@ -403,8 +401,6 @@ void RequestError::Swap(RequestError* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace common
-}  // namespace response
 }  // namespace proto
 
 // @@protoc_insertion_point(global_scope)

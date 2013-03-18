@@ -19,6 +19,8 @@ import util.token as token
 from controllers import *
 import protocol.request_dic as request_dic
 
+import proto.common_pb2 as proto_common
+
 from excepts.illeagal_arg import IlleagalArgExcept
 from excepts.illeagal_msg import IlleagalMsgExcept
 from excepts.miss_token import MissTokenExcept
@@ -141,7 +143,7 @@ class Router(object):
         except MissTokenExcept, ex:
             db().rollback()
             log_root.error('miss token msg format: ' + ex.op)
-            err = response_common.RequestError()
+            err = proto_common.RequestError()
             err.errno = error_code.MISS_TOKEN
             err.errop = ex.op
             err.errmsg = ex.msg
@@ -149,7 +151,7 @@ class Router(object):
         except IlleagalMsgExcept, ex:
             db.rollback()
             log_root.error('illeagal msg format: ' + ex.op)
-            err = response_common.RequestError()
+            err = proto_common.RequestError()
             err.errno = error_code.ILLEAGAL_MSG
             err.errop = ex.op
             err.errmsg = ex.msg

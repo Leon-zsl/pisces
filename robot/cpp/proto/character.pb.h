@@ -26,7 +26,6 @@
 // @@protoc_insertion_point(includes)
 
 namespace proto {
-namespace response {
 namespace character {
 
 // Internal implementation detail -- do not call these.
@@ -34,9 +33,92 @@ void  protobuf_AddDesc_character_2eproto();
 void protobuf_AssignDesc_character_2eproto();
 void protobuf_ShutdownFile_character_2eproto();
 
+class GetCharacterInfo;
 class GetCharacterInfoResponse;
 
 // ===================================================================
+
+class GetCharacterInfo : public ::google::protobuf::Message {
+ public:
+  GetCharacterInfo();
+  virtual ~GetCharacterInfo();
+  
+  GetCharacterInfo(const GetCharacterInfo& from);
+  
+  inline GetCharacterInfo& operator=(const GetCharacterInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetCharacterInfo& default_instance();
+  
+  void Swap(GetCharacterInfo* other);
+  
+  // implements Message ----------------------------------------------
+  
+  GetCharacterInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetCharacterInfo& from);
+  void MergeFrom(const GetCharacterInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+  
+  // @@protoc_insertion_point(class_scope:proto.character.GetCharacterInfo)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  
+  ::google::protobuf::int32 id_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_character_2eproto();
+  friend void protobuf_AssignDesc_character_2eproto();
+  friend void protobuf_ShutdownFile_character_2eproto();
+  
+  void InitAsDefaultInstance();
+  static GetCharacterInfo* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class GetCharacterInfoResponse : public ::google::protobuf::Message {
  public:
@@ -141,7 +223,7 @@ class GetCharacterInfoResponse : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 defense() const;
   inline void set_defense(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:proto.response.character.GetCharacterInfoResponse)
+  // @@protoc_insertion_point(class_scope:proto.character.GetCharacterInfoResponse)
  private:
   inline void set_has_status();
   inline void clear_has_status();
@@ -182,6 +264,32 @@ class GetCharacterInfoResponse : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// GetCharacterInfo
+
+// optional int32 id = 1;
+inline bool GetCharacterInfo::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GetCharacterInfo::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GetCharacterInfo::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GetCharacterInfo::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 GetCharacterInfo::id() const {
+  return id_;
+}
+inline void GetCharacterInfo::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+}
+
+// -------------------------------------------------------------------
 
 // GetCharacterInfoResponse
 
@@ -343,7 +451,6 @@ inline void GetCharacterInfoResponse::set_defense(::google::protobuf::int32 valu
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace character
-}  // namespace response
 }  // namespace proto
 
 #ifndef SWIG
