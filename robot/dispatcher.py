@@ -13,7 +13,7 @@ from msg import Msg
 from app import App
 
 def logger():
-    return App.instance.logger()
+    return App.instance.logger
 
 def join_request_msg(msg_list):
     if not msg_list:
@@ -31,14 +31,14 @@ def slice_response_msg(rcv_msg):
 
     msg_list = []
     for data in data_list:
-        kvp = data.split(':')
-        if len(kvp) != 2:
-            logger().critical('parse msg err: ' + data)
+        if not data.strip():
             continue
-        if kvp[0] == 0:
+        kvp = data.strip().split(':')
+        if not kvp[0]:
             logger().critical('invalid op: ' + data)
             continue
         msg_list.append(Msg(int(kvp[0]), base64.decodestring(kvp[1])))
+    return msg_list
 
 def http_request(req_data, token):
     con = httplib.HTTPConnection(SERVER_ADDR)

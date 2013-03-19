@@ -53,7 +53,7 @@ for i in range(len(client_list)):
 import os.path
 
 import app
-import log
+#import log
 from exception import PiscesException
 from util.streamreader import StreamReader
 

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-class RobotException(Exception):
+class PiscesException(Exception):
     def __init__(self, msg):
         self.msg = msg
 
