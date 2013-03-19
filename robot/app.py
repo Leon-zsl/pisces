@@ -37,6 +37,9 @@ class App(object):
             slp = 0.06 - (end - start)
             time.sleep(slp if slp > 0 else 0.001)
         self.___close()
+
+    def quit(self):
+        self.running = False
         
     def __handle_except(self, ex):
         msg = traceback.format_exc()

@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
-import moduels.account as account
+import modules.account as account
+
 class Game(object):
     def __init__(self):
         pass

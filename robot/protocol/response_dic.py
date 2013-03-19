@@ -8,12 +8,12 @@ from modules import profile
 from modules import character
 
 dic = {
-    REQUEST_ERROR : common.handle_request_error,
+    REQUEST_ERROR : common.request_error_response,
 
-    REGISTER_RESPONSE : account.handle_register_response,
-    LOGIN_RESPONSE : account.handle_login_response,
+    REGISTER_RESPONSE : account.register_response,
+    LOGIN_RESPONSE : account.login_response,
 
-    GET_PROFILE_INFO_RESPONSE : profile.handle_getinfo_response,
+    GET_PROFILE_INFO_RESPONSE : profile.getinfo_response,
 
-    GET_CHARACTER_INFO_RESPONSE : character.handle_getinfo_response,
+    GET_CHARACTER_INFO_RESPONSE : character.getinfo_response,
 }

@@ -9,18 +9,17 @@ import base64
 from config import *
 from protocol import response_dic
 from msg import Msg
-
-from app import App
+import app
 
 def logger():
-    return App.instance.logger
+    return app.App.instance.logger
 
 def join_request_msg(msg_list):
     if not msg_list:
         return ''
     send_msg = ''
     for msg in msg_list:
-        send_msg += '' + msg.opcode + ':' \
+        send_msg += '' + str(msg.opcode) + ':' \
           + base64.encodestring(msg.data) + '|'
     return send_msg.strip('|')
 
@@ -100,7 +99,7 @@ class Dispatcher(object):
         if (not msg) or (not msg.opcode):
             logger().critical('invalid msg or msg op')
             return
-        func = response_dic.get(msg.opcode)
+        func = response_dic.dic.get(msg.opcode)
         if not func:
             logger().critical('unknown msg code: ' + msg.opcode)
             return
