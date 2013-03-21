@@ -42,5 +42,3 @@ class Character(model.Base):
         self.mp = mp
         self.attack = attack
         self.defense = defense
-    
-    

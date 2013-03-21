@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from controllers import account
-from controllers import profile
-from controllers import character
+from controllers import *
 
 from opcode_request import *
 

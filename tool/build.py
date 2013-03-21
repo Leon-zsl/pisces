@@ -3,6 +3,7 @@
 
 import os
 import sys
+import os.path
 
 import except_handler
 import path_util
@@ -45,15 +46,31 @@ def build_proto():
     print 'pck proto begin...'
     pck_proto.pck_proto()
     print 'pck proto end'
+
+def gen_init_py(path):
+    txt = r"""# -*_ coding: utf-8 -*-
+
+import os
+import os.path
     
+__all__ = [pck.split('.')[0] for pck in os.listdir(os.path.split(os.path.realpath(__file__))[0]) if pck.endswith('.py') and pck != __file__ or os.path.isdir(os.path.join(os.path.realpath(__file__), pck))]
+    """
+
+    f = open(os.path.join(path, '__init__.py'), 'w')
+    f.write(txt)
+    f.close()
+
 def cp_res():
     print 'cp res begin...'
+    gen_init_py(EXP_PROTO_PATH_PY)
     path_util.copy_folder_type(EXP_PROTO_PATH_PY,
                                DST_PROTO_PATH_PY,
                                '.py')
     path_util.copy_folder_type(EXP_PROTO_PATH_PY,
                                DST_PROTO_PATH_R,
                                '.py')
+    
+    gen_init_py(CONF_CODE_PATH_PY)
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_PY,
                                '.py')

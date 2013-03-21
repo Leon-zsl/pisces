@@ -1,14 +1,12 @@
 # -*_ coding:utf-8 -*-
 
+import sys
+
 from opcode_request import *
 from opcode_response import *
 from error_code import *
 
-from modules import common
-from modules import common_request_error
-from modules import account
-from modules import profile
-from modules import character
+from modules import *
 
 response_dic = {
     REQUEST_ERROR : common.request_error_response,

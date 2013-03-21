@@ -20,9 +20,7 @@ import protocol.request_dic as request_dic
 
 import proto.common_pb2 as proto_common
 
-from excepts.illeagal_arg import IlleagalArgExcept
-from excepts.illeagal_msg import IlleagalMsgExcept
-from excepts.miss_token import MissTokenExcept
+from excepts import *
 
 def default_user_handler(usrid, op, msg):
     app.App.logger.root.critical("unknown user msg: " + op + ":" + msg)
@@ -134,12 +132,12 @@ class Router(object):
                     raise MissTokenExcept(op, '')
                 opc, msgc = func(op, msg, usrid)
             else:
-                raise IlleagalArgExcept(op, '')
-        except IlleagalArgExcept, ex:
+                raise illeagal_arg.IlleagalArgExcept(op, '')
+        except illeagal_arg.IlleagalArgExcept, ex:
             db().rollback()
             log_root.error('illeage handler arg format: ' + ex.op)
             return opc, msgc
-        except MissTokenExcept, ex:
+        except miss_token.MissTokenExcept, ex:
             db().rollback()
             log_root.error('miss token msg format: ' + ex.op)
             err = proto_common.RequestError()
@@ -147,7 +145,7 @@ class Router(object):
             err.errop = ex.op
             err.errmsg = ex.msg
             return opcode_response.REQUEST_ERROR,err.SerializeToString()
-        except IlleagalMsgExcept, ex:
+        except illeagal_msg.IlleagalMsgExcept, ex:
             db.rollback()
             log_root.error('illeagal msg format: ' + ex.op)
             err = proto_common.RequestError()
