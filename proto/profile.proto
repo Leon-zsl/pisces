@@ -5,11 +5,11 @@ message GetProfileInfo {
 }
 
 message GetProfileInfoResponse {
-    optional int32 status = 1;
+//    optional int32 status = 1;
 
-    optional string name = 2;
-    optional int32 lev = 3;
-    optional int32 exp = 4;
-    optional int32 gold = 5;
-    optional int32 gem = 6;
+    optional string name = 1;
+    optional int32 lev = 2;
+    optional int32 exp = 3;
+    optional int32 gold = 4;
+    optional int32 gem = 5;
 }

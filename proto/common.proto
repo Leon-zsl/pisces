@@ -2,6 +2,6 @@ package proto;
 
 message RequestError {
     optional int32 errop = 1;
-    optional int32 error = 2;
+    optional int32 errno = 2;
     optional string errmsg = 3;
 }

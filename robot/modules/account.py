@@ -14,12 +14,8 @@ def request_register():
 def register_response(msg):
     rsp = pro_account.RegisterResponse()
     rsp.ParseFromString(msg.data)
-    if not rsp.status:
-        request_login()
-    elif rsp.status == error_code.ACCOUNT_EXIST:
-        request_login()
-    else:
-        log_error(msg.opcode, rsp.status)
+    print 'register succ'
+    request_login()
 
 def request_login():
     lg = pro_account.Login()
@@ -31,8 +27,6 @@ def request_login():
 def login_response(msg):
     rsp = pro_account.LoginResponse()
     rsp.ParseFromString(msg.data)
-    if not rsp.status:
-        dispatcher().set_token(rsp.token)
-        mod_profile.request_getinfo()
-    else:
-        log_error(msg.opcode, rsp.status)
+    dispatcher().set_token(rsp.token)
+    print 'login succ'
+    mod_profile.request_getinfo()

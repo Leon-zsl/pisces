@@ -12,7 +12,5 @@ def request_getinfo():
 def getinfo_response(msg):
     rsp = pro_profile.GetProfileInfoResponse()
     rsp.ParseFromString(msg.data)
-    if not rsp.status:
-        mod_character.request_getinfo()
-    else:
-        log_error(msg.opcode, rsp.status)
+    print 'profile getinfo succ'
+    mod_character.request_getinfo()

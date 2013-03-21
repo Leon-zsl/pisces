@@ -6,7 +6,7 @@ message Register {
 }
 
 message RegisterResponse {
-    optional int32 status = 1;
+//    optional int32 status = 1;
 }
 
 message Login {
@@ -15,6 +15,6 @@ message Login {
 }
 
 message LoginResponse {
-    optional int32 status = 1;
-    optional string token = 2;
+//    optional int32 status = 1;
+    optional string token = 1;
 }

@@ -15,6 +15,7 @@ import protocol.error_code as error_code
 import protocol.opcode_request as opcode_request
 import protocol.opcode_response as opcode_response
 
+import proto.common_pb2 as proto_common
 import proto.account_pb2 as proto_account
 
 from excepts.illeagal_msg import IlleagalMsgExcept
@@ -29,30 +30,34 @@ def register(op, msg):
     except:
         raise IlleagalMsgExcept(op, '')
 
-    ret = proto_account.RegisterResponse()
+    err = proto_common.RequestError()
     if not reg.name:
-        ret.status = error_code.EMPTY_NAME
-        return ret
+        err.errop = op
+        err.errno = error_code.EMPTY_NAME
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
     if len(reg.name) > 64:
-        ret.status = error_code.NAME_TO_LONG
-        return ret
+        err.errop = op
+        err.errno = error_code.NAME_TO_LONG
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
     
     #pwd = crypt.des_decode(DES_KEY, reg.pwd)
     pwd = reg.pwd
     if len(pwd) > 32:
-        ret.status = error_code.PWD_TO_LONG
-        return ret
+        err.errop = op
+        err.errno = error_code.PWD_TO_LONG
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
 
     query = db().query(Account)
     account = query.filter_by(name = reg.name).first()
-
     if not account:
+        ret = proto_account.RegisterResponse()
         act = Account(query.count() + 1, reg.name, pwd)
         db().add(act)
-        ret.status = error_code.NO_ERROR
+        return opcode_response.REGISTER_RESPONSE,ret.SerializeToString()
     else:
-        ret.status = error_code.ACCOUNT_EXIST
-    return opcode_response.REGISTER_RESPONSE, ret.SerializeToString()
+        err.errop = op
+        err.errno = error_code.ACCOUNT_EXIST
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
 
 def login(op, msg):
     login = proto_account.Login()
@@ -66,14 +71,16 @@ def login(op, msg):
     #pwd = crypt.des_decode(DES_KEY, login.pwd)
     pwd = login.pwd
 
-    ret = proto_account.LoginResponse()
+    err = proto_common.RequestError()
     if not account:
-        ret.status = error_code.ACCOUNT_NOT_EXIST
-        ret.token = token.uid_to_token(0)
+        err.errop = op
+        err.errno = error_code.ACCOUNT_NOT_EXIST
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
     elif pwd != account.pwd:
-        ret.status = error_code.ACCOUNT_INVALID_PWD
-        ret.token = token.uid_to_token(0)
+        err.errop = op
+        err.errno = error_code.ACCOUNT_INVALID_PWD
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
     else:
-        ret.status = error_code.NO_ERROR
+        ret = proto_account.LoginResponse()
         ret.token = token.uid_to_token(account.usrid)
-    return opcode_response.LOGIN_RESPONSE, ret.SerializeToString()
+        return opcode_response.LOGIN_RESPONSE, ret.SerializeToString()
