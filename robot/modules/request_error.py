@@ -5,6 +5,7 @@ import account as mod_account
 
 def account_exist(reqerr):
     if reqerr.errop == REGISTER:
+        print 'register exist account'
         mod_account.request_login()
     else:
         log_request_error(reqerr)
