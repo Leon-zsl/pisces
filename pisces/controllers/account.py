@@ -10,6 +10,7 @@ import util.token as token
 #import util.crypt as crypt
 
 from models.account import Account
+from models.profile import Profile
 
 import protocol.error_code as error_code
 import protocol.opcode_request as opcode_request
@@ -22,6 +23,9 @@ from excepts.illeagal_msg import IlleagalMsgExcept
 
 def db():
     return app.App.instance.db
+
+def log_root():
+    return app.App.instance.logger.root
 
 def register(op, msg):
     reg = proto_account.Register()
@@ -50,9 +54,13 @@ def register(op, msg):
     query = db().query(Account)
     account = query.filter_by(name = reg.name).first()
     if not account:
-        ret = proto_account.RegisterResponse()
         act = Account(query.count() + 1, reg.name, pwd)
         db().add(act)
+        db().flush()
+
+        log_root().info('create account: %s' % reg.name)
+        
+        ret = proto_account.RegisterResponse()
         return opcode_response.REGISTER_RESPONSE,ret.SerializeToString()
     else:
         err.errop = op
@@ -81,6 +89,7 @@ def login(op, msg):
         err.errno = error_code.ACCOUNT_INVALID_PWD
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
     else:
+        log_root().info('account login: %s' % login.name)
         ret = proto_account.LoginResponse()
         ret.token = token.uid_to_token(account.usrid)
         return opcode_response.LOGIN_RESPONSE, ret.SerializeToString()

@@ -15,12 +15,16 @@ response_dic = {
     LOGIN_RESPONSE : account.login_response,
 
     GET_PROFILE_INFO_RESPONSE : profile.getinfo_response,
+    CREATE_PROFILE_RESPONSE : profile.create_profile_response,
 
     GET_CHARACTER_INFO_RESPONSE : character.getinfo_response,
 }
 
 request_error_dic = {
-    ILLEAGAL_USRID : common_request_error.illeagal_usrid,
+    ILLEAGAL_USRID : {
+        GET_PROFILE_INFO : profile.getinfo_error_invalid_usrid,
+        "default" : common_request_error.illeagal_usrid,
+    },
 
     ACCOUNT_EXIST : {
         REGISTER : account.register_error_account_exist,

@@ -1,7 +1,16 @@
 package proto.profile;
 
+message CreateProfile {
+    optional string nickname = 1;
+    optional int32 character_id = 2;
+}
+
+message CreateProfileResponse {
+    //nothing
+}
+
 message GetProfileInfo {
-    //no elem
+    //nothing
 }
 
 message GetProfileInfoResponse {

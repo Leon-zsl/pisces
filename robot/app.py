@@ -36,7 +36,7 @@ class App(object):
             end = time.time()
             slp = 0.06 - (end - start)
             time.sleep(slp if slp > 0 else 0.001)
-        self.___close()
+        self.__close()
 
     def quit(self):
         self.running = False

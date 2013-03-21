@@ -9,6 +9,7 @@ dic = {
     LOGIN    : account.login,
 
     GET_PROFILE_INFO : profile.get_info,
-
+    CREATE_PROFILE : profile.create_profile,
+    
     GET_CHARACTER_INFO : character.get_info,
 }

@@ -21,6 +21,31 @@ def db():
 def log_root():
     return app.App.instance.logger.root
 
+def create_profile(op, msg, usrid):
+    req = proto_profile.CreateProfile()
+    try:
+        req.ParseFromString(msg)
+    except:
+        raise IlleagalMsgExcept(op, '')
+
+    query = db().query(Profile)
+    pf = query.get(usrid)
+    if pf:
+        err = proto_common.RequestError()
+        err.errop = op
+        err.errno = ACCOUNT_EXIST
+        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+    
+    pf = Profile(usrid, req.nickname, 1, 0, 0, 0)
+    db().add(pf)
+    db().flush()
+
+    log_root().info('create profile %s' % req.nickname)
+
+    ret = proto_profile.CreateProfileResponse()
+    return opcode_response.CREATE_PROFILE_RESPONSE, \
+      ret.SerializeToString()
+
 def get_info(op, msg, usrid):
     req = proto_profile.GetProfileInfo()
     try:

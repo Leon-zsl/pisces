@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import json
+#import json
 import base64
 import inspect
 import imp
@@ -16,7 +16,7 @@ import log
 import util.token as token
 
 from controllers import *
-import protocol.request_dic as request_dic
+from protocol import *
 
 import proto.common_pb2 as proto_common
 
@@ -129,7 +129,7 @@ class Router(object):
                 opc, msgc = func(op, msg)
             elif len(inspect.getargspec(func).args) == 3:
                 if not usrid:
-                    raise MissTokenExcept(op, '')
+                    raise miss_token.MissTokenExcept(op, '')
                 opc, msgc = func(op, msg, usrid)
             else:
                 raise illeagal_arg.IlleagalArgExcept(op, '')

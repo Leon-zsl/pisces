@@ -14,3 +14,20 @@ def getinfo_response(msg):
     rsp.ParseFromString(msg.data)
     print 'profile getinfo succ'
     mod_character.request_getinfo()
+
+def getinfo_error_invalid_usrid(err):
+    print 'invalid usr info'
+    request_create_profile()
+
+def request_create_profile():
+    req = pro_profile.CreateProfile()
+    req.nickname = 'fox'
+    req.character_id = 1
+    data = req.SerializeToString()
+    dispatcher().send_msg(Msg(CREATE_PROFILE, data))
+
+def create_profile_response(msg):
+    req = pro_profile.CreateProfileResponse()
+    req.ParseFromString(msg.data)
+    print 'create profile succ'
+    mod_character.request_getinfo()
