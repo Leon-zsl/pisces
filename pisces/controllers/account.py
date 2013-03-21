@@ -56,7 +56,8 @@ def register(op, msg):
     if not account:
         act = Account(query.count() + 1, reg.name, pwd)
         db().add(act)
-        db().flush()
+        db().commit()
+        #db().flush()
 
         log_root().info('create account: %s' % reg.name)
         

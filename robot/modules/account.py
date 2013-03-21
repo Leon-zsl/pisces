@@ -6,8 +6,8 @@ import profile as mod_profile
 
 def request_register():
     reg = pro_account.Register()
-    reg.name = 'leon'
-    reg.pwd = 'leon'
+    reg.name = 'leonc'
+    reg.pwd = 'leonc'
     data = reg.SerializeToString()
     dispatcher().send_msg(Msg(REGISTER, data))
 
@@ -23,8 +23,8 @@ def register_error_account_exist(err):
 
 def request_login():
     lg = pro_account.Login()
-    lg.name = 'leon'
-    lg.pwd = 'leon'
+    lg.name = 'leonc'
+    lg.pwd = 'leonc'
     data = lg.SerializeToString()
     dispatcher().send_msg(Msg(LOGIN, data))
 

@@ -38,9 +38,10 @@ def create_profile(op, msg, usrid):
     
     pf = Profile(usrid, req.nickname, 1, 0, 0, 0)
     db().add(pf)
-    db().flush()
+    db().commit()
+    #db().flush()
 
-    log_root().info('create profile %s' % req.nickname)
+    log_root().info('create profile %d:%s' % (usrid, req.nickname))
 
     ret = proto_profile.CreateProfileResponse()
     return opcode_response.CREATE_PROFILE_RESPONSE, \

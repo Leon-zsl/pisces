@@ -12,7 +12,7 @@ import pck_proto
 
 from config import *
 
-def build_conf_s():
+def build_conf_py():
     print "build conf py begin..."
     pck_config.pack_config_dir_py(CONF_PATH,
                                   CONF_CODE_PATH_PY,
@@ -22,7 +22,7 @@ def build_conf_s():
                                   CONF_FACT_MAKO_PY)
     print "build conf py end"
 
-def build_conf_c():
+def build_conf_cc():
     print "build conf cpp begin..."
     pck_config.pack_config_dir_cc(CONF_PATH,
                                   CONF_CODE_PATH_C,
@@ -35,7 +35,7 @@ def build_conf_c():
                                   CONF_FACT_MAKO_H)
     print "build conf cpp end"
 
-def build_conf_d():
+def build_conf_data():
     print 'build conf data begin...'
     pck_config.pack_config_dir_data(CONF_PATH,
                                     CONF_BIN_PATH,
@@ -69,7 +69,6 @@ def cp_res():
     path_util.copy_folder_type(EXP_PROTO_PATH_PY,
                                DST_PROTO_PATH_R,
                                '.py')
-    
     gen_init_py(CONF_CODE_PATH_PY)
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_PY,
