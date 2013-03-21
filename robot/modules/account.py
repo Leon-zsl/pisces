@@ -17,6 +17,10 @@ def register_response(msg):
     print 'register succ'
     request_login()
 
+def register_error_account_exist(err):
+    print 'register account exist'
+    request_login()
+
 def request_login():
     lg = pro_account.Login()
     lg.name = 'leon'
@@ -30,3 +34,6 @@ def login_response(msg):
     dispatcher().set_token(rsp.token)
     print 'login succ'
     mod_profile.request_getinfo()
+
+def login_error_account_not_exist(err):
+    log_request_error(err)

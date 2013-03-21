@@ -7,7 +7,7 @@ import httplib, urllib
 import base64
 
 from config import *
-from protocol import response_dic
+from protocol import protocol_dic
 from msg import Msg
 import app
 
@@ -99,7 +99,7 @@ class Dispatcher(object):
         if (not msg) or (not msg.opcode):
             logger().critical('invalid msg or msg op')
             return
-        func = response_dic.dic.get(msg.opcode)
+        func = protocol_dic.response_dic.get(msg.opcode)
         if not func:
             logger().critical('unknown msg code: ' + msg.opcode)
             return

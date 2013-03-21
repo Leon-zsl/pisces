@@ -1,15 +1,16 @@
 # -*_ coding:utf-8 -*-
 
+from opcode_request import *
 from opcode_response import *
 from error_code import *
 
 from modules import common
-from modules import request_error
+from modules import common_request_error
 from modules import account
 from modules import profile
 from modules import character
 
-dic = {
+response_dic = {
     REQUEST_ERROR : common.request_error_response,
 
     REGISTER_RESPONSE : account.register_response,
@@ -20,7 +21,17 @@ dic = {
     GET_CHARACTER_INFO_RESPONSE : character.getinfo_response,
 }
 
-err_dic = {
-    # add your own err handle below
-    ACCOUNT_EXIST : request_error.account_exist,
+request_error_dic = {
+    ILLEAGAL_USRID : common_request_error.illeagal_usrid,
+
+    ACCOUNT_EXIST : {
+        REGISTER : account.register_error_account_exist,
+    },
+
+    ACCOUNT_NOT_EXIST : {
+        LOGIN : account.login_error_account_not_exist,
+        'default' : common_request_error.account_not_exist,
+    },
+
+    'default' : common.default_error_response,
 }
