@@ -82,12 +82,27 @@ def build():
     exhook = sys.excepthook
     sys.excepthook = except_handler._excepthook
 
-    build_proto()
-    
-    build_conf_s()
-    build_conf_c()
-    build_conf_d()
-
+    if len(sys.argv) < 2 or sys.argv[1].lower().strip() == 'all':
+        build_proto()
+        build_conf_py()
+        build_conf_cc()
+        build_conf_data()
+    elif sys.argv[1].lower().strip() == 'proto':
+        build_proto()
+    elif sys.argv[1].lower().strip() == 'conf':
+        if len(sys.argv) < 3 or sys.argv[2].lower().strip() == 'all':
+            build_conf_py()
+            build_conf_cc()
+            build_conf_data()
+        elif sys.argv[2].lower().strip() == 'py':
+            build_conf_py()
+            build_conf_data()
+        elif sys.argv[2].lower().strip() == 'cc':
+            build_conf_cc()
+            build_conf_data()
+        elif sys.argv[2].lower().strip() == 'data':
+            build_conf_data()
+            
     cp_res()
     
     sys.excepthook = exhook
