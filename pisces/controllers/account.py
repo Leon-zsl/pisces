@@ -60,7 +60,11 @@ def register(op, msg):
         salt = str(random.randint(0, 10000000))
         salt = '0' * (8 - len(salt)) + salt
         pwd = salt + str(hashlib.md5(salt + pwd).hexdigest())
-        act = Account(query.count() + 1, reg.name, pwd, time.asctime())
+
+        t = time.gmtime()
+        t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
+                                  t.tm_hour, t.tm_min, t.tm_sec)
+        act = Account(query.count() + 1, reg.name, pwd, t)
         db().add(act)
         db().commit()
         #db().flush()
@@ -98,7 +102,9 @@ def login(op, msg):
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
     else:
         log_root().info('account login: %s' % login.name)
-        t = time.asctime()
+        t = time.gmtime()
+        t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
+                                  t.tm_hour, t.tm_min, t.tm_sec)
         account.login_time = t
         db().commit()
         ret = proto_account.LoginResponse()
