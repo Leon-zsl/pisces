@@ -5,18 +5,17 @@ import mcrypt
 
 from config import *
 
-def token_to_uid(token):
+def parse_token(token):
     data = token.replace('.', '+').replace('_', '/') + '='
     data = base64.decodestring(data)
     mc = mcrypt.MCRYPT(MCRYPT_ALGORITHM, MCRYPT_MODE)
     mc.init(MCRYPT_KEY)
     val = mc.decrypt(data)
-    return int(val)
+    uid, app_ver, lg_time = val.split('|')
+    return [int(uid), app_ver, lg_time]
 
-def uid_to_token(uid):
-    data = str(uid)
-    if len(data) < 20:
-        data = '0' * (20 - len(data)) + data
+def gen_token(uid, app_ver, lg_time):
+    data = str(uid) + '|' + app_ver + '|' + lg_time
     mc = mcrypt.MCRYPT(MCRYPT_ALGORITHM, MCRYPT_MODE)
     mc.init(MCRYPT_KEY)
     val = mc.encrypt(data)

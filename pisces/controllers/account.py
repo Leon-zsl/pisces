@@ -2,6 +2,8 @@
 
 from config import *
 
+import time
+
 import app
 import db
 import log
@@ -54,7 +56,7 @@ def register(op, msg):
     query = db().query(Account)
     account = query.filter_by(name = reg.name).first()
     if not account:
-        act = Account(query.count() + 1, reg.name, pwd)
+        act = Account(query.count() + 1, reg.name, pwd, time.asctime())
         db().add(act)
         db().commit()
         #db().flush()
@@ -91,6 +93,9 @@ def login(op, msg):
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
     else:
         log_root().info('account login: %s' % login.name)
+        t = time.asctime()
+        account.login_time = t
+        db().commit()
         ret = proto_account.LoginResponse()
-        ret.token = token.uid_to_token(account.usrid)
+        ret.token = token.gen_token(account.usrid, APP_VERSION, t)
         return opcode_response.LOGIN_RESPONSE, ret.SerializeToString()
