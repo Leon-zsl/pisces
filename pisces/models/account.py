@@ -14,10 +14,10 @@ class Account(model.Base):
                   nullable=False,
                   unique=True)
     
-    pwd = Column(String(32),
+    pwd = Column(String(64),
                  nullable=False)
 
-    login_time = Column(String(32),
+    login_time = Column(String(64),
                         nullable = False)
 
     def __init__(self, usrid, name, pwd, lg_time):

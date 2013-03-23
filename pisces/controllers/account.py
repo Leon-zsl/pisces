@@ -1,13 +1,14 @@
 # -*- coding:utf-8 -*-
 
-from config import *
-
+import random
 import time
+import hashlib
 
 import app
 import db
 import log
 
+from config import *
 import util.token as token
 #import util.crypt as crypt
 
@@ -48,7 +49,7 @@ def register(op, msg):
     
     #pwd = crypt.des_decode(DES_KEY, reg.pwd)
     pwd = reg.pwd
-    if len(pwd) > 32:
+    if len(pwd) > 24:
         err.errop = op
         err.errno = error_code.PWD_TO_LONG
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
@@ -56,6 +57,9 @@ def register(op, msg):
     query = db().query(Account)
     account = query.filter_by(name = reg.name).first()
     if not account:
+        salt = str(random.randint(0, 10000000))
+        salt = '0' * (8 - len(salt)) + salt
+        pwd = salt + str(hashlib.md5(salt + pwd).hexdigest())
         act = Account(query.count() + 1, reg.name, pwd, time.asctime())
         db().add(act)
         db().commit()
@@ -80,7 +84,8 @@ def login(op, msg):
     query = db().query(Account)
     account = query.filter_by(name = login.name).first()
     #pwd = crypt.des_decode(DES_KEY, login.pwd)
-    pwd = login.pwd
+    salt = account.pwd[0:8]
+    pwd = salt + str(hashlib.md5(salt + login.pwd).hexdigest())
 
     err = proto_common.RequestError()
     if not account:
