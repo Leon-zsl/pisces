@@ -64,7 +64,7 @@ def get_info(op, msg, usrid):
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
     else:
         ret = proto_profile.GetProfileInfoResponse()
-        ret.name = profile.name
+        ret.nickname = profile.name
         ret.lev = profile.lev
         ret.exp = profile.exp
         ret.gold = profile.gold

@@ -16,7 +16,7 @@ message GetProfileInfo {
 message GetProfileInfoResponse {
 //    optional int32 status = 1;
 
-    optional string name = 1;
+    optional string nickname = 1;
     optional int32 lev = 2;
     optional int32 exp = 3;
     optional int32 gold = 4;

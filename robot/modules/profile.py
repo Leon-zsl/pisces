@@ -12,7 +12,7 @@ def request_getinfo():
 def getinfo_response(msg):
     rsp = pro_profile.GetProfileInfoResponse()
     rsp.ParseFromString(msg.data)
-    print 'profile getinfo succ'
+    print 'profile getinfo succ', rsp.nickname
     mod_character.request_getinfo()
 
 def getinfo_error_invalid_usrid(err):
