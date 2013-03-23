@@ -9,6 +9,8 @@ from excepts import *
 
 from protocol import error_code
 from protocol import request_dic
+from protocol import opcode_response
+from protocol import opcode_request
 
 from models import account
 import proto.common_pb2 as proto_common
@@ -20,6 +22,22 @@ def log_root():
 
 def db():
     return app.App.instance.db
+
+def get_req_op_desc(op):
+    lst = dir(opcode_request)
+    for attr in lst:
+        val = getattr(opcode_request, attr)
+        if type(val) == int and val == op:
+            return attr
+    return 'unknown request opcode'
+
+def get_rsp_op_desc(op):
+    lst = dir(opcode_response)
+    for attr in lst:
+        val = getattr(opcode_response, attr)
+        if type(val) == int and val == op:
+            return attr
+    return 'unknown response opcode'
 
 class Processor(object):
     def __init__(self):
@@ -58,7 +76,8 @@ class Processor(object):
                 raise illeagal_arg.IlleagalArgExcept(op, '')
 
             dt = time.time() - start
-            log_root().info("handler time: %d: %.3fms", op, dt * 1000)
+            log_root().info("handler time: %d[%s]:%.3fms", \
+                            op, get_req_op_desc(op), dt * 1000)
             return opc, msgc
         except illeagal_msg.IlleagalMsgExcept, ex:
             db.rollback()
