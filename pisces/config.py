@@ -14,3 +14,5 @@ MCRYPT_ALGORITHM = 'rijndael-256'
 MCRYPT_MODE = 'ofb'
 MCRYPT_KEY = 'pisces_server_zsl_1234567890_abc'
 
+#echo sqlalchemy
+SQLALCHEMY_ECHO = False

@@ -22,12 +22,6 @@ import proto.common_pb2 as proto_common
 
 from excepts import *
 
-def default_user_handler(usrid, op, msg):
-    app.App.logger.root.critical("unknown user msg: " + op + ":" + msg)
-
-def default_handler(op, msg):
-    app.App.logger.root.critical("unknown msg: " + op + ":" + msg)
-    
 def log_root():
     return app.App.instance.logger.root
 
@@ -116,7 +110,7 @@ class Router(object):
     def exc_handler(self, op, msg, usrid):
         opc = 0
         msgc = ''
-        func = self.handler_dic.get(op, default_handler)
+        func = self.handler_dic.get(op)
         if not func:
             log_root().critical("unknown func: " + str(op))
             return

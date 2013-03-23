@@ -4,6 +4,8 @@ from ConfigParser import ConfigParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from config import *
+
 import model
 from models import *
 
@@ -20,7 +22,9 @@ class DBMgr(object):
           + "/" + parser.get(conf_name, "database")    \
           + "?charset=utf8"
 
-        self.engine = create_engine(url, encoding='utf8', echo=True)
+        self.engine = create_engine(url,
+                                    encoding='utf8', 
+                                    echo=SQLALCHEMY_ECHO)
         self.session_cls = sessionmaker(bind = self.engine)
         model.Base.metadata.create_all(self.engine)
     
