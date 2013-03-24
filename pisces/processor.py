@@ -55,7 +55,7 @@ class Processor(object):
     def parse_handler_map(self):
         return request_dic.dic
 
-    def process(self, op, msg, token):
+    def process(self, op, msg, token, request_handler):
         func = self.handler_dic.get(op)
         if not func:
             log_root().critical("invalid request: " + str(op))
@@ -71,10 +71,12 @@ class Processor(object):
             msgc = ''
             start = time.time()
 
-            if len(inspect.getargspec(func).args) == 2:
-                opc, msgc = self.proc_without_token(func, op, msg)
-            elif len(inspect.getargspec(func).args) == 3:
-                opc, msgc = self.proc_with_token(func, op, msg, token)
+            if len(inspect.getargspec(func).args) == 3:
+                opc, msgc = self.proc_without_token(func, op, msg, 
+                                                    request_handler)
+            elif len(inspect.getargspec(func).args) == 4:
+                opc, msgc = self.proc_with_token(func, op, msg, token,
+                                                 request_handler)
             else:
                 raise illeagal_arg.IlleagalArgExcept(op, '')
 
@@ -93,7 +95,7 @@ class Processor(object):
             return opcode_response.REQUEST_ERROR, \
               err.SerializeToString()
                     
-    def proc_with_token(self, func, op, msg, token):
+    def proc_with_token(self, func, op, msg, token, request_handler):
         if not token:
             log_root.error('miss token: ' + op)
             err = proto_common.RequestError()
@@ -154,6 +156,6 @@ class Processor(object):
             
         return func(op, msg, usrid)
 
-    def proc_without_token(self, func, op, msg):
+    def proc_without_token(self, func, op, msg, request_handler):
         return func(op, msg)
             

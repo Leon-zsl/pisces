@@ -116,10 +116,9 @@ class MainHandler(tornado.web.RequestHandler):
     # @tornado.web.asynchronous
     # @tornado.gen.engine
     def post(self):
-        info = "main handler post request: "
-        info += self.request.remote_ip
-        App.instance.logger.root.info(info)
-
+        # info = "main handler post request: "
+        # info += self.request.remote_ip
+        # App.instance.logger.root.info(info)
         response = App.instance.router.dispatch(self)
         self.write(response)
 

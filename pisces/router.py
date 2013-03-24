@@ -40,7 +40,8 @@ class Router(object):
         try:
             token = self.parse_token(request_handler.request)
             msg_list = self.parse_msg(request_handler.request)
-            val_list = self.handle_msg(token, msg_list)
+            val_list = self.handle_msg(token, msg_list, 
+                                       request_handler)
             response = self.parse_response(val_list)
             return response
         except PiscesException, ex:
@@ -79,12 +80,13 @@ class Router(object):
             val_list.append(dic)
         return val_list
 
-    def handle_msg(self, token, msg_list):
+    def handle_msg(self, token, msg_list, request_handler):
         val_list = []
         for msg in msg_list:
             op = msg.keys()[0]
             cont = msg.values()[0]
-            opc, msgc = self.processor.process(op, cont, token)
+            opc, msgc = self.processor.process(op, cont, token, 
+                                               request_handler)
             val_list.append({ opc : msgc })
         return val_list
 
