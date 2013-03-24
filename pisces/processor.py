@@ -79,8 +79,8 @@ class Processor(object):
                 raise illeagal_arg.IlleagalArgExcept(op, '')
 
             dt = time.time() - start
-            log_root().info("handler time: %d[%s]:%.3fms", \
-                            op, get_req_op_desc(op), dt * 1000)
+            log_root().info("handler time: %d[%s]:%.3fms" % \
+                            (op, get_req_op_desc(op), dt * 1000))
             return opc, msgc
         except illeagal_msg.IlleagalMsgExcept, ex:
             db().rollback()

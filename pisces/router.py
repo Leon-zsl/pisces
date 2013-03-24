@@ -5,6 +5,7 @@
 #import sys
 #import os
 #import os.path
+#import time
 import base64
 
 import app
@@ -33,6 +34,7 @@ class Router(object):
         self.processor.close()
 
     def dispatch(self, request_handler):
+        # start = time.time()
         db().open_session()
         db_rcd().open_session()
         try:
@@ -48,6 +50,8 @@ class Router(object):
         finally:
             db_rcd().close_session()
             db().close_session()
+            # dt = time.time() - start
+            # log_root().info('dispatch time: %.3fms' % (dt * 1000))
             
     def parse_token(self, request):
         if not request.arguments.has_key("token"):
