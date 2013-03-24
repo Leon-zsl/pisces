@@ -13,7 +13,7 @@ class LoggerMgr(object):
         if DEV_LEV == 'product':
             self.root.setLevel(logging.INFO)
             self.debug.setLevel(logging.ERROR)
-        elif DEV == 'develop':
+        elif DEV_LEV == 'develop':
             self.root.setLevel(logging.INFO)
             self.debug.setLevel(logging.DEBUG)
         else:
