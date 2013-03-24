@@ -34,8 +34,7 @@ class App(object):
     def __init__(self):
         try:
             sys.excepthook = _excepthook
-            self.logger = LoggerMgr('config/log.conf', 
-                                    'pisces_' + str(os.getpid()))
+            self.logger = LoggerMgr('config/log.conf')
             self.db = DBMgr('config/db.conf', 'db_game')
             self.db_record = DBMgr('config/db.conf', 'db_record')
             self.router = Router()
