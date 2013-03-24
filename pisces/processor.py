@@ -71,13 +71,28 @@ class Processor(object):
             msgc = ''
             start = time.time()
 
-            if len(inspect.getargspec(func).args) == 2:
-                opc, msgc = self.proc_without_token(func, op, msg)
-            elif len(inspect.getargspec(func).args) == 3:
-                opc, msgc = self.proc_with_token(func, op, msg, token)
-            else:
-                raise illeagal_arg.IlleagalArgExcept(op, '')
+            omit_token=request_dic.token_omit.count(op)
+            require_request=request_dic.request_info_require.count(op)
+            
+            if not omit_token:
+                val = self.check_token(token)
+                if val:
+                    err = proto_common.RequestError()
+                    err.errno = val
+                    err.errop = op
+                    err.errmsg = ''
+                    return opcode_response.REQUEST_ERROR, \
+                      err.SerializeToString()
 
+            if not omit_token and require_request:
+                opc, msgc = func(op, msg, token[0], request_handler)
+            elif not omit_token:
+                opc, msgc = func(op, msg, token[0])
+            elif require_request:
+                opc, msgc = func(op, msg, request_handler)
+            else:
+                opc, msgc = func(op, msg)
+                
             dt = time.time() - start
             log_root().info("handler time: %d[%s]:%.3fms" % \
                             (op, get_req_op_desc(op), dt * 1000))
@@ -93,67 +108,33 @@ class Processor(object):
             return opcode_response.REQUEST_ERROR, \
               err.SerializeToString()
                     
-    def proc_with_token(self, func, op, msg, token):
+    def check_token(self, token):
         if not token:
             log_root.error('miss token: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.MISS_TOKEN
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()
+            return error_code.MISS_TOKEN
               
         if len(token) != 3:
             log_root.error('invalid token: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.INVALID_TOKEN
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()            
+            return error_code.INVALID_TOKEN
 
         usrid = token[0]
         if not usrid:
             log_root.error('illeagal usr id: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.ILLEAGAL_USRID
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()
+            return error_code.ILLEAGAL_USRID
 
         usr = db().query(account.Account).get(usrid)
         if not usr:
             log_root.error('illeagal usr id: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.ILLEAGAL_USRID
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()
+            return error_code.ILLEAGAL_USRID
             
         ver = token[1]
         if not ver or ver != APP_VERSION:
             log_root.error('invalid app version: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.INVALID_APP_VERSION
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()
+            return error_code.INVALID_APP_VERSION
 
         lgtime = token[2]
         if not lgtime or lgtime != usr.login_time:
             log_root.error('token time out: ' + op)
-            err = proto_common.RequestError()
-            err.errno = error_code.TOKEN_TIMEOUT
-            err.errop = op
-            err.errmsg = ''
-            return opcode_response.REQUEST_ERROR, \
-              err.SerializeToString()
-            
-        return func(op, msg, usrid)
+            return error_code.TOKEN_TIMEOUT
 
-    def proc_without_token(self, func, op, msg):
-        return func(op, msg)
-            
+        return error_code.NO_ERROR

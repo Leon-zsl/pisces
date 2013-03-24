@@ -90,7 +90,7 @@ def register(op, msg):
         err.errno = error_code.ACCOUNT_EXIST
         return opcode_response.REQUEST_ERROR, err.SerializeToString()
 
-def login(op, msg):
+def login(op, msg, req_handler):
     login = proto_account.Login()
     try:
         login.ParseFromString(msg)

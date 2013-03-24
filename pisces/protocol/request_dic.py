@@ -13,3 +13,7 @@ dic = {
     
     GET_CHARACTER_INFO : character.get_info,
 }
+
+token_omit = [REGISTER, LOGIN]
+
+request_info_require = [LOGIN]
