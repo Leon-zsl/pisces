@@ -64,10 +64,10 @@ class App(object):
             self.handle_except(e)
             
     def handle_except(self, ex):
-        msg = traceback.format_exc()
         if hasattr(self, 'logger'):
-            self.logger.root.critical("unknown exception caught:" + msg)
+            self.logger.root.exception("unknown exception:" + ex.msg)
         else:
+            msg = traceback.format_exc()
             raise Exception(msg)
         
         #self.close()
