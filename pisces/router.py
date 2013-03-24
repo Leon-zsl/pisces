@@ -7,6 +7,7 @@
 #import os.path
 #import time
 import base64
+import traceback
 
 import app
 from processor import Processor
@@ -47,7 +48,8 @@ class Router(object):
         except PiscesException, ex:
             db_rcd().rollback()
             db().rollback()
-            log_root().critical('uncaught pisces except: ' + ex.msg)
+            log_root().critical('uncaught pisces except: ' + ex.msg
+                                + ":" + traceback.format_exc())
         finally:
             db_rcd().close_session()
             db().close_session()
