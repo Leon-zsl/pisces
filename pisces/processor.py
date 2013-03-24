@@ -23,6 +23,9 @@ def log_root():
 def db():
     return app.App.instance.db
 
+def db_rcd():
+    return app.App.instance.db_record
+
 def get_req_op_desc(op):
     lst = dir(opcode_request)
     for attr in lst:
@@ -80,7 +83,8 @@ class Processor(object):
                             op, get_req_op_desc(op), dt * 1000)
             return opc, msgc
         except illeagal_msg.IlleagalMsgExcept, ex:
-            db.rollback()
+            db().rollback()
+            db_rcd().rollback()
             log_root.error('illeagal msg format: ' + ex.op)
             err = proto_common.RequestError()
             err.errno = error_code.ILLEAGAL_MSG

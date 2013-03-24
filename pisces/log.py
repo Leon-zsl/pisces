@@ -4,10 +4,9 @@ import logging
 import logging.config
 
 class LoggerMgr(object):
-    def __init__(self):
-        logging.config.fileConfig("config/log.conf")
+    def __init__(self, conf, app_name):
+        logging.config.fileConfig(conf)
         self.root = logging.getLogger("root")
-        self.support  = logging.getLogger("support")
         self.debug = logging.getLogger("debug")
         
     def __del__(self):

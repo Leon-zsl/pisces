@@ -1,5 +1,11 @@
 # -*- coding:utf-8 -*-
 
+#version
+APP_VERSION = '0.0.1'
+
+#develop level, product, develop
+DEV_LEV = 'develop'
+
 #tornado listen port
 DEFAULT_LISTEN_PORT = 8001
 
@@ -16,6 +22,3 @@ MCRYPT_KEY = 'pisces_server_zsl_1234567890_abc'
 
 #echo sqlalchemy
 SQLALCHEMY_ECHO = False
-
-#version
-APP_VERSION = '0.0.1'

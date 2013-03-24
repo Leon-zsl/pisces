@@ -9,6 +9,7 @@ import base64
 
 import app
 from processor import Processor
+from exception import PiscesException
 
 import util.token as token
 
@@ -17,6 +18,9 @@ def log_root():
 
 def db():
     return app.App.instance.db
+
+def db_rcd():
+    return app.App.instance.db_record
 
 class Router(object):
     def __init__(self):
@@ -30,15 +34,21 @@ class Router(object):
 
     def dispatch(self, request_handler):
         db().open_session()
-
-        token = self.parse_token(request_handler.request)
-        msg_list = self.parse_msg(request_handler.request)
-        val_list = self.handle_msg(token, msg_list)
-        response = self.parse_response(val_list)
-
-        db().close_session()
-        return response
-        
+        db_rcd().open_session()
+        try:
+            token = self.parse_token(request_handler.request)
+            msg_list = self.parse_msg(request_handler.request)
+            val_list = self.handle_msg(token, msg_list)
+            response = self.parse_response(val_list)
+            return response
+        except PiscesException, ex:
+            db_rcd().rollback()
+            db().rollback()
+            log_root().critical('uncaught pisces except: ' + ex.msg)
+        finally:
+            db_rcd().close_session()
+            db().close_session()
+            
     def parse_token(self, request):
         if not request.arguments.has_key("token"):
             return 0

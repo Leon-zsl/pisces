@@ -6,14 +6,11 @@ from sqlalchemy.orm import sessionmaker
 
 from config import *
 
-import model
-from models import *
-
 class DBMgr(object):
-    def __init__(self):
+    def __init__(self, conf, label):
         parser = ConfigParser()
-        parser.read("config/db.conf")
-        conf_name = "db_game"
+        parser.read(conf)
+        conf_name = label
         url = "mysql+mysqldb://"                       \
           + parser.get(conf_name, "username")          \
           + ":" + parser.get(conf_name, "password")    \
@@ -26,7 +23,7 @@ class DBMgr(object):
                                     encoding='utf8', 
                                     echo=SQLALCHEMY_ECHO)
         self.session_cls = sessionmaker(bind = self.engine)
-        model.Base.metadata.create_all(self.engine)
+        #model.Base.metadata.create_all(self.engine)
     
     def __del__(self):
         self.close()
@@ -58,3 +55,6 @@ class DBMgr(object):
 
     def rollback(self):
         self.session.rollback()
+
+    def create_tables(self, orm):
+        orm.metadata.create_all(self.engine)
