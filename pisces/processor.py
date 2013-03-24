@@ -71,8 +71,8 @@ class Processor(object):
             msgc = ''
             start = time.time()
 
-            omit_token=request_dic.token_omit.count(op)
-            require_request=request_dic.request_info_require.count(op)
+            omit_token = op in request_dic.token_omit
+            require_request = op in request_dic.request_info_require
             
             if not omit_token:
                 val = self.check_token(token)

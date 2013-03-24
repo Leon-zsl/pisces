@@ -64,11 +64,11 @@ class App(object):
             self.handle_except(e)
             
     def handle_except(self, ex):
-        if hasattr(self, 'logger'):
-            self.logger.root.exception("unknown exception:" + ex.msg)
-        else:
-            msg = traceback.format_exc()
-            raise Exception(msg)
+        # if hasattr(self, 'logger'):
+        #     self.logger.root.exception("unknown exception:" + ex.msg)
+        # else:
+        msg = traceback.format_exc()
+        raise Exception(msg)
         
         #self.close()
         self.db.rollback()
@@ -94,10 +94,11 @@ class App(object):
 
         self.logger.root.info("init tornado conf "
                              + "port: " + str(options.listen_port))
-        
-        web_app = tornado.web.Application([
-            (r"/pisces", MainHandler),
-            ])
+
+        settings = {'log_function' : _tornado_logger}
+        web_app = tornado.web.Application(
+            [(r"/pisces", MainHandler)],
+            **settings)
         http_server = tornado.httpserver.HTTPServer(web_app)
         http_server.listen(options.listen_port)
         tornado.ioloop.IOLoop.instance().start()
@@ -129,3 +130,27 @@ def _excepthook(exctype, value, tb):
     traceback.print_tb(tb)
     raw_input("press Enter to continue...")
     exit()
+
+def _tornado_logger(handler):
+    logger = App.instance.logger.root
+    status = handler.get_status()
+    if DEV_LEV == 'product':
+        if status >= 500:
+            logger.error('tornado: %d', status)
+        elif status >= 400:
+            logger.warning('tornado: %d', status)
+    elif DEV_LEV == 'develop':
+        if status >= 500:
+            logger.error('tornado: %d %s %.3fms', status,
+                        handler._request_summary(),
+                        1000 * handler.request.request_time())
+        elif status >= 400:
+            logger.warning('tornado: %d %s %.3fms', status,
+                        handler._request_summary(),
+                        1000 * handler.request.request_time())
+        else:
+            logger.info('tornado: %d %s %.3fms', status, 
+                        handler._request_summary(),
+                        1000 * handler.request.request_time())
+    else:
+        print 'unknown dev lev'
