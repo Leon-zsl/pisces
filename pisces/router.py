@@ -73,26 +73,15 @@ class Router(object):
             log_root().critical("no msg request")
             return []
         
-        val_list = []
-        for msg in msg_list:
-            kvp = msg.split(":")
-            dic = { int(kvp[0]) : base64.decodestring(kvp[1]) }
-            val_list.append(dic)
-        return val_list
+        return msg_list
 
     def handle_msg(self, token, msg_list, request_handler):
         val_list = []
         for msg in msg_list:
-            op = msg.keys()[0]
-            cont = msg.values()[0]
-            opc, msgc = self.processor.process(op, cont, token, 
-                                               request_handler)
-            val_list.append({ opc : msgc })
+            resp = self.processor.process(msg, token, 
+                                          request_handler)
+            val_list.append(resp)
         return val_list
 
     def parse_response(self, val_list):
-        strc = ""
-        for val in val_list:
-            strc += str(val.keys()[0]) + ":" + \
-              base64.encodestring(val.values()[0]) + "|"
-        return strc
+        return "|".join(val_list)

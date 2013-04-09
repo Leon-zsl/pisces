@@ -1,0 +1,18 @@
+{
+	"create_profile" : {
+		"nickname" : "",
+		"character_id" : 0,
+	},
+
+	"create_profile_response" : {},
+
+	"get_profile_info" : {},
+
+	"get_profile_info_response" : {
+		"nickname" : "",
+		"lev" : 0,
+		"exp" : 0,
+		"gold" : 0,
+		"gem" : 0,
+	},
+}

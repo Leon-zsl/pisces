@@ -1,0 +1,14 @@
+{
+	"get_character_info" : {
+		"id" : 0,
+	},
+
+	"get_character_info_response" : {
+		"confid" : 0,
+		"lev" : 0,
+		"hp" : 0,
+		"mp" : 0,
+		"attack" : 0,
+		"defense" : 0,
+	},
+}

@@ -60,15 +60,7 @@ __all__ = [pck.split('.')[0] for pck in os.listdir(os.path.split(os.path.realpat
     f.write(txt)
     f.close()
 
-def cp_res():
-    print 'cp res begin...'
-    gen_init_py(EXP_PROTO_PATH_PY)
-    path_util.copy_folder_type(EXP_PROTO_PATH_PY,
-                               DST_PROTO_PATH_PY,
-                               '.py')
-    path_util.copy_folder_type(EXP_PROTO_PATH_PY,
-                               DST_PROTO_PATH_R,
-                               '.py')
+def cp_conf_res():
     gen_init_py(CONF_CODE_PATH_PY)
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_PY,
@@ -76,19 +68,28 @@ def cp_res():
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_R,
                                '.py')
-    print 'cp res end'
+    
+def cp_proto_res():
+    gen_init_py(EXP_PROTO_PATH_PY)
+    path_util.copy_folder_type(EXP_PROTO_PATH_PY,
+                               DST_PROTO_PATH_PY,
+                               '.py')
+    path_util.copy_folder_type(EXP_PROTO_PATH_PY,
+                               DST_PROTO_PATH_R,
+                               '.py')
     
 def build():
     exhook = sys.excepthook
     sys.excepthook = except_handler._excepthook
 
     if len(sys.argv) < 2 or sys.argv[1].lower().strip() == 'all':
-        build_proto()
+        #build_proto()
         build_conf_py()
         build_conf_cc()
         build_conf_data()
     elif sys.argv[1].lower().strip() == 'proto':
-        build_proto()
+        #build_proto()
+        print 'do not support proto now'
     elif sys.argv[1].lower().strip() == 'conf':
         if len(sys.argv) < 3 or sys.argv[2].lower().strip() == 'all':
             build_conf_py()
@@ -103,7 +104,8 @@ def build():
         elif sys.argv[2].lower().strip() == 'data':
             build_conf_data()
             
-    cp_res()
+    cp_conf_res()
+    #cp_proto_res()
     
     sys.excepthook = exhook
 

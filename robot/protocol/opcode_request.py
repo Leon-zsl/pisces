@@ -1,9 +1,0 @@
-# -*- coding:utf-8 -*-
-
-REGISTER = 10
-LOGIN    = 11
-
-GET_PROFILE_INFO = 20
-CREATE_PROFILE = 21
-
-GET_CHARACTER_INFO = 30

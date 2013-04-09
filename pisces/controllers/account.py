@@ -13,18 +13,10 @@ import util.token as token
 #import util.crypt as crypt
 
 from models.account import Account
-from models.profile import Profile
 
 from records.login import LoginRecord
 
 import protocol.error_code as error_code
-import protocol.opcode_request as opcode_request
-import protocol.opcode_response as opcode_response
-
-import proto.common_pb2 as proto_common
-import proto.account_pb2 as proto_account
-
-from excepts.illeagal_msg import IlleagalMsgExcept
 
 def db():
     return app.App.instance.db
@@ -38,82 +30,76 @@ def log_root():
 def create_account(reg, query):
     salt = str(random.randint(0, 10000000))
     salt = '0' * (8 - len(salt)) + salt
-    pwd = salt + str(hashlib.md5(salt + reg.pwd).hexdigest())
+    pwd = salt + str(hashlib.md5(salt + reg['pwd']).hexdigest())
     
     t = time.gmtime()
     t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
                                t.tm_hour, t.tm_min, t.tm_sec)
     uid = query.count() + 1
-    act = Account(uid, reg.name, pwd, t)
+    act = Account(uid, reg['name'], pwd, t)
     db().add(act)
     db().commit()
     #db().flush()
     
     lt = "%d:%d:%d:%d:%d:%d" % (0, 0, 0, 0, 0, 0)
-    lgrcd = LoginRecord(uid, reg.name, t, lt, 0, 0, 0)
+    lgrcd = LoginRecord(uid, reg['name'], t, lt, 0, 0, 0)
     db_rcd().add(lgrcd)
     db_rcd().commit()
     
-    log_root().info('create account: %s' % reg.name)
+    log_root().info('create account: %s' % reg['name'])
 
 def register(op, msg):
-    reg = proto_account.Register()
-    try:
-        reg.ParseFromString(msg)
-    except:
-        raise IlleagalMsgExcept(op, '')
-
-    err = proto_common.RequestError()
-    if not reg.name:
-        err.errop = op
-        err.errno = error_code.EMPTY_NAME
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
-    if len(reg.name) > 64:
-        err.errop = op
-        err.errno = error_code.NAME_TO_LONG
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+    err = {}
+    if not msg['name']:
+        err['errop'] = op
+        err['errno'] = error_code.EMPTY_NAME
+        err['errmsg'] = ''
+        return 'request_error', err
+    if len(msg['name']) > 64:
+        err['errop'] = op
+        err['errno'] = error_code.NAME_TO_LONG
+        err['errmsg'] = ''
+        return 'request_error', err
     
     #pwd = crypt.des_decode(DES_KEY, reg.pwd)
-    if len(reg.pwd) > 24:
-        err.errop = op
-        err.errno = error_code.PWD_TO_LONG
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+    if len(msg['pwd']) > 24:
+        err['errop'] = op
+        err['errno'] = error_code.PWD_TO_LONG
+        err['errmsg'] = ''
+        return 'request_error', err
 
     query = db().query(Account)
-    account = query.filter_by(name = reg.name).first()
+    account = query.filter_by(name = msg['name']).first()
     if not account:
-        create_account(reg, query)
-        ret = proto_account.RegisterResponse()
-        return opcode_response.REGISTER_RESPONSE,ret.SerializeToString()
+        create_account(msg, query)
+        ret = {}
+        return 'register_response',ret
     else:
-        err.errop = op
-        err.errno = error_code.ACCOUNT_EXIST
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+        err['errop'] = op
+        err['errno'] = error_code.ACCOUNT_EXIST
+        err['errmsg'] = ''
+        return 'request_error', err
 
 def login(op, msg, req_handler):
-    login = proto_account.Login()
-    try:
-        login.ParseFromString(msg)
-    except:
-        raise IlleagalMsgExcept(op, '')
-
     query = db().query(Account)
-    account = query.filter_by(name = login.name).first()
+    account = query.filter_by(name = msg['name']).first()
     #pwd = crypt.des_decode(DES_KEY, login.pwd)
     salt = account.pwd[0:8]
-    pwd = salt + str(hashlib.md5(salt + login.pwd).hexdigest())
+    pwd = salt + str(hashlib.md5(salt + msg['pwd']).hexdigest())
 
-    err = proto_common.RequestError()
+    err = {}
     if not account:
-        err.errop = op
-        err.errno = error_code.ACCOUNT_NOT_EXIST
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+        err['errop'] = op
+        err['errno'] = error_code.ACCOUNT_NOT_EXIST
+        err['errmsg'] = ''
+        return 'request_error', err
     elif pwd != account.pwd:
-        err.errop = op
-        err.errno = error_code.ACCOUNT_INVALID_PWD
-        return opcode_response.REQUEST_ERROR, err.SerializeToString()
+        err['errop'] = op
+        err['errno'] = error_code.ACCOUNT_INVALID_PWD
+        err['errmsg'] = ''
+        return 'request_error', err
     else:
-        log_root().info('account login: %s' % login.name)
+        log_root().info('account login: %s' % msg['name'])
         t = time.gmtime()
         t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
                                   t.tm_hour, t.tm_min, t.tm_sec)
@@ -143,6 +129,6 @@ def login(op, msg, req_handler):
                 lgrcd.continuous_login_days += 1
         db_rcd().commit()
         
-        ret = proto_account.LoginResponse()
-        ret.token = token.gen_token(account.usrid, APP_VERSION, t)
-        return opcode_response.LOGIN_RESPONSE, ret.SerializeToString()
+        ret = {}
+        ret['token'] = token.gen_token(account.usrid, APP_VERSION, t)
+        return 'login_response', ret

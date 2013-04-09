@@ -2,18 +2,16 @@
 
 from controllers import *
 
-from opcode_request import *
-
 dic = {
-    REGISTER : account.register,
-    LOGIN    : account.login,
+    "register" : account.register,
+    "login"    : account.login,
 
-    GET_PROFILE_INFO : profile.get_info,
-    CREATE_PROFILE : profile.create_profile,
+    "get_profile_info" : profile.get_info,
+    "create_profile" : profile.create_profile,
     
-    GET_CHARACTER_INFO : character.get_info,
+    "get_character_info" : character.get_info,
 }
 
-token_omit = [REGISTER, LOGIN]
+token_omit = ["register", "login"]
 
-request_info_require = [LOGIN]
+request_info_require = ["login"]

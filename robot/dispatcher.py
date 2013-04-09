@@ -6,6 +6,7 @@ import Queue
 import thread
 import httplib, urllib
 import base64
+import json
 
 from config import *
 from protocol import protocol_dic
@@ -24,11 +25,12 @@ def handle_except(ex):
 def join_request_msg(msg_list):
     if not msg_list:
         return ''
-    send_msg = ''
+    val_list = []
     for msg in msg_list:
-        send_msg += '' + str(msg.opcode) + ':' \
-          + base64.encodestring(msg.data) + '|'
-    return send_msg.strip('|')
+        val = json.dumps({msg.op :
+                          base64.encodestring(json.dumps(msg.msg))})
+        val_list.append(val)
+    return '|'.join(val_list)
 
 def slice_response_msg(rcv_msg):
     if not rcv_msg:
@@ -39,11 +41,9 @@ def slice_response_msg(rcv_msg):
     for data in data_list:
         if not data.strip():
             continue
-        kvp = data.strip().split(':')
-        if not kvp[0]:
-            logger().critical('invalid op: ' + data)
-            continue
-        msg_list.append(Msg(int(kvp[0]), base64.decodestring(kvp[1])))
+        val = json.loads(data)
+        msg_list.append(Msg(val.keys()[0],
+                            json.loads(base64.decodestring(val.values()[0]))))
     return msg_list
 
 def http_request(req_data, token):
@@ -117,11 +117,11 @@ class Dispatcher(object):
         self.send_queue.put(msg)
 
     def handle_msg(self, msg):
-        if (not msg) or (not msg.opcode):
+        if (not msg) or (not msg.op):
             logger().critical('invalid msg or msg op')
             return
-        func = protocol_dic.response_dic.get(msg.opcode)
+        func = protocol_dic.response_dic.get(msg.op)
         if not func:
-            logger().critical('unknown msg code: ' + msg.opcode)
+            logger().critical('unknown msg code: ' + msg.op)
             return
         func(msg)

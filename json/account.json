@@ -1,0 +1,17 @@
+{
+	"register" : {
+		"name" : "",
+		"pwd" : "",
+	},
+
+	"register_response" : {},
+
+	"login" : {
+		"name" : "",
+		"pwd" : "",
+	},
+
+	"login_response" : {
+		"token" : "",
+	},
+}

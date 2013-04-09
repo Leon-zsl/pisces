@@ -1,18 +1,14 @@
 # -*- coding:utf-8 -*-
 
 from common import *
-import proto.profile_pb2 as pro_profile
 import character as mod_character
 
 def request_getinfo():
-    gi = pro_profile.GetProfileInfo()
-    data = gi.SerializeToString()
-    dispatcher().send_msg(Msg(GET_PROFILE_INFO, data))
+    gi = {}
+    dispatcher().send_msg(Msg('get_profile_info', gi))
 
 def getinfo_response(msg):
-    rsp = pro_profile.GetProfileInfoResponse()
-    rsp.ParseFromString(msg.data)
-    print 'profile getinfo succ', rsp.nickname
+    print 'profile getinfo succ', msg.msg['nickname']
     mod_character.request_getinfo()
 
 def getinfo_error_invalid_usrid(err):
@@ -20,14 +16,11 @@ def getinfo_error_invalid_usrid(err):
     request_create_profile()
 
 def request_create_profile():
-    req = pro_profile.CreateProfile()
-    req.nickname = 'fox'
-    req.character_id = 1
-    data = req.SerializeToString()
-    dispatcher().send_msg(Msg(CREATE_PROFILE, data))
+    req = {}
+    req['nickname'] = 'fox'
+    req['character_id'] = 1
+    dispatcher().send_msg(Msg('create_profile', req))
 
 def create_profile_response(msg):
-    req = pro_profile.CreateProfileResponse()
-    req.ParseFromString(msg.data)
     print 'create profile succ'
     mod_character.request_getinfo()

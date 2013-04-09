@@ -2,36 +2,34 @@
 
 import sys
 
-from opcode_request import *
-from opcode_response import *
 from error_code import *
 
 from modules import *
 
 response_dic = {
-    REQUEST_ERROR : common.request_error_response,
+    'request_error' : common.request_error_response,
 
-    REGISTER_RESPONSE : account.register_response,
-    LOGIN_RESPONSE : account.login_response,
+    'register_response' : account.register_response,
+    'login_response' : account.login_response,
 
-    GET_PROFILE_INFO_RESPONSE : profile.getinfo_response,
-    CREATE_PROFILE_RESPONSE : profile.create_profile_response,
+    'get_profile_info_response' : profile.getinfo_response,
+    'create_profile_response' : profile.create_profile_response,
 
-    GET_CHARACTER_INFO_RESPONSE : character.getinfo_response,
+    'get_character_info_response' : character.getinfo_response,
 }
 
 request_error_dic = {
     ILLEAGAL_USRID : {
-        GET_PROFILE_INFO : profile.getinfo_error_invalid_usrid,
+        'get_profile_info' : profile.getinfo_error_invalid_usrid,
         "default" : common_request_error.illeagal_usrid,
     },
 
     ACCOUNT_EXIST : {
-        REGISTER : account.register_error_account_exist,
+        'register' : account.register_error_account_exist,
     },
 
     ACCOUNT_NOT_EXIST : {
-        LOGIN : account.login_error_account_not_exist,
+        'login' : account.login_error_account_not_exist,
         'default' : common_request_error.account_not_exist,
     },
 
