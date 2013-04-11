@@ -76,10 +76,10 @@ class App(object):
         self.__load_data()
         self.game.start()
         self.running = True
-        self.logger.info('robot start running...')
+        self.logger.info('---------robot start running---------')
 
     def __close(self):
-        self.logger.info('robot end running')
+        self.logger.info('---------robot end running---------')
         self.game.close()
         self.dispatcher.shutdown()
         logging.shutdown()

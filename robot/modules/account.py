@@ -3,6 +3,11 @@
 from common import *
 import profile as mod_profile
 
+import app
+
+def logger():
+    return app.App.instance.logger
+
 def request_register():
     reg = {}
     reg['name'] = 'leoncc'
@@ -10,11 +15,11 @@ def request_register():
     dispatcher().send_msg(Msg('register', reg))
 
 def register_response(msg):
-    print 'register succ'
+    logger().info('register succ')
     request_login()
 
 def register_error_account_exist(err):
-    print 'register account exist'
+    logger().info('register account exist')
     request_login()
 
 def request_login():
@@ -25,7 +30,7 @@ def request_login():
 
 def login_response(msg):
     dispatcher().set_token(msg.msg['token'])
-    print 'login succ'
+    logger().info('login succ')
     mod_profile.request_getinfo()
 
 def login_error_account_not_exist(err):
