@@ -35,6 +35,16 @@ def build_conf_cc():
                                   CONF_FACT_MAKO_H)
     print "build conf cpp end"
 
+def build_conf_lua():
+    print 'build conf lua begin...'
+    pck_config.pack_config_dir_lua(CONF_PATH,
+                                   CONF_CODE_PATH_LUA,
+                                   MAKO_PATH,
+                                   CONF_FACT_LUA,
+                                   CONF_MAKO_LUA,
+                                   CONF_FACT_MAKO_LUA)    
+    print 'build conf lua end'
+
 def build_conf_data():
     print 'build conf data begin...'
     pck_config.pack_config_dir_data(CONF_PATH,
@@ -86,6 +96,7 @@ def build():
         #build_proto()
         build_conf_py()
         build_conf_cc()
+        build_conf_lua()
         build_conf_data()
     elif sys.argv[1].lower().strip() == 'proto':
         #build_proto()
@@ -94,6 +105,7 @@ def build():
         if len(sys.argv) < 3 or sys.argv[2].lower().strip() == 'all':
             build_conf_py()
             build_conf_cc()
+            build_conf_lua()
             build_conf_data()
         elif sys.argv[2].lower().strip() == 'py':
             build_conf_py()
@@ -101,10 +113,13 @@ def build():
         elif sys.argv[2].lower().strip() == 'cc':
             build_conf_cc()
             build_conf_data()
+        elif sys.argv[2].lower().strip() == 'lua':
+            build_conf_lua()
+            build_conf_data()    
         elif sys.argv[2].lower().strip() == 'data':
             build_conf_data()
             
-    cp_conf_res()
+    #cp_conf_res()
     #cp_proto_res()
     
     sys.excepthook = exhook

@@ -19,6 +19,7 @@ PROTO_PATH = os.path.join(ROOT_PATH, 'proto')
 EXP_CONF_PATH = os.path.join(EXP_PATH, 'conf')
 CONF_CODE_PATH_PY = os.path.join(EXP_CONF_PATH, 'py')
 CONF_CODE_PATH_C = os.path.join(EXP_CONF_PATH, 'cpp')
+CONF_CODE_PATH_LUA = os.path.join(EXP_CONF_PATH, 'lua')
 CONF_BIN_PATH = os.path.join(EXP_CONF_PATH, 'data')
 CONF_CSV_PATH = os.path.join(EXP_CONF_PATH, 'csv')
 CONF_FACT_PY = "ConfFact.py"
@@ -30,6 +31,9 @@ CONF_MAKO_C = 'Config_cc.mako'
 CONF_MAKO_H = 'Config_h.mako'
 CONF_FACT_MAKO_C = 'ConfFact_cc.mako'
 CONF_FACT_MAKO_H = 'ConfFact_h.mako'
+CONF_FACT_LUA = "ConfFact.lua"
+CONF_MAKO_LUA = "Config_lua.mako"
+CONF_FACT_MAKO_LUA = "ConfFact_lua.mako"
 
 EXP_PROTO_PATH = os.path.join(EXP_PATH, 'proto')
 EXP_PROTO_PATH_PY = os.path.join(EXP_PROTO_PATH, 'py')

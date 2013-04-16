@@ -279,6 +279,30 @@ def pack_config_dir_py(src_dir, code_dir, mako_dir,
                       os.path.join(mako_dir, mako_fact), 
                       cls_name_list)
 
+def pack_config_dir_lua(src_dir, code_dir, mako_dir,
+                        fact_file, mako_conf, mako_fact):
+    cls_name_list = []
+    for file in os.listdir(src_dir):
+        if os.path.isfile(os.path.join(src_dir, file)) \
+                and os.path.splitext(file)[1] == '.xls':
+            print "pack lua file: " + file
+            cfg_data = parse_xls(os.path.join(src_dir, file))
+
+            file_name = os.path.splitext(file)[0]
+            class_name = file_name
+            code_file = file_name + '.lua'
+            bin_file = file_name + '.bytes'
+
+            exp_code_file(os.path.join(code_dir, code_file),
+                          os.path.join(mako_dir, mako_conf), 
+                          cfg_data, class_name, bin_file)
+
+            cls_name_list.append(class_name)
+
+    exp_mgr_code_file(os.path.join(code_dir, fact_file),
+                      os.path.join(mako_dir, mako_fact), 
+                      cls_name_list)
+
 def pack_config_dir_cc(src_dir, code_dir, mako_dir,
                        fact_file_c, fact_file_h, 
                        mako_conf_c, mako_conf_h,

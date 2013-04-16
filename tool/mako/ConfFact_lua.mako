@@ -1,10 +1,11 @@
-# -*- coding:utf-8 -*-
-
 % for cls in class_list:
-require ${cls}
+require "${cls}"
 % endfor
 
-def build():
+function build()
 % for cls in class_list:
     ${cls}.build()
 % endfor
+end
+
+build()
