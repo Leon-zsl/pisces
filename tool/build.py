@@ -119,7 +119,7 @@ def build():
         elif sys.argv[2].lower().strip() == 'data':
             build_conf_data()
             
-    #cp_conf_res()
+    cp_conf_res()
     #cp_proto_res()
     
     sys.excepthook = exhook

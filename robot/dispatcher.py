@@ -27,23 +27,21 @@ def join_request_msg(msg_list):
         return ''
     val_list = []
     for msg in msg_list:
-        val = json.dumps({msg.op :
-                          base64.encodestring(json.dumps(msg.msg))})
-        val_list.append(val)
-    return '|'.join(val_list)
+        val_list.append({msg.op :
+                         base64.encodestring(json.dumps(msg.msg))})
+    return json.dumps(val_list)
 
 def slice_response_msg(rcv_msg):
     if not rcv_msg:
         return []
-    data_list = rcv_msg.split('|')
+    data_list = json.loads(rcv_msg)
 
     msg_list = []
     for data in data_list:
-        if not data.strip():
+        if not data:
             continue
-        val = json.loads(data)
-        msg_list.append(Msg(val.keys()[0],
-                            json.loads(base64.decodestring(val.values()[0]))))
+        msg_list.append(Msg(data.keys()[0],
+                            json.loads(base64.decodestring(data.values()[0]))))
     return msg_list
 
 def http_request(req_data, token):

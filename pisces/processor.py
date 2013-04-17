@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 
-import base64
+#import base64
+#import inspect
+#import json
 import time
-import inspect
-import json
 
 from config import *
 from excepts import *
@@ -37,26 +37,23 @@ class Processor(object):
     def parse_handler_map(self):
         return request_dic.dic
 
-    def process(self, op_msg, token, request_handler):
-        if not op_msg:
-            return ""
-        
-        msg_dic = json.loads(op_msg)
-        if not msg_dic:
-            log_root().critical("invalid post data: " + op_msg)
-            return ""
-        
-        op = msg_dic.keys()[0]
-        msg = json.loads(base64.decodestring(msg_dic.values()[0]))
-        func = self.handler_dic.get(op)
-        if not func:
-            log_root().critical("invalid request: " + op)
+    def process(self, op, msg, token, request_handler):
+        if not op:
+            log_root().error("invalid request: " + op)
             err = {}
             err['errno'] = error_code.INVALID_REQUEST
             err['errop'] = op
             err['errmsg'] = ''
-            return json.dumps({'request_error' :
-                               base64.encodestring(json.dumps(err))})
+            return 'request_error', err
+
+        func = self.handler_dic.get(op)
+        if not func:
+            log_root().error("invalid request: " + op)
+            err = {}
+            err['errno'] = error_code.INVALID_REQUEST
+            err['errop'] = op
+            err['errmsg'] = ''
+            return 'request_error', err
 
         try:
             start = time.time()
@@ -71,8 +68,7 @@ class Processor(object):
                     err['errno'] = val
                     err['errop'] = op
                     err['errmsg'] = ''
-                    return json.dumps({'request_error':
-                                      base64.encodestring(json.dumps(err))})
+                    return 'request_error', err
 
             if not omit_token and require_request:
                 opc, msgc = func(op, msg, token[0], request_handler)
@@ -86,8 +82,7 @@ class Processor(object):
             dt = time.time() - start
             log_root().info("handler time: %s:%.3fms" % \
                             (op, dt * 1000))
-            return json.dumps({opc :
-                               base64.encodestring(json.dumps(msgc))})
+            return opc, msgc
         except illeagal_msg.IlleagalMsgExcept, ex:
             db().rollback()
             db_rcd().rollback()
@@ -96,8 +91,7 @@ class Processor(object):
             err['errno'] = error_code.ILLEAGAL_MSG
             err['errop'] = ex.op
             err['errmsg'] = ex.msg
-            return json.dumps({'request_error':
-                               base64.encodestring(json.dumps(err))})
+            return 'request_error',err
                     
     def check_token(self, token):
         if not token:

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 
-#import json
 #import imp
 #import sys
 #import os
 #import os.path
 #import time
 import base64
+import json
 
 import app
 from processor import Processor
@@ -40,14 +40,18 @@ class Router(object):
         try:
             token = self.parse_token(request_handler.request)
             msg_list = self.parse_msg(request_handler.request)
-            val_list = self.handle_msg(token, msg_list, 
-                                       request_handler)
+            val_list = self.handle_msg(token, msg_list,
+                                      request_handler)
             response = self.parse_response(val_list)
             return response
         except PiscesException, ex:
             db_rcd().rollback()
             db().rollback()
             log_root().exception('uncaught pisces except: ' + ex.msg)
+        except Exception, ex:
+            db_rcd().rollback()
+            db().rollback()
+            log_root().exception('uncaught sys except: ' + ex.msg)
         finally:
             db_rcd().close_session()
             db().close_session()
@@ -68,20 +72,27 @@ class Router(object):
             return []
         
         req_msg = request.arguments.get("msg")[0]
-        msg_list = req_msg.split('|')
+        msg_list = json.loads(req_msg)
         if not msg_list:
             log_root().critical("no msg request")
             return []
-        
         return msg_list
 
     def handle_msg(self, token, msg_list, request_handler):
         val_list = []
         for msg in msg_list:
-            resp = self.processor.process(msg, token, 
-                                          request_handler)
-            val_list.append(resp)
+            if not msg:
+                log_root().error('msg req is null')
+                continue
+
+            msg_v = json.loads(base64.decodestring(msg.values()[0]))
+            opc, msgc = self.processor.process(msg.keys()[0],
+                                               msg_v,
+                                               token, 
+                                               request_handler)
+            msgc = base64.encodestring(json.dumps(msgc))
+            val_list.append({opc : msgc})
         return val_list
 
     def parse_response(self, val_list):
-        return "|".join(val_list)
+        return json.dumps(val_list)

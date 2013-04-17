@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 % for cls in class_list:
-require ${cls}
+import ${cls}
 % endfor
 
 def build():
