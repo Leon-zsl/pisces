@@ -1,10 +1,10 @@
 % for cls in class_list:
-require "${cls}"
+--require "${cls}"
 % endfor
 
 function build()
 % for cls in class_list:
-    ${cls}.build()
+    ${cls}_build()
 % endfor
 end
 

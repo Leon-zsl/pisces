@@ -1,16 +1,16 @@
 <%def name="read_func(reader, type)">
 %if type.startswith("bool"):
-    ${reader}.read_bool()
+    ${reader}:read_bool()
 %elif type.startswith("byte"):
-    $reader}.read_char()
+    $reader}:read_char()
 %elif type.startswith("short"):
-    ${reader}.read_short()
+    ${reader}:read_short()
 %elif type.startswith("int"):
-    ${reader}.read_int()
+    ${reader}:read_int()
 %elif type.startswith("float"):
-    ${reader}.read_float()
+    ${reader}:read_float()
 %elif type.startswith("string"):
-    ${reader}.read_string()
+    ${reader}:read_string()
 %else:
     "unknown_read_type()"
 %endif
@@ -46,14 +46,14 @@ for i in range(len(client_list)):
             break
 %>
 
-require "FReadStream"
+--require "FReadStream"
 
-local io = io
-local FReadStream = FReadStream
-local print = print
-local type = type
+--local io = io
+--local FReadStream = FReadStream
+--local print = print
+--local type = type
 
-module "${class_name}"
+--module "${class_name}"
 
 dic = {}
 list = {}
@@ -63,14 +63,14 @@ local function log(msg)
 end
 
 local function create_reader(file_name)
-   return FReadStream.init(file_name)
+   return FReadStream(file_name)
 end
 
 local function destroy_reader(reader)
    if reader ~= nil then
 	  reader = nil
    end
-   FReadStream.close()
+   --reader.close()
 end
 
 local function add_item(reader, idx)
@@ -78,7 +78,7 @@ local function add_item(reader, idx)
 % for i in range(last_item_index):
 % if client_list[i].count('c') or client_list[i].count('s'):
 % if arr_list[i]:
-    local arr_item_len_${class_name} = reader.read_short()
+    local arr_item_len_${class_name} = reader:read_short()
     ${name_list[i]} = {}
 	if arr_item_len_${class_name} > 0 then
 	   for j = 1, arr_item_len_${class_name} do
@@ -114,27 +114,27 @@ local function add_item(reader, idx)
 	return 0
 end
 
-function build()
-   local file_name = "../data/" .. "${bin_file_name}"
+function ${class_name}_build()
+   local file_name = "${bin_file_name}"
    local reader = create_reader(file_name)
    print(file_name)
 
-   local filelen = reader.read_int()
-   local flag = reader.read_string()
+   local filelen = reader:read_int()
+   local flag = reader:read_string()
    if flag ~= "${class_name}" then
 	  log("file flag illeagal: " .. file_name)
 	  destroy_reader()
 	  return -1
    end
 
-   local col_cnt = reader.read_short()
+   local col_cnt = reader:read_short()
    if col_cnt ~= ${item_count} then
 	  log("file column count illeagal: " .. file_name)
 	  destroy_reader()
 	  return -1
    end
 
-   local row_cnt = reader.read_int()
+   local row_cnt = reader:read_int()
    for idx = 1, row_cnt do
 	  local v = add_item(reader, idx)
 	  if v ~= 0 then
