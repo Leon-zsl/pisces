@@ -8,8 +8,8 @@ import logging.config
 class LoggerMgr(object):
     def __init__(self, conf):
         logging.config.fileConfig(conf)
-        self.root = logging.getLogger("root")
-        self.debug = logging.getLogger("debug")
+        self.root = logging.getLogger('root')
+        self.debug = logging.getLogger('debug')
         if DEV_LEV == 'product':
             self.root.setLevel(logging.INFO)
             self.debug.setLevel(logging.ERROR)

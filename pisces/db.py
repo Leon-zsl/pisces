@@ -11,13 +11,13 @@ class DBMgr(object):
         parser = ConfigParser()
         parser.read(conf)
         conf_name = label
-        url = "mysql+mysqldb://"                       \
-          + parser.get(conf_name, "username")          \
-          + ":" + parser.get(conf_name, "password")    \
-          + "@" + parser.get(conf_name, "host")        \
-          + ":" + parser.get(conf_name, "port")        \
-          + "/" + parser.get(conf_name, "database")    \
-          + "?charset=utf8"
+        url = 'mysql+mysqldb://'                       \
+          + parser.get(conf_name, 'username')          \
+          + ':' + parser.get(conf_name, 'password')    \
+          + '@' + parser.get(conf_name, 'host')        \
+          + ':' + parser.get(conf_name, 'port')        \
+          + '/' + parser.get(conf_name, 'database')    \
+          + '?charset=utf8'
 
         self.engine = create_engine(url,
                                     encoding='utf8', 
@@ -35,7 +35,7 @@ class DBMgr(object):
         self.session = self.session_cls()
 
     def close_session(self):
-        if getattr(self, "session"):
+        if getattr(self, 'session'):
             self.session.close()
 
     def query(self, clas):

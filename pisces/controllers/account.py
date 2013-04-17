@@ -33,7 +33,7 @@ def create_account(reg, query):
     pwd = salt + str(hashlib.md5(salt + reg['pwd']).hexdigest())
     
     t = time.gmtime()
-    t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
+    t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
                                t.tm_hour, t.tm_min, t.tm_sec)
     uid = query.count() + 1
     act = Account(uid, reg['name'], pwd, t)
@@ -41,7 +41,7 @@ def create_account(reg, query):
     db().commit()
     #db().flush()
     
-    lt = "%d:%d:%d:%d:%d:%d" % (0, 0, 0, 0, 0, 0)
+    lt = '%d:%d:%d:%d:%d:%d' % (0, 0, 0, 0, 0, 0)
     lgrcd = LoginRecord(uid, reg['name'], t, lt, 0, 0, 0)
     db_rcd().add(lgrcd)
     db_rcd().commit()
@@ -101,8 +101,8 @@ def login(op, msg, req_handler):
     else:
         log_root().info('account login: %s' % msg['name'])
         t = time.gmtime()
-        t = "%d:%d:%d:%d:%d:%d" % (t.tm_year, t.tm_mon, t.tm_mday,
-                                  t.tm_hour, t.tm_min, t.tm_sec)
+        t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
+                                   t.tm_hour, t.tm_min, t.tm_sec)
         account.login_time = t
         db().commit()
 

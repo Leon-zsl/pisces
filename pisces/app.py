@@ -25,8 +25,8 @@ import model_fact
 import record_fact
 from data import ConfFact
 
-define("listen_port", default=DEFAULT_LISTEN_PORT)
-define("db_host", default=DEFAULT_DB_HOST)
+define('listen_port', default=DEFAULT_LISTEN_PORT)
+define('db_host', default=DEFAULT_DB_HOST)
 
 class App(object):
     instance = None
@@ -46,13 +46,13 @@ class App(object):
         self.close()
 
     def close(self):
-        if getattr(self, "router"):
+        if getattr(self, 'router'):
             self.router.close()
-        if getattr(self, "db"):
+        if getattr(self, 'db'):
             self.db.close()
         if getattr(self, 'db_record'):
             self.db_record.close()
-        if getattr(self, "logger"):
+        if getattr(self, 'logger'):
             self.logger.close()            
 
     def run(self):
@@ -65,7 +65,7 @@ class App(object):
             
     def handle_except(self, ex):
         # if hasattr(self, 'logger'):
-        #     self.logger.root.exception("unknown exception:" + ex.msg)
+        #     self.logger.root.exception('unknown exception:' + ex.msg)
         # else:
         msg = traceback.format_exc()
         raise Exception(msg)
@@ -89,15 +89,15 @@ class App(object):
         self.logger.root.info('load data end')
         
     def start_tornado(self):
-        #tornado.options.parse_config_file("config/sys.conf")
+        #tornado.options.parse_config_file('config/sys.conf')
         tornado.options.parse_command_line()
 
-        self.logger.root.info("init tornado conf "
-                             + "port: " + str(options.listen_port))
+        self.logger.root.info('init tornado conf '
+                             + 'port: ' + str(options.listen_port))
 
         settings = {'log_function' : _tornado_logger}
         web_app = tornado.web.Application(
-            [(r"/pisces", MainHandler)],
+            [(r'/pisces', MainHandler)],
             **settings)
         http_server = tornado.httpserver.HTTPServer(web_app)
         http_server.listen(options.listen_port)
@@ -107,28 +107,28 @@ class MainHandler(tornado.web.RequestHandler):
     # @tornado.web.asynchronous
     # @tornado.gen.engine
     def get(self):
-        info = "main handler get request: "
+        info = 'main handler get request: '
         info += self.request.remote_ip
         App.instance.logger.root.info(info)
         
         #response = App.instance.router.dispatch(self)
-        self.write("pisces work now: get request")
+        self.write('pisces work now: get request')
         
     # @tornado.web.asynchronous
     # @tornado.gen.engine
     def post(self):
-        # info = "main handler post request: "
+        # info = 'main handler post request: '
         # info += self.request.remote_ip
         # App.instance.logger.root.info(info)
         response = App.instance.router.dispatch(self)
         self.write(response)
 
 def _excepthook(exctype, value, tb):
-    print "Exception Caught!"
-    print "type: " + str(exctype)
-    print "value: " + str(value)
+    print 'Exception Caught!'
+    print 'type: ' + str(exctype)
+    print 'value: ' + str(value)
     traceback.print_tb(tb)
-    raw_input("press Enter to continue...")
+    raw_input('press Enter to continue...')
     exit()
 
 def _tornado_logger(handler):

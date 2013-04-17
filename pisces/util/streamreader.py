@@ -9,7 +9,7 @@ byte_order = '<'
 
 class StreamReader(object):
     def __init__(self, file_path):
-        self.f = open(file_path, "rb")
+        self.f = open(file_path, 'rb')
 
     def close(self):
         self.f.close()
@@ -39,7 +39,7 @@ class StreamReader(object):
     def read_string(self):
         len = self.read_short()
         if not len:
-            return ""
+            return ''
         return struct.unpack(byte_order + str(len) + 's', 
                              self.f.read(int(len)))[0]
     

@@ -39,7 +39,7 @@ class Processor(object):
 
     def process(self, op, msg, token, request_handler):
         if not op:
-            log_root().error("invalid request: " + op)
+            log_root().error('invalid request: ' + op)
             err = {}
             err['errno'] = error_code.INVALID_REQUEST
             err['errop'] = op
@@ -48,7 +48,7 @@ class Processor(object):
 
         func = self.handler_dic.get(op)
         if not func:
-            log_root().error("invalid request: " + op)
+            log_root().error('invalid request: ' + op)
             err = {}
             err['errno'] = error_code.INVALID_REQUEST
             err['errop'] = op
@@ -80,7 +80,7 @@ class Processor(object):
                 opc, msgc = func(op, msg)
                 
             dt = time.time() - start
-            log_root().info("handler time: %s:%.3fms" % \
+            log_root().info('handler time: %s:%.3fms' % \
                             (op, dt * 1000))
             return opc, msgc
         except illeagal_msg.IlleagalMsgExcept, ex:

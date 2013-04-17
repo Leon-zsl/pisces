@@ -59,22 +59,22 @@ class Router(object):
             # log_root().info('dispatch time: %.3fms' % (dt * 1000))
             
     def parse_token(self, request):
-        if not request.arguments.has_key("token"):
+        if not request.arguments.has_key('token'):
             return 0
 
-        tk = request.arguments.get("token")[0]
+        tk = request.arguments.get('token')[0]
         tk = token.parse_token(tk)
         return tk
     
     def parse_msg(self, request):
-        if not request.arguments.has_key("msg"):
-            log_root().critical("no msg in request")
+        if not request.arguments.has_key('msg'):
+            log_root().critical('no msg in request')
             return []
         
-        req_msg = request.arguments.get("msg")[0]
+        req_msg = request.arguments.get('msg')[0]
         msg_list = json.loads(req_msg)
         if not msg_list:
-            log_root().critical("no msg request")
+            log_root().critical('no msg request')
             return []
         return msg_list
 
