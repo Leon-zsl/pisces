@@ -109,13 +109,13 @@ def build():
             build_conf_data()
         elif sys.argv[2].lower().strip() == 'py':
             build_conf_py()
-            build_conf_data()
+            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'cc':
             build_conf_cc()
-            build_conf_data()
+            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'lua':
             build_conf_lua()
-            build_conf_data()    
+            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'data':
             build_conf_data()
             
