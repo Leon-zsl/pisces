@@ -84,14 +84,14 @@ local function add_item(reader, idx)
 	   for j = 1, arr_item_len_${class_name} do
 		  ${name_list[i]}[j] = (${read_func("reader", type_list[i])})
 		  if type(${name_list[i]}[j]) == "number" or type(${name_list[i]}[j] == "string") then
-		  print("${name_list[i]}[i]: " .. j .. "" .. ${name_list[i]}[j])
+		  --print("${name_list[i]}[i]: " .. j .. "" .. ${name_list[i]}[j])
 		  end
 	   end
 	end
 % else:
     ${name_list[i]} = ${read_func("reader", type_list[i])}
 	if type(${name_list[i]}) == "number" or type(${name_list[i]}) == "string" then
-	   print("${name_list[i]}: " .. ${name_list[i]})
+	   --print("${name_list[i]}: " .. ${name_list[i]})
 	end
 % endif
 	new_obj_${class_name}["${name_list[i]}"] = ${name_list[i]}
@@ -117,7 +117,7 @@ end
 function ${class_name}_build()
    local file_name = "${bin_file_name}"
    local reader = create_reader(file_name)
-   print(file_name)
+   --print(file_name)
 
    local filelen = reader:read_int()
    local flag = reader:read_string()
