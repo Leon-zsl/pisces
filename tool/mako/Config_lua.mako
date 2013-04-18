@@ -7,8 +7,12 @@
     ${reader}:read_short()
 %elif type.startswith("int"):
     ${reader}:read_int()
+%elif type.startswith("long"):
+    ${reader}:read_long()
 %elif type.startswith("float"):
     ${reader}:read_float()
+%elif type.startswith("double"):
+    ${reader}:read_double()
 %elif type.startswith("string"):
     ${reader}:read_string()
 %else:

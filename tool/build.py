@@ -71,6 +71,7 @@ __all__ = [pck.split('.')[0] for pck in os.listdir(os.path.split(os.path.realpat
     f.close()
 
 def cp_conf_res():
+    print 'cp conf begin...'
     gen_init_py(CONF_CODE_PATH_PY)
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_PY,
@@ -78,8 +79,10 @@ def cp_conf_res():
     path_util.copy_folder_type(CONF_CODE_PATH_PY,
                                DST_CONF_CODE_PATH_R,
                                '.py')
+    print 'cp conf end'
     
 def cp_proto_res():
+    print 'cp proto begin...'
     gen_init_py(EXP_PROTO_PATH_PY)
     path_util.copy_folder_type(EXP_PROTO_PATH_PY,
                                DST_PROTO_PATH_PY,
@@ -87,6 +90,7 @@ def cp_proto_res():
     path_util.copy_folder_type(EXP_PROTO_PATH_PY,
                                DST_PROTO_PATH_R,
                                '.py')
+    print 'cp proto end'
     
 def build():
     exhook = sys.excepthook
