@@ -7,6 +7,7 @@
 #import time
 import base64
 import json
+import util.jsonobj as jsonobj
 
 import app
 from processor import Processor
@@ -51,7 +52,7 @@ class Router(object):
         except Exception, ex:
             db_rcd().rollback()
             db().rollback()
-            log_root().exception('uncaught sys except: ' + ex.msg)
+            log_root().exception('uncaught sys except: ' + str(ex))
         finally:
             db_rcd().close_session()
             db().close_session()
@@ -86,10 +87,12 @@ class Router(object):
                 continue
 
             msg_v = json.loads(base64.decodestring(msg.values()[0]))
+            msg_v = jsonobj.dic2jsonobj(msg_v)
             opc, msgc = self.processor.process(msg.keys()[0],
                                                msg_v,
                                                token, 
                                                request_handler)
+            msgc = jsonobj.jsonobj2dic(msgc)
             msgc = base64.encodestring(json.dumps(msgc))
             val_list.append({opc : msgc})
         return val_list

@@ -4,6 +4,7 @@
 #import inspect
 #import json
 import time
+import util.jsonobj as jsonobj
 
 from config import *
 from excepts import *
@@ -40,19 +41,19 @@ class Processor(object):
     def process(self, op, msg, token, request_handler):
         if not op:
             log_root().error('invalid request: ' + op)
-            err = {}
-            err['errno'] = error_code.INVALID_REQUEST
-            err['errop'] = op
-            err['errmsg'] = ''
+            err = jsonobj.JsonObject()
+            err.errorno = error_code.INVALID_REQUEST
+            err.errop = op
+            err.errmsg = ''
             return 'request_error', err
 
         func = self.handler_dic.get(op)
         if not func:
             log_root().error('invalid request: ' + op)
-            err = {}
-            err['errno'] = error_code.INVALID_REQUEST
-            err['errop'] = op
-            err['errmsg'] = ''
+            err = jsonobj.JsonObject()
+            err.errorno = error_code.INVALID_REQUEST
+            err.errop = op
+            err.errmsg = ''
             return 'request_error', err
 
         try:
@@ -87,10 +88,10 @@ class Processor(object):
             db().rollback()
             db_rcd().rollback()
             log_root.error('illeagal msg format: ' + ex.op)
-            err = {}
-            err['errno'] = error_code.ILLEAGAL_MSG
-            err['errop'] = ex.op
-            err['errmsg'] = ex.msg
+            err = jsonobj.JsonObject()
+            err.errorno = error_code.ILLEAGAL_MSG
+            err.errop = ex.op
+            err.errmsg = ex.msg
             return 'request_error',err
                     
     def check_token(self, token):

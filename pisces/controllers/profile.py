@@ -5,6 +5,7 @@ import db
 import log
 
 from models.profile import Profile
+from util.jsonobj import JsonObject
 
 import protocol.error_code as error_code
 
@@ -18,20 +19,20 @@ def create_profile(op, msg, usrid):
     query = db().query(Profile)
     pf = query.get(usrid)
     if pf:
-        err = {}
-        err['errop'] = op
-        err['errno'] = ACCOUNT_EXIST
-        err['errmsg'] = ''
+        err = JsonObject()
+        err.errop = op
+        err.errno = ACCOUNT_EXIST
+        err.errmsg = ''
         return 'request_error', err
     
-    pf = Profile(usrid, msg['nickname'], 1, 0, 0, 0)
+    pf = Profile(usrid, msg.nickname, 1, 0, 0, 0)
     db().add(pf)
     db().commit()
     #db().flush()
 
-    log_root().info('create profile %d:%s' % (usrid, msg['nickname']))
+    log_root().info('create profile %d:%s' % (usrid, msg.nickname))
 
-    ret = {}
+    ret = JsonObject()
     return 'create_profile_response', ret
 
 def get_info(op, msg, usrid):
@@ -39,16 +40,16 @@ def get_info(op, msg, usrid):
     profile = query.get(usrid)
 
     if not profile:
-        err = {}
-        err['errop'] = op
-        err['errno'] = error_code.ILLEAGAL_USRID
-        err['errmsg'] = ''
+        err = JsonObject()
+        err.errop = op
+        err.errno = error_code.ILLEAGAL_USRID
+        err.errmsg = ''
         return 'request_error', err
     else:
-        ret = {}
-        ret['nickname'] = profile.name
-        ret['lev'] = profile.lev
-        ret['exp'] = profile.exp
-        ret['gold'] = profile.gold
-        ret['gem'] = profile.gem
+        ret = JsonObject()
+        ret.nickname = profile.name
+        ret.lev = profile.lev
+        ret.exp = profile.exp
+        ret.gold = profile.gold
+        ret.gem = profile.gem
         return 'get_profile_info_response', ret
