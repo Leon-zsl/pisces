@@ -85,9 +85,6 @@ def register(op, msg):
 def login(op, msg, req_handler):
     query = db().query(Account)
     account = query.filter_by(name = msg.name).first()
-    #pwd = crypt.des_decode(DES_KEY, login.pwd)
-    salt = account.pwd[0:8]
-    pwd = salt + str(hashlib.md5(salt + msg.pwd).hexdigest())
 
     err = JsonObject()
     if not account:
@@ -95,42 +92,46 @@ def login(op, msg, req_handler):
         err.errno = error_code.ACCOUNT_NOT_EXIST
         err.errmsg = ''
         return 'request_error', err
-    elif pwd != account.pwd:
+
+    #pwd = crypt.des_decode(DES_KEY, login.pwd)
+    salt = account.pwd[0:8]
+    pwd = salt + str(hashlib.md5(salt + msg.pwd).hexdigest())
+    if pwd != account.pwd:
         err.errop = op
         err.errno = error_code.ACCOUNT_INVALID_PWD
         err.errmsg = ''
         return 'request_error', err
+    
+    log_root().info('account login: %s' % msg.name)
+    t = time.gmtime()
+    t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
+                               t.tm_hour, t.tm_min, t.tm_sec)
+    account.login_time = t
+    db().commit()
+    
+    qry_rcd = db_rcd().query(LoginRecord)
+    lgrcd = qry_rcd.get(account.usrid)
+    first_login = not lgrcd.login_count
+    
+    lgrcd.last_login_time, lgrcd.login_time = lgrcd.login_time, t
+    lgrcd.login_count += 1
+    
+    if first_login:
+        lgrcd.total_login_days = 1
+        lgrcd.continuous_login_days = 1
     else:
-        log_root().info('account login: %s' % msg.name)
-        t = time.gmtime()
-        t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
-                                   t.tm_hour, t.tm_min, t.tm_sec)
-        account.login_time = t
-        db().commit()
-
-        qry_rcd = db_rcd().query(LoginRecord)
-        lgrcd = qry_rcd.get(account.usrid)
-        first_login = not lgrcd.login_count
+        lt = lgrcd.last_login_time
+        ct = lgrcd.login_time
+        v = lt.split(':')
+        lm, ld = int(v[1]), int(v[2])
+        v = ct.split(':')
+        cm, cd = int(v[1]), int(v[2])
+        if lm < cm or ld < cd:
+            lgrcd.total_login_days += 1
+        if lm == cm and ld == cd - 1:
+            lgrcd.continuous_login_days += 1
+    db_rcd().commit()
         
-        lgrcd.last_login_time, lgrcd.login_time = lgrcd.login_time, t
-        lgrcd.login_count += 1
-        
-        if first_login:
-            lgrcd.total_login_days = 1
-            lgrcd.continuous_login_days = 1
-        else:
-            lt = lgrcd.last_login_time
-            ct = lgrcd.login_time
-            v = lt.split(':')
-            lm, ld = int(v[1]), int(v[2])
-            v = ct.split(':')
-            cm, cd = int(v[1]), int(v[2])
-            if lm < cm or ld < cd:
-                lgrcd.total_login_days += 1
-            if lm == cm and ld == cd - 1:
-                lgrcd.continuous_login_days += 1
-        db_rcd().commit()
-        
-        ret = JsonObject()
-        ret.token = token.gen_token(account.usrid, APP_VERSION, t)
-        return 'login_response', ret
+    ret = JsonObject()
+    ret.token = token.gen_token(account.usrid, APP_VERSION, t)
+    return 'login_response', ret

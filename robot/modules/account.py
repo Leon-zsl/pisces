@@ -2,6 +2,7 @@
 
 from common import *
 import profile as mod_profile
+from util.jsonobj import JsonObject
 
 import app
 
@@ -9,9 +10,9 @@ def logger():
     return app.App.instance.logger
 
 def request_register():
-    reg = {}
-    reg['name'] = 'leoncc'
-    reg['pwd'] = 'leoncc'
+    reg = JsonObject()
+    reg.name = 'leonce'
+    reg.pwd = 'leonce'
     dispatcher().send_msg(Msg('register', reg))
 
 def register_response(msg):
@@ -23,13 +24,13 @@ def register_error_account_exist(err):
     request_login()
 
 def request_login():
-    lg = {}
-    lg['name'] = 'leoncc'
-    lg['pwd'] = 'leoncc'
+    lg = JsonObject()
+    lg.name = 'leonce'
+    lg.pwd = 'leonce'
     dispatcher().send_msg(Msg('login', lg))
 
 def login_response(msg):
-    dispatcher().set_token(msg.msg['token'])
+    dispatcher().set_token(msg.msg.token)
     logger().info('login succ')
     mod_profile.request_getinfo()
 

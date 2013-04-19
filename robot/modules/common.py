@@ -27,21 +27,21 @@ def log_error(op, err):
 
 def log_request_error(reqerr):
     logger().error('req err: [op]%s, [err]%d:%s, [msg]%s' \
-                  % (reqerr['errop'],
-                     reqerr['errno'], 
-                     get_err_desc(reqerr['errno']),
-                     reqerr['errmsg']))
+                  % (reqerr.errop,
+                     reqerr.errno, 
+                     get_err_desc(reqerr.errno),
+                     reqerr.errmsg))
 
 def default_error_response(reqerr):
     log_request_error(reqerr)
     
 def request_error_response(msg):
     err = msg.msg
-    handler = protocol.protocol_dic.request_error_dic.get(err['errno'])
+    handler = protocol.protocol_dic.request_error_dic.get(err.errno)
     if not handler:
         handler=protocol.protocol_dic.request_error_dic.get('default')
     elif type(handler) == dict:
-        handler = handler.get(err['errop'])
+        handler = handler.get(err.errop)
         if not handler:
             handler = handler.get('default')
 

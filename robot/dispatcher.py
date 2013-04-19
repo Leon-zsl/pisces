@@ -10,6 +10,8 @@ import json
 
 from config import *
 from protocol import protocol_dic
+import util.jsonobj as jsonobj
+
 from msg import Msg
 import app
 
@@ -28,7 +30,7 @@ def join_request_msg(msg_list):
     val_list = []
     for msg in msg_list:
         val_list.append({msg.op :
-                         base64.encodestring(json.dumps(msg.msg))})
+                         base64.encodestring(json.dumps(jsonobj.jsonobj2dic(msg.msg)))})
     return json.dumps(val_list)
 
 def slice_response_msg(rcv_msg):
@@ -41,7 +43,7 @@ def slice_response_msg(rcv_msg):
         if not data:
             continue
         msg_list.append(Msg(data.keys()[0],
-                            json.loads(base64.decodestring(data.values()[0]))))
+                            jsonobj.dic2jsonobj(json.loads(base64.decodestring(data.values()[0])))))
     return msg_list
 
 def http_request(req_data, token):
