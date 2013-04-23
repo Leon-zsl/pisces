@@ -16,15 +16,13 @@ from util.jsonobj import JsonObject
 
 from models.account import Account
 
-from records.login import LoginRecord
-
 import protocol.error_code as error_code
 
 def db():
     return app.App.instance.db
 
-def db_rcd():
-    return app.App.instance.db_record
+def log_rcd():
+    return app.App.instance.record
 
 def log_root():
     return app.App.instance.logger.root
@@ -43,10 +41,9 @@ def create_account(reg, query):
     db().commit()
     #db().flush()
     
-    lt = '%d:%d:%d:%d:%d:%d' % (0, 0, 0, 0, 0, 0)
-    lgrcd = LoginRecord(uid, reg.name, t, lt, 0, 0, 0)
-    db_rcd().add(lgrcd)
-    db_rcd().commit()
+    log_rcd().record('create_account',
+                     {'uid' : uid, 
+                      'name' : name})
     
     log_root().info('create account: %s' % reg.name)
 
@@ -108,29 +105,11 @@ def login(op, msg, req_handler):
                                t.tm_hour, t.tm_min, t.tm_sec)
     account.login_time = t
     db().commit()
-    
-    qry_rcd = db_rcd().query(LoginRecord)
-    lgrcd = qry_rcd.get(account.usrid)
-    first_login = not lgrcd.login_count
-    
-    lgrcd.last_login_time, lgrcd.login_time = lgrcd.login_time, t
-    lgrcd.login_count += 1
-    
-    if first_login:
-        lgrcd.total_login_days = 1
-        lgrcd.continuous_login_days = 1
-    else:
-        lt = lgrcd.last_login_time
-        ct = lgrcd.login_time
-        v = lt.split(':')
-        lm, ld = int(v[1]), int(v[2])
-        v = ct.split(':')
-        cm, cd = int(v[1]), int(v[2])
-        if lm < cm or ld < cd:
-            lgrcd.total_login_days += 1
-        if lm == cm and ld == cd - 1:
-            lgrcd.continuous_login_days += 1
-    db_rcd().commit()
+
+    log_rcd().record('login_account',
+                     {'uid' : account.usrid,
+                      'name' : account.name,
+                      'login_time' : t})
         
     ret = JsonObject()
     ret.token = token.gen_token(account.usrid, APP_VERSION, t)

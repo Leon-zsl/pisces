@@ -21,9 +21,6 @@ def log_root():
 def db():
     return app.App.instance.db
 
-def db_rcd():
-    return app.App.instance.db_record
-
 class Router(object):
     def __init__(self):
         self.processor = Processor()
@@ -37,7 +34,6 @@ class Router(object):
     def dispatch(self, request_handler):
         # start = time.time()
         db().open_session()
-        db_rcd().open_session()
         try:
             token = self.parse_token(request_handler.request)
             msg_list = self.parse_msg(request_handler.request)
@@ -46,15 +42,12 @@ class Router(object):
             response = self.parse_response(val_list)
             return response
         except PiscesException, ex:
-            db_rcd().rollback()
             db().rollback()
             log_root().exception('uncaught pisces except: ' + ex.msg)
         except Exception, ex:
-            db_rcd().rollback()
             db().rollback()
             log_root().exception('uncaught sys except: ' + str(ex))
         finally:
-            db_rcd().close_session()
             db().close_session()
             # dt = time.time() - start
             # log_root().info('dispatch time: %.3fms' % (dt * 1000))

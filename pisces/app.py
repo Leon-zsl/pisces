@@ -20,9 +20,9 @@ from config import *
 from log import LoggerMgr
 from router import Router
 from db import DBMgr
+from record import Recorder
 
 import model_fact
-import record_fact
 from data import ConfFact
 
 define('listen_port', default=DEFAULT_LISTEN_PORT)
@@ -36,7 +36,7 @@ class App(object):
             sys.excepthook = _excepthook
             self.logger = LoggerMgr('config/log.conf')
             self.db = DBMgr('config/db.conf', 'db_game')
-            self.db_record = DBMgr('config/db.conf', 'db_record')
+            self.record = Recorder('config/record.conf')
             self.router = Router()
             App.instance = self
         except Exception, e:
@@ -50,10 +50,10 @@ class App(object):
             self.router.close()
         if getattr(self, 'db'):
             self.db.close()
-        if getattr(self, 'db_record'):
-            self.db_record.close()
+        if getattr(self, 'record'):
+            self.record.close()
         if getattr(self, 'logger'):
-            self.logger.close()            
+            self.logger.close()
 
     def run(self):
         try:
@@ -74,13 +74,9 @@ class App(object):
         self.db.rollback()
         self.db.close_session()
         
-        self.db_record.rollback()
-        self.db_record.close_session()
-
     def create_db(self):
         self.logger.root.info('create db begin...')
         model_fact.create_all()
-        record_fact.create_all()
         self.logger.root.info('create db end')
 
     def load_data(self):
@@ -114,7 +110,7 @@ class MainHandler(tornado.web.RequestHandler):
         #response = App.instance.router.dispatch(self)
         self.write('pisces work now: get request')
         
-    # @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     # @tornado.gen.engine
     def post(self):
         # info = 'main handler post request: '
@@ -122,6 +118,7 @@ class MainHandler(tornado.web.RequestHandler):
         # App.instance.logger.root.info(info)
         response = App.instance.router.dispatch(self)
         self.write(response)
+        #self.finish()
 
 def _excepthook(exctype, value, tb):
     print 'Exception Caught!'

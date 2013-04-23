@@ -5,20 +5,21 @@ from config import *
 import logging
 import logging.config
 
+from datetime import date 
+
 class LoggerMgr(object):
     def __init__(self, conf):
         logging.config.fileConfig(conf)
+
         self.root = logging.getLogger('root')
-        self.debug = logging.getLogger('debug')
         if DEV_LEV == 'product':
             self.root.setLevel(logging.INFO)
-            self.debug.setLevel(logging.ERROR)
         elif DEV_LEV == 'develop':
             self.root.setLevel(logging.INFO)
-            self.debug.setLevel(logging.DEBUG)
         else:
             self.root.setLevel(logging.DEBUG)
-            self.debug.setLevel(logging.DEBUG)
+
+#        self.record = logging.getLogger('record')
         
     def __del__(self):
         self.close()
