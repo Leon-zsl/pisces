@@ -20,7 +20,6 @@ from config import *
 from log import LoggerMgr
 from router import Router
 from db import DBMgr
-from record import Recorder
 
 import model_fact
 from data import ConfFact
@@ -36,7 +35,6 @@ class App(object):
             sys.excepthook = _excepthook
             self.logger = LoggerMgr('config/log.conf')
             self.db = DBMgr('config/db.conf', 'db_game')
-            self.record = Recorder('config/record.conf')
             self.router = Router()
             App.instance = self
         except Exception, e:
@@ -50,8 +48,6 @@ class App(object):
             self.router.close()
         if getattr(self, 'db'):
             self.db.close()
-        if getattr(self, 'record'):
-            self.record.close()
         if getattr(self, 'logger'):
             self.logger.close()
 

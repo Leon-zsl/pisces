@@ -22,7 +22,7 @@ def db():
     return app.App.instance.db
 
 def log_rcd():
-    return app.App.instance.record
+    return app.App.instance.logger.record
 
 def log_root():
     return app.App.instance.logger.root
