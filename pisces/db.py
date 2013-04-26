@@ -7,10 +7,10 @@ from sqlalchemy.orm import sessionmaker
 from config import *
 
 class DBMgr(object):
-    def __init__(self, conf, label):
+    def __init__(self, conf):
         parser = ConfigParser()
         parser.read(conf)
-        conf_name = label
+        conf_name = 'db_game'
         url = 'mysql+mysqldb://'                       \
           + parser.get(conf_name, 'username')          \
           + ':' + parser.get(conf_name, 'password')    \
@@ -19,6 +19,7 @@ class DBMgr(object):
           + '/' + parser.get(conf_name, 'database')    \
           + '?charset=utf8'
 
+        self.db_name = conf_name
         self.engine = create_engine(url,
                                     encoding='utf8', 
                                     echo=SQLALCHEMY_ECHO)

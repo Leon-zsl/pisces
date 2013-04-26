@@ -27,7 +27,7 @@ def log_rcd():
 def log_root():
     return app.App.instance.logger.root
 
-def create_account(reg, query):
+def create_account(reg):
     salt = str(random.randint(0, 10000000))
     salt = '0' * (8 - len(salt)) + salt
     pwd = salt + str(hashlib.md5(salt + reg.pwd).hexdigest())
@@ -35,11 +35,9 @@ def create_account(reg, query):
     t = time.gmtime()
     t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
                                t.tm_hour, t.tm_min, t.tm_sec)
-    uid = query.count() + 1
+    uid = Account.count() + 1
     act = Account(uid, reg.name, pwd, t)
-    db().add(act)
-    db().commit()
-    #db().flush()
+    Account.add(act)
     
     log_rcd().record('create_account',
                      {'uid' : uid, 
@@ -67,10 +65,9 @@ def register(op, msg):
         err.errmsg = ''
         return 'request_error', err
 
-    query = db().query(Account)
-    account = query.filter_by(name = msg.name).first()
+    account = Account.get_by_name(msg.name)
     if not account:
-        create_account(msg, query)
+        create_account(msg)
         ret = JsonObject()
         return 'register_response',ret
     else:
@@ -80,8 +77,7 @@ def register(op, msg):
         return 'request_error', err
 
 def login(op, msg, req_handler):
-    query = db().query(Account)
-    account = query.filter_by(name = msg.name).first()
+    account = Account.get_by_name(msg.name)
 
     err = JsonObject()
     if not account:
@@ -104,13 +100,13 @@ def login(op, msg, req_handler):
     t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
                                t.tm_hour, t.tm_min, t.tm_sec)
     account.login_time = t
-    db().commit()
-
+    account.update()
+    
     log_rcd().record('login_account',
-                     {'uid' : account.usrid,
+                     {'uid' : account.id,
                       'name' : account.name,
                       'login_time' : t})
         
     ret = JsonObject()
-    ret.token = token.gen_token(account.usrid, APP_VERSION, t)
+    ret.token = token.gen_token(account.id, APP_VERSION, t)
     return 'login_response', ret

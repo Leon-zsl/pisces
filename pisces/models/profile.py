@@ -3,12 +3,14 @@
 import model
 from sqlalchemy import *
 
-class Profile(model.Base):
+class Profile(model.Base, model.ModelMixin):
     __tablename__ = 'profile'
 
-    usrid = Column(Integer, 
-                   primary_key=True, 
-                   nullable=False)
+    enable_cache = True
+
+    id = Column(Integer, 
+                primary_key=True,
+                nullable=False)
     
     name = Column(String(64), 
                   nullable=False)
@@ -25,8 +27,8 @@ class Profile(model.Base):
     gem = Column(Integer, 
                  nullable=False)
 
-    def __init__(self, usrid, name, lev, exp, gold, gem):
-        self.usrid = usrid
+    def __init__(self, id, name, lev, exp, gold, gem):
+        self.id = id
         self.name = name
         self.lev = lev
         self.exp = exp

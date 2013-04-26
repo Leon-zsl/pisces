@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
 
+#app name
+APP_NAME = 'pisces'
+
 #version
 APP_VERSION = '0.0.1'
 
@@ -10,7 +13,7 @@ DEV_LEV = 'develop'
 DEFAULT_LISTEN_PORT = 8001
 
 #mysql listen
-DEFAULT_DB_HOST = '127.0.0.1:3306'
+#DEFAULT_DB_HOST = '127.0.0.1:3306'
 
 #used for crypt
 CRYPT_KEY = 'pisces_server_zsl_cipher'

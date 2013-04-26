@@ -3,12 +3,14 @@
 import model
 from sqlalchemy import *
 
-class Character(model.Base):
+class Character(model.Base, model.ModelMixin):
     __tablename__ = 'character'
 
-    usrid = Column(Integer, 
-                   primary_key=True,
-                   nullable=False)
+    enable_cache = True
+
+    id = Column(Integer, 
+                primary_key=True,
+                nullable=False)
     
     characterid = Column(SmallInteger,
                          primary_key = True,
@@ -32,9 +34,9 @@ class Character(model.Base):
     defense = Column(Integer,
                      nullable=False)
 
-    def __init__(self, usrid, characterid, confid, 
+    def __init__(self, id, characterid, confid, 
                  level, hp, mp, attack, defense):
-        self.usrid = usrid
+        self.id = id
         self.characterid = characterid
         self.confid = confid
         self.level = level

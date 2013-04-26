@@ -20,12 +20,13 @@ from config import *
 from log import LoggerMgr
 from router import Router
 from db import DBMgr
+from cache import CacheMgr
 
 import model_fact
 from data import ConfFact
 
 define('listen_port', default=DEFAULT_LISTEN_PORT)
-define('db_host', default=DEFAULT_DB_HOST)
+#define('db_host', default=DEFAULT_DB_HOST)
 
 class App(object):
     instance = None
@@ -34,7 +35,8 @@ class App(object):
         try:
             sys.excepthook = _excepthook
             self.logger = LoggerMgr('config/log.conf')
-            self.db = DBMgr('config/db.conf', 'db_game')
+            self.db = DBMgr('config/db.conf')
+            self.cache = CacheMgr('config/cache.conf')
             self.router = Router()
             App.instance = self
         except Exception, e:
@@ -46,6 +48,8 @@ class App(object):
     def close(self):
         if getattr(self, 'router'):
             self.router.close()
+        if getattr(self, 'cache'):
+            self.cache.close()
         if getattr(self, 'db'):
             self.db.close()
         if getattr(self, 'logger'):
@@ -106,15 +110,23 @@ class MainHandler(tornado.web.RequestHandler):
         #response = App.instance.router.dispatch(self)
         self.write('pisces work now: get request')
         
-    #@tornado.web.asynchronous
-    # @tornado.gen.engine
     def post(self):
+        response = App.instance.router.dispatch(self)
+        self.write(response)
+
+    # @tornado.gen.engine
+    # @tornado.web.asynchronous
+    # def post(self):
         # info = 'main handler post request: '
         # info += self.request.remote_ip
         # App.instance.logger.root.info(info)
-        response = App.instance.router.dispatch(self)
-        self.write(response)
-        #self.finish()
+        # self.async_callback(self.on_handle_request)
+        # self.on_handle_request()
+
+    # def on_handle_request(self):
+    #     response = App.instance.router.dispatch(self)
+    #     self.write(response)
+    #     self.finish()        
 
 def _excepthook(exctype, value, tb):
     print 'Exception Caught!'
