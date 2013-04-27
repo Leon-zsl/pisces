@@ -4,9 +4,10 @@ import model
 from sqlalchemy import *
 
 class Character(model.Base, model.ModelMixin):
-    __tablename__ = 'character'
-
     enable_cache = True
+    expire = 0
+
+    __tablename__ = 'character'
 
     id = Column(Integer, 
                 primary_key=True,

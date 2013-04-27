@@ -4,10 +4,11 @@ import model
 from sqlalchemy import *
 
 class Account(model.Base, model.ModelMixin):
+    enable_cache = False
+    expire = 0
+
     __tablename__ = 'account'
     
-    enable_cache = False
-
     id = Column(Integer,
                 primary_key=True,
                 nullable=False)

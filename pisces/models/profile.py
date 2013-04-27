@@ -4,9 +4,10 @@ import model
 from sqlalchemy import *
 
 class Profile(model.Base, model.ModelMixin):
-    __tablename__ = 'profile'
-
     enable_cache = True
+    expire = 0
+    
+    __tablename__ = 'profile'
 
     id = Column(Integer, 
                 primary_key=True,

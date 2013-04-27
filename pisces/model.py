@@ -44,10 +44,11 @@ def cache_key_prefix_by_app():
     return 'pisces_' + APP_VERSION
 
 class ModelMixin(object):
-    """1. the child class must have the __tablename__ prop
-       2. the child class must have the enable_cache prop
-       3. the child class must have the id prop
-       4. default key is id
+    """the child class must have the __tablename__ prop
+       the child class must have the enable_cache prop
+       the child class must have the id prop
+       the child class must have the expire prop
+       default key is id
     """
     @classmethod
     def get_cache_key(cls, k):
@@ -64,12 +65,12 @@ class ModelMixin(object):
     @classmethod
     def set_cache(cls, k, v):
         if cls.enable_cache and k and v:
-            cache().set(k, v)
+            cache().set(k, v, cls.expire)
 
     @classmethod
     def add_cache(cls, k, v):
         if cls.enable_cache and k and v:
-            cache().add(k, v)
+            cache().add(k, v, cls.expire)
 
     @classmethod
     def del_cache(cls, k):
