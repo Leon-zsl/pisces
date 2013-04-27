@@ -44,6 +44,11 @@ def cache_key_prefix_by_app():
     return 'pisces_' + APP_VERSION
 
 class ModelMixin(object):
+    """1. the child class must have the __tablename__ prop
+       2. the child class must have the enable_cache prop
+       3. the child class must have the id prop
+       4. default key is id
+    """
     @classmethod
     def get_cache_key(cls, k):
         return cache_key_prefix_by_db() + cls.__tablename__ \

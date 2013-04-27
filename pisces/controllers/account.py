@@ -41,7 +41,8 @@ def create_account(reg):
     
     log_rcd().record('create_account',
                      {'uid' : uid, 
-                      'name' : name})
+                      'name' : name,
+                      'create_time' : t})
     
     log_root().info('create account: %s' % reg.name)
 
