@@ -51,30 +51,34 @@ class ModelMixin(object):
        default key is id
     """
     @classmethod
+    def is_cache_enable(cls):
+        return SYS_ENABLE_CACHE and cls.enable_cache
+    
+    @classmethod
     def get_cache_key(cls, k):
         return cache_key_prefix_by_db() + cls.__tablename__ \
           + '_' + str(k)
 
     @classmethod
     def get_cache(cls, k):
-        if cls.enable_cache and k:
+        if cls.is_cache_enable() and k:
             return cache().get(k)
         else:
             return None
 
     @classmethod
     def set_cache(cls, k, v):
-        if cls.enable_cache and k and v:
+        if cls.is_cache_enable() and k and v:
             cache().set(k, v, cls.expire)
 
     @classmethod
     def add_cache(cls, k, v):
-        if cls.enable_cache and k and v:
+        if cls.is_cache_enable() and k and v:
             cache().add(k, v, cls.expire)
 
     @classmethod
     def del_cache(cls, k):
-        if cls.enable_cache and k:
+        if cls.is_cache_enable() and k:
             cache().delete(k)
 
     @classmethod
