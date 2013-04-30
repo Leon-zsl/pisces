@@ -3,10 +3,7 @@
 import model
 from sqlalchemy import *
 
-class Account(model.Base, model.ModelMixin):
-    enable_cache = False
-    expire = 0
-
+class ORMAccount(model.Base):
     __tablename__ = 'account'
     
     id = Column(Integer,
@@ -29,7 +26,19 @@ class Account(model.Base, model.ModelMixin):
         self.pwd = pwd
         self.login_time = lg_time
 
+
+class Account(ModelMixin):
+    enable_cache = False
+    expire = 0
+
+    @classmethod
+    def create(cls, id, name, pwd, lg_time):
+        obj = cls()
+        obj.orm = ORMAccount(id, name, pwd, lg_time)
+        cls.add(obj)
+        return obj
+        
     @classmethod
     def get_by_name(cls, n):
-        query = model.db().query(cls)
+        query = model.db().query(type(self.orm))
         return query.filter_by(name = n).first()

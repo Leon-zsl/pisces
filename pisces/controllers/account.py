@@ -36,8 +36,7 @@ def create_account(reg):
     t = '%d:%d:%d:%d:%d:%d' % (t.tm_year, t.tm_mon, t.tm_mday,
                                t.tm_hour, t.tm_min, t.tm_sec)
     uid = Account.count() + 1
-    act = Account(uid, reg.name, pwd, t)
-    Account.add(act)
+    act = Account.create(uid, reg.name, pwd, t)
     
     log_rcd().record('create_account',
                      {'uid' : uid, 

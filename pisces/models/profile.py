@@ -3,10 +3,7 @@
 import model
 from sqlalchemy import *
 
-class Profile(model.Base, model.ModelMixin):
-    enable_cache = True
-    expire = 0
-    
+class ORMProfile(model.Base):
     __tablename__ = 'profile'
 
     id = Column(Integer, 
@@ -35,3 +32,15 @@ class Profile(model.Base, model.ModelMixin):
         self.exp = exp
         self.gold = gold
         self.gem = gem
+
+class Profile(ModelMixin):
+    enable_cache = True
+    expire = 0
+
+    @classmethod
+    def create(cls, id, name, lev, exp, gold, gem):
+        obj = cls()
+        obj.orm = ORMProfile(id, name, lev, exp, gold, gem)
+        cls.add(obj)
+        return obj
+

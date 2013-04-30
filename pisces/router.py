@@ -40,6 +40,8 @@ class Router(object):
             val_list = self.handle_msg(token, msg_list,
                                       request_handler)
             response = self.parse_response(val_list)
+            
+            db().commit()
             return response
         except PiscesException, ex:
             db().rollback()

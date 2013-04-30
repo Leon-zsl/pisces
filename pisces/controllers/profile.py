@@ -20,8 +20,7 @@ def create_profile(op, msg, usrid):
         err.errmsg = ''
         return 'request_error', err
     
-    pf = Profile(usrid, msg.nickname, 1, 0, 0, 0)
-    Profile.add(pf)
+    pf = Profile.create(usrid, msg.nickname, 1, 0, 0, 0)
     
     log_root().info('create profile %d:%s' % (usrid, msg.nickname))
 

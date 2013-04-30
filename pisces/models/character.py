@@ -3,10 +3,7 @@
 import model
 from sqlalchemy import *
 
-class Character(model.Base, model.ModelMixin):
-    enable_cache = True
-    expire = 0
-
+class ORMCharacter(model.Base):
     __tablename__ = 'character'
 
     id = Column(Integer, 
@@ -45,3 +42,17 @@ class Character(model.Base, model.ModelMixin):
         self.mp = mp
         self.attack = attack
         self.defense = defense
+
+class Character(ModelMixin):
+    enable_cache = True
+    expire = 0
+
+    @classmethod
+    def create(cls, id, characterid, confid, 
+               level, hp, mp, attack, defense):
+        obj = cls()
+        obj.orm = ORMCharacter(id, characterid, confid, 
+                               level, hp, mp, attack, defense)
+        cls.add(obj)
+        return obj
+
