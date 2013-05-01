@@ -63,12 +63,12 @@ class Processor(object):
             require_request = op in request_dic.request_info_require
             
             if not omit_token:
-                val = self.check_token(token)
+                val = self.check_token(token, op)
                 if val:
-                    err = {}
-                    err['errno'] = val
-                    err['errop'] = op
-                    err['errmsg'] = ''
+                    err = jsonobj.JsonObject()
+                    err.errno = val
+                    err.errop = op
+                    err.errmsg = ''
                     return 'request_error', err
 
             if not omit_token and require_request:
@@ -87,40 +87,41 @@ class Processor(object):
         except illeagal_msg.IlleagalMsgExcept, ex:
             db().rollback()
             db_rcd().rollback()
-            log_root.error('illeagal msg format: ' + ex.op)
+            log_root().error('illeagal msg format: ' + ex.op)
             err = jsonobj.JsonObject()
             err.errorno = error_code.ILLEAGAL_MSG
             err.errop = ex.op
             err.errmsg = ex.msg
             return 'request_error',err
                     
-    def check_token(self, token):
+    def check_token(self, token, op):
         if not token:
-            log_root.error('miss token: ' + op)
+            log_root().error('miss token: ' + op)
             return error_code.MISS_TOKEN
               
         if len(token) != 3:
-            log_root.error('invalid token: ' + op)
+            log_root().error('invalid token: ' + op)
             return error_code.INVALID_TOKEN
 
         usrid = token[0]
         if not usrid:
-            log_root.error('illeagal usr id: ' + op)
+            log_root().error('illeagal usr id: ' + op)
             return error_code.ILLEAGAL_USRID
 
-        usr = db().query(account.Account).get(usrid)
+        usr = account.Account.get(usrid)
         if not usr:
-            log_root.error('illeagal usr id: ' + op)
+            log_root().error('not exist usr id: ' + op + ',' + usrid)
             return error_code.ILLEAGAL_USRID
             
         ver = token[1]
         if not ver or ver != APP_VERSION:
-            log_root.error('invalid app version: ' + op)
+            log_root().error('invalid app version: ' + op + ',' + ver)
             return error_code.INVALID_APP_VERSION
 
         lgtime = token[2]
         if not lgtime or lgtime != usr.login_time:
-            log_root.error('token time out: ' + op)
+            log_root().error('token time out: ' + op + ',' + \
+                             lgtime + ',' + usr.login_time)
             return error_code.TOKEN_TIMEOUT
 
         return error_code.NO_ERROR

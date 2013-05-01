@@ -43,7 +43,8 @@ class ORMCharacter(model.Base):
         self.attack = attack
         self.defense = defense
 
-class Character(ModelMixin):
+class Character(model.ModelMixin):
+    cls_orm = ORMCharacter
     enable_cache = True
     expire = 0
 

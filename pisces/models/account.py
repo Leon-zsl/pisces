@@ -27,7 +27,8 @@ class ORMAccount(model.Base):
         self.login_time = lg_time
 
 
-class Account(ModelMixin):
+class Account(model.ModelMixin):
+    cls_orm = ORMAccount
     enable_cache = False
     expire = 0
 
@@ -40,5 +41,8 @@ class Account(ModelMixin):
         
     @classmethod
     def get_by_name(cls, n):
-        query = model.db().query(type(self.orm))
-        return query.filter_by(name = n).first()
+        query = model.db().query(ORMAccount)
+        orm = query.filter_by(name = n).first()
+        if not orm:
+            return None
+        return cls._create_from_orm(orm)

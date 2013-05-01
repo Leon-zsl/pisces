@@ -33,7 +33,8 @@ class ORMProfile(model.Base):
         self.gold = gold
         self.gem = gem
 
-class Profile(ModelMixin):
+class Profile(model.ModelMixin):
+    cls_orm = ORMProfile
     enable_cache = True
     expire = 0
 
