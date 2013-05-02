@@ -43,7 +43,7 @@ def parse_xls(file_name):
 def exp_code_file(file_name, template, cfg_data, class_name, bin_file):
     dir, name = os.path.split(file_name)
     if (dir) and (not os.path.exists(dir)):
-        os.mkdir(dir)
+        os.makedirs(dir)
 
     file = open(file_name, 'w')
     templ = Template(filename = template)
@@ -346,7 +346,13 @@ def pack_config_dir_data(src_dir, bin_dir, csv_dir):
             csv_file = file_name + '.csv'
             cfg_data = parse_xls(os.path.join(src_dir, file))
 
+            if not os.path.exists(bin_dir):
+                os.makedirs(bin_dir)
             exp_bin_file(os.path.join(bin_dir, bin_file), 
                          cfg_data, 
                          class_name)
-            exp_csv_file(os.path.join(csv_dir, csv_file), cfg_data)
+
+            if not os.path.exists(csv_dir):
+                os.makedirs(csv_dir)
+            exp_csv_file(os.path.join(csv_dir, csv_file), 
+                         cfg_data)

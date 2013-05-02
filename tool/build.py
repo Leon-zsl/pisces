@@ -96,30 +96,34 @@ def build():
     exhook = sys.excepthook
     sys.excepthook = except_handler._excepthook
 
-    if len(sys.argv) < 2 or sys.argv[1].lower().strip() == 'all':
+    if len(sys.argv) < 2:
+        build_conf_py()
+        build_conf_data()
+    elif sys.argv[1].lower().strip() == 'all':
         #build_proto()
         build_conf_py()
         build_conf_cc()
         build_conf_lua()
-        build_conf_data()
+        build_conf_data()        
     elif sys.argv[1].lower().strip() == 'proto':
         #build_proto()
         print 'do not support proto now'
     elif sys.argv[1].lower().strip() == 'conf':
-        if len(sys.argv) < 3 or sys.argv[2].lower().strip() == 'all':
+        #default
+        if len(sys.argv) < 3:
+            build_conf_py()
+            build_conf_data()
+        elif sys.argv[2].lower().strip() == 'all':
             build_conf_py()
             build_conf_cc()
             build_conf_lua()
-            build_conf_data()
+            build_conf_data()            
         elif sys.argv[2].lower().strip() == 'py':
             build_conf_py()
-            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'cc':
             build_conf_cc()
-            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'lua':
             build_conf_lua()
-            #build_conf_data()
         elif sys.argv[2].lower().strip() == 'data':
             build_conf_data()
             
