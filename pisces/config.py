@@ -24,7 +24,7 @@ MCRYPT_MODE = 'ofb'
 MCRYPT_KEY = 'pisces_server_zsl_1234567890_abc'
 
 #echo sqlalchemy
-SQLALCHEMY_ECHO = False
+SQLALCHEMY_ECHO = True
 
 #cache
 SYS_ENABLE_CACHE = True
