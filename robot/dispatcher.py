@@ -22,7 +22,7 @@ def logger():
 
 def handle_except(ex):
     msg = traceback.format_exc()
-    raise PiscesException('raw except: %s\nstack:\n%s', str(ex), msg)
+    raise PiscesException('raw except: %s\nstack:\n%s' % (str(ex), msg))
 
 def join_request_msg(msg_list):
     if not msg_list:
