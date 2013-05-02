@@ -47,19 +47,17 @@ def cache_key_prefix_by_app():
     return 'pisces_' + APP_VERSION
 
 class ModelMixin(object):
-    """the child class must have the __tablename__ prop
-       the child class must have the enable_cache prop
+    """the child class must have the enable_cache prop
+       the child class must have the cls_orm prop
        the child class must have the expire prop
        the child class must have the uid prop
-       the child class must have the model prop
-       the child class must have the cls_orm prop
        default key is uid, default uid is id
     """
     def __init__(self):
         self.orm = None
 
     def __getattr__(self, name):
-        if not getattr(self, 'orm'):
+        if not hasattr(self, 'orm'):
             return None
 
         return getattr(self.orm, name)
@@ -70,13 +68,6 @@ class ModelMixin(object):
             return self.orm.id
         else:
             return None
-
-    @classmethod
-    def _create_from_orm(cls, md):
-        """md is sqlalchemy obj"""
-        obj = cls()
-        obj.orm = md
-        return obj
 
     def _get_prop_dic(self):
         dic = {}
@@ -89,6 +80,13 @@ class ModelMixin(object):
         for n in dic:
             if n in self.orm.__dict__ and n in self.cls_orm.__dict__:
                 setattr(self.orm, n, dic[n])
+
+    @classmethod
+    def _create_from_orm(cls, md):
+        """md is sqlalchemy obj"""
+        obj = cls()
+        obj.orm = md
+        return obj
 
     @classmethod
     def is_cache_enable(cls):
